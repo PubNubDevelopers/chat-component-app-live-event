@@ -1,0 +1,40 @@
+{
+    "projects": [
+        "5ec351be197908318d889844"
+    ],
+    "styleguides": [
+        "5ecc3ee27804252b2080e542"
+    ],
+    "components": [
+        {
+            "path": "src/components/LEChatRoom.tsx",
+            "zeplinNames": [
+                "messageList"
+            ]
+        },
+        {
+            "path": "src/components/LEEventViewer.tsx",
+            "zeplinNames": [
+                "evetList"
+            ]
+        },
+        {
+            "path": "src/components/LELogin.tsx",
+            "zeplinNames": [
+                "PubNub live event chat - login"
+            ]
+        },
+        {
+            "path": "src/components/LEMessageComposer.tsx",
+            "zeplinNames": [
+                "messageInput"
+            ]
+        },
+        {
+            "path": "src/components/LEMessage.tsx",
+            "zeplinNames": [
+                "messageInput"
+            ]
+        }
+    ]
+}
