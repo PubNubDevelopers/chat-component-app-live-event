@@ -11,7 +11,7 @@ interface ContainerProps  {
 };
 
 export const Container = styled.div<ContainerProps>`
-  padding: ${(props: { padding: any; }) => ('padding' in props ? props.padding : '0')};
+  padding: ${(props: { padding: any; }) => ('padding' in props ? props.padding : 0)};
   margin: ${(props: { margin: any; }) => ('margin' in props ? props.margin : 0)};
 `;
 
