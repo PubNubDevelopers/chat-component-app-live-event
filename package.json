@@ -80,6 +80,13 @@
           "regenerator": true
         }
       ]
-    ]
+    ],
+    "languages": [{
+      "id": "typescriptreact",
+      "extensions": [ ".tsx" ],
+      "aliases": [ "Java", "java" ]
+  }]
   }
 }
+
+
