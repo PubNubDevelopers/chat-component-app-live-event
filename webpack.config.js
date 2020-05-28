@@ -11,7 +11,7 @@ module.exports = {
   },
   // adding .ts and .tsx to resolve.extensions will help babel look for .ts and .tsx files to transpile
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   module: {
     rules: [
@@ -23,6 +23,7 @@ module.exports = {
         loader: 'babel-loader'
       },
     },
+    
     // css-loader to bundle all the css files into one file and style-loader to add all the styles  inside the style tag of the document
     {
       test: /\.css$/,

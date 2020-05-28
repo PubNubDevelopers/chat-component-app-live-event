@@ -1,20 +1,17 @@
-import React  from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import keyConfiguration from "../config/pubnub-keys.json";
+import { createAppStore } from "./store";
 import { Provider } from "react-redux";
 import { appTheme } from "./Theme";
-import { createAppStore } from "./store";
 import PubNub from 'pubnub';
-import { ThemeProvider } from "styled-components";
-import {ChatDemo} from './components/ChatDemo';
 
-import { PubNubProvider, usePubNub } from 'pubnub-react';
-import Pubnub from 'pubnub';
+import { ThemeProvider } from "styled-components";
+import { PubNubProvider,PubNubConsumer, usePubNub } from 'pubnub-react';
+import {ChatDemo} from './components/ChatDemo';
 
 import './App.css';
  
-
-
 
 
 const pubnubConfig = Object.assign(
@@ -27,34 +24,37 @@ const pubnubConfig = Object.assign(
   keyConfiguration
 );
 
-  const store = createAppStore({
+const pubnub = new PubNub({
+  publishKey: "pub-c-9d0ab7cd-fac4-46d4-82b0-c45e46dd4793",
+  subscribeKey: "sub-c-419013b0-9953-11ea-9123-e6a08f73ae22",
+  uuid:"023402340SDFSFS23BBF"
+});
+
+const store = createAppStore({
     pubnub: {
-      api: new PubNub({
-        publishKey: 'demo',
-        subscribeKey: 'demo',
-      })
+      api: pubnub
     }
   });
 
- const pubnub = usePubNub();
-
 const App = () => {
 
-  //return (<div>Test</div>);
-  return (
+   return (
 
-    <ThemeProvider theme={appTheme}>
-      <Provider store={store}>
+     <ThemeProvider theme={appTheme}>
+       <Provider store={store}>
         <PubNubProvider client={pubnub}>
-          <ChatDemo client={pubnub} store={store} skin="pubnub-live-chat"></ChatDemo>
-          {/* <Normalize />
-          <GlobalStyles />
-          <ApplicationRouter /> */}
-        </PubNubProvider>
-      </Provider>
-    </ThemeProvider>
-  );
+   <ChatDemo client={pubnub} store={store} skin="pubnub-live-chat"></ChatDemo>
+  {/* <Normalize />
+   <GlobalStyles />
+   <ApplicationRouter /> 
+          */}
+   </PubNubProvider>
+       </Provider>
+     </ThemeProvider>
+   );
 };
+
+
 
 export default App ;
 

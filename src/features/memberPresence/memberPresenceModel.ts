@@ -1,4 +1,4 @@
-import { AppState } from "main/storeTypes";
+import { AppState } from "../../storeTypes";
 import { createSelector } from "reselect";
 import { createPresenceReducer, Presence } from "pubnub-redux";
 

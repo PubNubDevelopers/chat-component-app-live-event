@@ -5,9 +5,9 @@ import {
   TypingIndicatorEnvelope,
   TYPING_INDICATOR_DURATION_SECONDS
 } from "../typingIndicatorModel";
-import { getCurrentConversationId } from "features/currentConversation/currentConversationModel";
-import { getUsersById } from "features/users/userModel";
-import { getLoggedInUserId } from "features/authentication/authenticationModel";
+import { getCurrentConversationId } from "../../../features/currentConversation/currentConversationModel";
+import { getUsersById } from "../../../features/users/userModel";
+import { getLoggedInUserId } from "../../../features/authentication/authenticationModel";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { Wrapper } from "./TypingIndicatorDisplay.style";

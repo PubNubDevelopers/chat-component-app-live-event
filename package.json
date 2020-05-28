@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/preset-typescript": "7.9.0",
     "@storybook/addon-actions": "5.3.19",
-    "@storybook/components": "5.3.19",
     "@storybook/react": "5.3.19",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -19,8 +17,6 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.2",
     "@types/styled-components": "^5.0.1",
-    "babel-eslint": "9.0.0",
-    "babel-loader": "8.0.4",
     "pubnub": "4.27.6",
     "pubnub-react@rc": "2.0.0",
     "pubnub-redux": "0.0.9-beta",
@@ -60,7 +56,25 @@
   "devDependencies": {
     "source-map-loader": "^0.2.4",
     "ts-loader": "^7.0.5",
-    "typescript": "^3.9.3",
-    "webpack-cli": "^3.3.11"
+    "typescript": "3.9.3",
+    "webpack-cli": "^3.3.11",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@babel/preset-typescript": "7.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-eslint": "9.0.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ],
+    "plugins": [
+      "@babel/proposal-class-properties",
+      "@babel/proposal-object-rest-spread"
+    ]   
   }
+  
 }
