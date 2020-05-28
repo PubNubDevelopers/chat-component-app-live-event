@@ -1,4 +1,9 @@
 {
+    "plugins": [
+        {
+            "name": "@zeplin/cli-connect-react-plugin"
+        }
+    ],
     "projects": [
         "5ec351be197908318d889844"
     ],
@@ -36,5 +41,8 @@
                 "messageInput"
             ]
         }
-    ]
+    ],
+    "github": {
+        "repository": "https://github.com/PubNubDevelopers/typescript-ref-app-stream-chat.git"
+    }
 }
