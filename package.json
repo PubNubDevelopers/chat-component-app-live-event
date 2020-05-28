@@ -44,18 +44,9 @@
     "extends": "react-app"
   },
   
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    "last 2 versions"
+  ],
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
@@ -82,7 +73,13 @@
     ],
     "plugins": [
       "@babel/proposal-class-properties",
-      "@babel/proposal-object-rest-spread"
+      "@babel/proposal-object-rest-spread",
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          "regenerator": true
+        }
+      ]
     ]
   }
 }
