@@ -1,5 +1,5 @@
 import React, { useCallback, FunctionComponent, useEffect, useState } from 'react';
-import { createPubNubListener } from "pubnub-redux";
+import { createPubNubListener } from 'pubnub-redux';
 import { createAppStore } from "../store";
 import PubNub from 'pubnub';
 import { createTypingIndicatorsListener } from "../features/typingIndicator/typingIndicatorModel";

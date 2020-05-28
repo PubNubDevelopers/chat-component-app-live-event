@@ -2,9 +2,6 @@ import React, {Component, useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 
 import styled from 'styled-components';
-
-
-
 type ContainerProps = {
     padding?: string | 0;
     margin?: string | 0;
@@ -12,8 +9,8 @@ type ContainerProps = {
 };
 
 export const Container = styled.div<ContainerProps>`
-  padding: ${props => ('padding' in props ? props.padding : '0')};
-  margin: ${props => ('margin' in props ? props.margin : 0)};
+  padding: ${(props) => ('padding' in props ? props.padding : '0')};
+  margin: ${(props) => ('margin' in props ? props.margin : 0)};
 `;
 
 
