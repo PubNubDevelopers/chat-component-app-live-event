@@ -9,7 +9,7 @@ import PubNub from 'pubnub';
 
 import { ThemeProvider } from "styled-components";
 import { PubNubProvider,PubNubConsumer, usePubNub } from 'pubnub-react';
-import {ChatDemo} from './components/ChatDemo';
+import {ChatDemo} from './components/ChatDemo/ChatDemo';
 
 import './App.css';
  

@@ -1,5 +1,7 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var WriteFilePlugin = require ('write-file-webpack-plugin');
 module.exports = {
   // webpack will take the files from ./src/index
   entry: './src/index',
@@ -39,7 +41,19 @@ module.exports = {
       enforce: "pre",
       test: /\.js$/,
       loader: "source-map-loader"
-    }
+    },
+    {
+      test: /\.(png|svg|jpg|gif)$/,
+      use: [
+      'file-loader',
+      ],
+    },
+    {
+      test: /\.(jpg|png)$/,
+      use: {
+        loader: 'url-loader',
+      },
+    },
   ]
 },
 devServer: {
@@ -49,6 +63,18 @@ plugins: [
   new HtmlWebpackPlugin({
     template: './public/index.html',
     favicon: './public/favicon.ico'
+  }),
+  
+  new CopyWebpackPlugin({
+    patterns: [
+      {  from:'src/img', to:'images' }
+    ],
+  }
+),
+  new WriteFilePlugin({
+    patterns: [
+      {  from:'src/img', to:'images' }
+    ],
   })
  ]
 };

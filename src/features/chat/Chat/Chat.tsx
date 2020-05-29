@@ -4,7 +4,6 @@ import { Menu } from "features/chat/Menu/Menu";
 import { CurrentConversation } from "features/currentConversation/CurrentConversation/CurrentConversation";
 import { ConversationMembers } from "features/conversationMembers/ConversationMembers/ConversationMembers";
 import { JoinConversationDialog } from "features/joinedConversations/JoinConversationDialog/JoinConversationDialog";
-
 const ChatUI = () => {
   return (
     <Wrapper>
