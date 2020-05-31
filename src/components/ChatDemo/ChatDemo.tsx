@@ -6,20 +6,19 @@ import { createTypingIndicatorsListener } from "../../features/typingIndicator/t
 import ReactDOM from 'react-dom';
 import { PubNubProvider, usePubNub } from 'pubnub-react';
 import styled from 'styled-components';
-import {Wallpaper, Wrapper, CenterBlendBox, Title} from "./ChatDemo.style"
-//const imageSrc = require('/images/loginwallpaper-wallpaper.png')
+import {Wrapper, CenterLoginBox, Col, Row, Grid, Title} from "./ChatDemo.style"
 // import LEChatRoom from '../components/LEChatRoom';
 // import LEEventViewer from '../components/LEEventViewer';
 // import LEMessage from '../components/LEMessage';
 // import LELogin from '../components/LELogin';
-
+import PromotionAd from "../PromotionAd";
 interface ChatInitProps {
   skin: string,
   store: any,
   client: any,
 }
 
-const ChatDemo: React.SFC<ChatInitProps> = (props) => {
+const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
   //const ChatDemo:FunctionComponent<{ props?: ChatInitProps }> = ({ props = {} }) => {
   const channels = ['awesomeChannel'];
   const [messages, setMessages] = useState([]);
@@ -99,16 +98,9 @@ const ChatDemo: React.SFC<ChatInitProps> = (props) => {
 // Use Title and Wrapper like any other React component – except they're styled!
 return(
   
-  <Wrapper >
-    
-    <CenterBlendBox> </CenterBlendBox>
-    {/* <Wallpaper src="images/pubnub-live-event-chat---login-wallpaper.png" alt="logo">
-</Wallpaper> */}
-    
-    {/* <Title>
-    {String("Live Chat Demo")} 
-    </Title> */}
-    
+  <Wrapper > 
+
+
   </Wrapper>
   
 );

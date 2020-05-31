@@ -1,3 +1,41 @@
 {
-  "eslint.enable": false
+  "eslint.enable": false,
+  "ACReactComponentGenerator.global.lifecycleType": "reactv16",
+  "ACReactComponentGenerator.indexFile.extension": "ts",
+  "ACReactComponentGenerator.mainFile.extension": "tsx",
+  "zeplin.connectedComponents.ignoredExtensions": [
+    "html",
+    "css",
+    "scss",
+    "less",
+    "json",
+    "md",
+    "txt",
+    "yml",
+    "jpg",
+    "jpeg",
+    "png",
+    "gif",
+    "webp",
+    "tiff",
+    "tif",
+    "psd",
+    "svg",
+    "pdf",
+    "ico",
+    "ttf",
+    "woff",
+    "woff2",
+    "otf",
+    "eof",
+    "js"
+  ],
+  "zeplin.connectedComponents.ignoredPathsStartWith": [
+    "node_modules",
+    ".",
+    "public",
+    "dist",
+    "features",
+    "src/features"
+  ]
 }

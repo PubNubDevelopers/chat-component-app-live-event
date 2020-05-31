@@ -6,13 +6,11 @@ import { createAppStore } from "./store";
 import { Provider } from "react-redux";
 import { appTheme } from "./Theme";
 import PubNub from 'pubnub';
-
+import { ApplicationRouter } from "./Router";
 import { ThemeProvider } from "styled-components";
 import { PubNubProvider,PubNubConsumer, usePubNub } from 'pubnub-react';
-import {ChatDemo} from './components/ChatDemo/ChatDemo';
 
 import './App.css';
- 
 
 
 const pubnubConfig = Object.assign(
@@ -44,10 +42,10 @@ const App = () => {
      <ThemeProvider theme={appTheme}>
        <Provider store={store}>
         <PubNubProvider client={pubnub}>
-   <ChatDemo client={pubnub} store={store} skin="pubnub-live-chat"></ChatDemo>
+        <ApplicationRouter />
   {/* <Normalize />
    <GlobalStyles />
-   <ApplicationRouter /> 
+
           */}
    </PubNubProvider>
        </Provider>
