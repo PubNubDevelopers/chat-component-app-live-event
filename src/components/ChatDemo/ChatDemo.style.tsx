@@ -54,6 +54,7 @@ filter: alpha(opacity=40);
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
+  object-fit: contain;
   //text-align: center;
   //margin-top: 150px;
   width: 3000px;
@@ -63,7 +64,7 @@ filter: alpha(opacity=40);
   display: grid;
   margin: auto; 
 
-  object-fit: contain;
+  
 
 `;
 export const Block1 = styled.div`

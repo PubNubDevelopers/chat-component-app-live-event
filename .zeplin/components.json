@@ -12,33 +12,49 @@
     ],
     "components": [
         {
-            "path": "src/components/LEChatRoom.tsx",
+            "path": "src/components/EventListPanel",
             "zeplinNames": [
-                "messageList"
+                "eventList",
+                "PubNub live event chat - event list",
+                "datePicker",
+                "leftMenu",
+                "selectedEvent"
             ]
         },
         {
-            "path": "src/components/LEEventViewer.tsx",
+            "path": "src/components/Login",
             "zeplinNames": [
-                "evetList"
+                "PubNub live event chat - login",
+                "logIn",
+                "companyLogo",
+                "promotionAd",
+                "desktopBg"
             ]
         },
         {
-            "path": "src/components/LELogin.tsx",
+            "path": "src/components/ContentModPanel",
             "zeplinNames": [
-                "PubNub live event chat - login"
+                "settings",
+                "PubNub live event chat - settings"
             ]
         },
         {
-            "path": "src/components/LEMessageComposer.tsx",
+            "path": "src/components/LiveFeedPanel",
             "zeplinNames": [
-                "messageInput"
-            ]
-        },
-        {
-            "path": "src/components/LEMessage.tsx",
-            "zeplinNames": [
-                "messageInput"
+                "hostMessage",
+                "blockedUser",
+                "messageList",
+                "menuMessageAdminActions",
+                "deletedMessage",
+                "messageListHeader",
+                "MessageListSettings",
+                "messageInput",
+                "menuMessageReactions",
+                "messageItem",
+                "emoiInput",
+                "PubNub live event chat - current event",
+                "background",
+                "bg"
             ]
         }
     ],

@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Test } from './PromotionAd.styles';
+import { Wrapper, Container } from './PromotionAd.styles';
 
 const PromotionAd = (props) => (
-  <div className="PromotionAdWrapper">
-    Test content
-  </div>
+  <Wrapper></Wrapper>
 );
 
 PromotionAd.propTypes = {
