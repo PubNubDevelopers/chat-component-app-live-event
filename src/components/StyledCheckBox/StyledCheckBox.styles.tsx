@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
-export const Test = styled.div`
- display: flex;
- checkbox: {
-    marginBottom: 16
-  }
+export const StyledCheckBoxTheStyle = styled.div`
+//  display: flex;
+//  color: white;
+//  border-left-width: 20px;
+// border-left-style: solid;
+margin-left: 56px;
+margin-top: 50px;
+color: white;
 `;

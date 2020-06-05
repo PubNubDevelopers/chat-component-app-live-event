@@ -103,28 +103,28 @@ export const ButtonLogin = styled.button`
 `;
 
 
-export const LoginFormInputUserName= styled.input.attrs({ placeholder: "User name" })`
+export const LoginFormInputUserName= styled.input.attrs({ placeholder: "  User name" })`
 
     background: url("images/iconUsername.png") no-repeat;
     background-color: rgba(34, 34, 34, 0.8);
     font-family: Helvetica;
     color: white;
     font-size: initial;
+    padding-left: 40px;
+    height: 33.5px;
+    border-width: 0px;
     height: 33.5px;
     width: 172px;
-    padding-left: 40px;
     position: relative;
     margin: auto;
-    //margin-left: 40px;
     border-radius: 20px;
-    border-width: 0px;
-    background-position: 10% 60%;
+    background-position: 10% 40%;
 
 
 
 `;
 
-export const LoginFormInputEmail= styled.input.attrs({ placeholder: "User email" })`
+export const LoginFormInputEmail= styled.input.attrs({ placeholder: "  User email" })`
     background: url("images/iconEmail.png") no-repeat;
     background-color: rgba(34, 34, 34, 0.8);
     font-family: Helvetica;
@@ -138,7 +138,24 @@ export const LoginFormInputEmail= styled.input.attrs({ placeholder: "User email"
     position: relative;
     margin: auto;
     border-radius: 20px;
-    background-position: 10% 60%;
+    background-position: 10% 40%;
+`;
+
+export const LoginFormInputPassword= styled.input.attrs({ placeholder: "  User password" })`
+    background: url("images/iconPassword.png") no-repeat;
+    background-color: rgba(34, 34, 34, 0.8);
+    font-family: Helvetica;
+    color: white;
+    font-size: initial;
+    padding-left: 40px;
+    height: 33.5px;
+    width: 172px;
+    border-width: 0px;
+    height: 33.5px;
+    position: relative;
+    margin: auto;
+    border-radius: 20px;
+    background-position: 10% 40%;
 `;
 
 export const LoginFormCheckIsModerator= styled.input.attrs({ type: 'checkbox' })`
@@ -176,22 +193,7 @@ export const LoginFormModeratorID= styled.input.attrs({ placeholder: "Please pro
     background-position: 10% 60%;
 `;
 
-export const LoginFormInputPassword= styled.input.attrs({ placeholder: "User password" })`
-    background: url("images/iconPassword.png") no-repeat;
-    background-color: rgba(34, 34, 34, 0.8);
-    font-family: Helvetica;
-    color: white;
-    font-size: initial;
-    padding-left: 40px;
-    height: 33.5px;
-    width: 172px;
-    border-width: 0px;
-    height: 33.5px;
-    position: relative;
-    margin: auto;
-    border-radius: 20px;
-    background-position: 10% 60%;
-`;
+
 
 export const LoginFormDividerOr= styled.div`
     font-family: Helvetica;

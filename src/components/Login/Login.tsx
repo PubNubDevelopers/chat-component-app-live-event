@@ -6,7 +6,7 @@ import { createTypingIndicatorsListener } from "../../features/typingIndicator/t
 import ReactDOM from 'react-dom';
 import { PubNubProvider, usePubNub } from 'pubnub-react';
 import styled from 'styled-components';
-import {Checkbox} from '../StyledCheckBox/components/checkbox/Checkbox';
+import {StyledCheckBox} from "../StyledCheckBox/StyledCheckBox";
 import {
   LoginFormCheckIsModerator, 
   LoginFormModeratorID, 
@@ -18,7 +18,6 @@ import {
   ButtonLoginGoogle, 
   ButtonLoginFacebook, 
   LoginForm, 
-  Filter, 
   PubNubDesigner, 
   CenterLoginBox
 } from "./Login.style"
@@ -33,6 +32,7 @@ import PromotionAd from "../PromotionAd";
 interface LoginInitProps {
  simulate: true
 }
+
 
 const Login: React.SFC<LoginInitProps> = (props: LoginInitProps) => {
 
@@ -61,10 +61,8 @@ return(
             
             <LoginFormInputPassword></LoginFormInputPassword>
             
-            <LoginFormCheckIsModerator></LoginFormCheckIsModerator>
-
+            <StyledCheckBox text="I am a Moderator"></StyledCheckBox>
             <LoginFormModeratorID></LoginFormModeratorID>
-            <Checkbox></Checkbox>
             
             <ButtonLogin>Sign In</ButtonLogin>
 
