@@ -1,5 +1,7 @@
 # ReactJS Live Stream Chat Starter Kit
 
+# Warning: Work in progress.
+
 React JS is now the most used framework used by Internet companies to develop the web app they generate most revenues from.
 
 React offers an easy way to group UI elements into Components so a Chat application can turn from a 100 UI objects or more to a 5 UI objects application and experience less than 250ms delivery time from anywhere to anywhere in the world.
