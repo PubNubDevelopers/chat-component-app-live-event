@@ -1,7 +1,12 @@
 # ReactJS Live Stream Chat Starter Kit
 
-# Warning: Work in progress.
 
+#### Project status
+- Development environment can be started with `npm install && npm start`
+- Template design Sketch file is symbolized to prepare for one to one maping with React components.
+- Login page is "pixel perfect" beside color and luminosity to be fixed.
+
+#### Background
 React JS is now the most used framework used by Internet companies to develop the web apps they generate most revenue from.
 
 React offers an easy way to group UI elements into Components so a Chat application can turn from a 100 UI objects, or more, to a 5 UI objects application, and experience less than 250ms delivery time from anywhere to anywhere in the world.
@@ -78,7 +83,7 @@ TO BE COMPLETED
 ### Using the PubNub Chat Components
 
 #### Login
-TO BE COMPLETED SHOW VISUAL MAP
+TO BE COMPLETED: SHOW VISUAL MAP
 
 ##### In: src/components/Login.tsx
 
@@ -138,6 +143,8 @@ About React:
 About TypeScript:
 
 About PubNub React library for Java Script: 
+
+About Styled Components: https://styled-components.com/docs/basics#styling-any-component 
 
 About Sketch: 
 
