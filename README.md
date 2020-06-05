@@ -24,15 +24,15 @@ It also includes standard React components that can be dressed up through standa
 
 ## What does this repository contain?
 
-- A sample Sketch design file that maps to the css delivered in the source code so your Chat app can look designer generated.
+* A sample Sketch design file that maps to the css delivered in the source code so your Chat app can look designer generated.
 
-- React files, and React js libraries, in typescript, allowing to run a web application for a Chat app.
+* React files, and React js libraries, in typescript, allowing to run a web application for a Chat app.
 
-- A list of third party libraries used in the app is available in the package.json file. The command « yarn install » ran from the terminal will update your code with fresh cloned files for the versions of these libraries indicated right after their names under the header: dependencies in the package.json file located at the top of the project directory.
+* A list of third party libraries used in the app is available in the package.json file. The command « yarn install » ran from the terminal will update your code with fresh cloned files for the versions of these libraries indicated right after their names under the header: dependencies in the package.json file located at the top of the project directory.
 
-- A Chat component library to display the chat UI and content.
+* A Chat component library to display the chat UI and content.
 
-- PubNub React library to connect people together through the Chat app this project generates.
+* PubNub React library to connect people together through the Chat app this project generates.
 
 ## In the project directory:
 
