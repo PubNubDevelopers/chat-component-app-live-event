@@ -53,15 +53,40 @@ It also includes standard React components that can be dressed up through standa
 
 ### Event:
 
-//TO BE COMPLETED
+TO BE COMPLETED
 
+## Using the Sketch file
 
+### PubNub Symbols
+
+TO BE COMPLETED
+
+## Updating the Sketch file and generating new elements
+
+TO BE COMPLETED
+
+### Sync css and graphics manually from included Sketch designs
+
+TO BE COMPLETED
+
+### Continuous integration of updated included Sketch designs
+
+TO BE COMPLETED
+
+## Code
+
+### Using the PubNub Chat Components
+
+### Using the PubNub Styled Chat Components
 
 ## Learn More
 
 About React:
+
 About TypeScript:
+
 About PubNub React library for Java Script: 
+
 About Sketch: 
 
 ## Some optional, yet useful third party tools.
