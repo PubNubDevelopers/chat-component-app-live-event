@@ -36,7 +36,6 @@ interface LoginInitProps {
 
 const Login: React.SFC<LoginInitProps> = (props: LoginInitProps) => {
 
-
 return(
 
   <PubNubDesigner >

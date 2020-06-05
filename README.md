@@ -77,6 +77,58 @@ TO BE COMPLETED
 
 ### Using the PubNub Chat Components
 
+#### Login
+TO BE COMPLETED SHOW VISUAL MAP
+
+##### In: src/components/Login.tsx
+```
+...
+
+interface LoginInitProps {
+ simulate: true
+}
+
+
+const Login: React.SFC<LoginInitProps> = (props: LoginInitProps) => {
+
+return(
+
+  <PubNubDesigner>
+
+  <CenterLoginBox>
+
+        <PromotionAd>
+
+        </PromotionAd>
+
+      <LoginForm>
+
+            <ButtonLoginFacebook></ButtonLoginFacebook>
+          
+            <ButtonLoginGoogle></ButtonLoginGoogle>
+         
+        <LoginFormDividerOr></LoginFormDividerOr>
+          
+            <LoginFormInputUserName></LoginFormInputUserName>
+            
+            <LoginFormInputEmail></LoginFormInputEmail>
+            
+            <LoginFormInputPassword></LoginFormInputPassword>
+            
+            <StyledCheckBox text="I am a Moderator"></StyledCheckBox>
+            <LoginFormModeratorID></LoginFormModeratorID>
+            
+            <ButtonLogin>Sign In</ButtonLogin>
+
+      </LoginForm>
+
+    </CenterLoginBox>
+
+  </PubNubDesigner>
+);
+...
+```
+
 ### Using the PubNub Styled Chat Components
 
 ## Learn More
