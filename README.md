@@ -43,12 +43,15 @@ It also includes standard React components that can be dressed up through standa
 
 ## In the project directory:
 
-`launch a terminal and run:`
-`(cd in the project directory and type each command below then press enter)`
+1. Install ReactJS if not done already.
+2. Clone this repository in your work directory.
+3. Try this Web App on your computer
+    
+    Launch a terminal, cd in the project directory and type each command below then press enter:
 
-`yarn install`
+    `yarn install`
 
-`yarn start`
+    `yarn start`
 
 ## Visuals
 
@@ -56,7 +59,15 @@ It also includes standard React components that can be dressed up through standa
 
 ![Login screen](/src/img/ScreenshotReactAppLogin.jpg)
 
-### Event:
+### Live Event:
+
+TO BE COMPLETED
+
+### Event selection:
+
+TO BE COMPLETED
+
+### Moderator:
 
 TO BE COMPLETED
 
