@@ -2,9 +2,9 @@
 
 # Warning: Work in progress.
 
-React JS is now the most used framework used by Internet companies to develop the web app they generate most revenues from.
+React JS is now the most used framework used by Internet companies to develop the web apps they generate most revenue from.
 
-React offers an easy way to group UI elements into Components so a Chat application can turn from a 100 UI objects or more to a 5 UI objects application and experience less than 250ms delivery time from anywhere to anywhere in the world.
+React offers an easy way to group UI elements into Components so a Chat application can turn from a 100 UI objects, or more, to a 5 UI objects application, and experience less than 250ms delivery time from anywhere to anywhere in the world.
 
 Once a developer uses React Components it becomes a matter of hours before a full fledged mission critical chat solution is offered to anyone in the world who wants to connect.
 
@@ -73,7 +73,7 @@ TO BE COMPLETED
 
 TO BE COMPLETED
 
-## Code
+## Get started with the code template
 
 ### Using the PubNub Chat Components
 
@@ -81,8 +81,8 @@ TO BE COMPLETED
 TO BE COMPLETED SHOW VISUAL MAP
 
 ##### In: src/components/Login.tsx
-```
-...
+
+```...
 
 interface LoginInitProps {
  simulate: true
