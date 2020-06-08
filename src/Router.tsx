@@ -17,9 +17,15 @@ const ErrorBannerComponent = (
   </ErrorBanner>
 );
 
-export const ApplicationRouter = () => {
+interface ApplicationRouterInitProps {
+  simulate: true,
+
+ }
+
+export const ApplicationRouter = (props: ApplicationRouterInitProps) => {
   const loggedIn = useSelector(isUserLoggedIn);
-  const view = loggedIn ? <ChatDemo skin="" store="" client=""/> : <Login />;
+  var directToEvent = (loggedIn || props.simulate) ;
+  const view = directToEvent  ? <ChatDemo skin="" store="" client=""/> : <Login simulate={props.simulate} />;
   return (
     <Wrapper>
       {!isPubNubConfigured(keyConfiguration) && ErrorBannerComponent}

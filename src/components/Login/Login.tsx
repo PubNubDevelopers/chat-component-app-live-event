@@ -60,7 +60,8 @@ return(
             
             <LoginFormInputPassword></LoginFormInputPassword>
             
-            <StyledCheckBox text="I am a Moderator"></StyledCheckBox>
+            <StyledCheckBox text="I am a Moderator" setChange="(event)=>{console.log('aaa')}"></StyledCheckBox>
+            
             <LoginFormModeratorID></LoginFormModeratorID>
             
             <ButtonLogin>Sign In</ButtonLogin>
