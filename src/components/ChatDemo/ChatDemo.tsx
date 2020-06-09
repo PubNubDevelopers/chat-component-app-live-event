@@ -1,24 +1,29 @@
 import React, { useCallback, FunctionComponent, useEffect, useState } from 'react';
-import { createPubNubListener } from 'pubnub-redux';
-import { createAppStore } from "../../store";
-import PubNub from 'pubnub';
-import { createTypingIndicatorsListener } from "../../features/typingIndicator/typingIndicatorModel";
-import ReactDOM from 'react-dom';
-import { PubNubProvider, usePubNub } from 'pubnub-react';
-import styled from 'styled-components';
-import {Wrapper, CenterLoginBox, Col, Row, Grid, Title} from "./ChatDemo.style"
-// import LEChatRoom from '../components/LEChatRoom';
+import {ChatDemoWrapper} from "./ChatDemo.style"
+import {LiveFeedPanel} from "../LiveFeedPanel"
+import {MessageListPanel} from "../MessageListPanel"
+import {EventDetails} from "../EventDetails"
+// import { createPubNubListener } from 'pubnub-redux';
+// import { createAppStore } from "../../store";
+// import PubNub from 'pubnub';
+// import { createTypingIndicatorsListener } from "../../features/typingIndicator/typingIndicatorModel";
+// import ReactDOM from 'react-dom';
+// import { PubNubProvider, usePubNub } from 'pubnub-react';
+// import styled from 'styled-components';
+// import {ContentModPanel} from '../ContentModPanel/ContentModPanel';
+
 // import LEEventViewer from '../components/LEEventViewer';
 // import LEMessage from '../components/LEMessage';
 // import LELogin from '../components/LELogin';
 import PromotionAd from "../PromotionAd";
+import { MessageListPanelWrapper } from '../MessageListPanel/MessageListPanel.styles';
 interface ChatInitProps {
   skin: string,
   store: any,
   client: any,
 }
 
-const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
+export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
   //const ChatDemo:FunctionComponent<{ props?: ChatInitProps }> = ({ props = {} }) => {
   const channels = ['awesomeChannel'];
   const [messages, setMessages] = useState([]);
@@ -39,37 +44,43 @@ const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
 
  
 
-  useEffect(() => {
+/*   useEffect(() => {
     // Start listening for messages and events from PubNub
-    props.client.addListener(createPubNubListener(props.store.dispatch));
-    props.client.addListener(createTypingIndicatorsListener(props.store.dispatch));
+    //props.client.addListener(createPubNubListener(props.store.dispatch));
+    //props.client.addListener(createTypingIndicatorsListener(props.store.dispatch));
     return leaveApplication();
-  }, []);
+  }, []); */
 
   useEffect(() => {
     window.addEventListener("beforeunload", () => { leaveApplication() });
   }, []);
 
 
-  useEffect(() => {
+  /* useEffect(() => {
 
     // props.client.getMessage('channel1', (msg) => {
     //     console.log(msg);
     // });
+    try{
+      props.client.addListener({
+        message: (message) => {
+  
+          setMessages(function (messages) {
+            return [...messages, message]
+          });
+        },
+      });
+  
+      props.client.subscribe({ channels });
+    }
+      catch{
+console.log();
+  }
+  return leaveApplication;
 
-    props.client.addListener({
-      message: (message) => {
 
-        setMessages(function (messages) {
-          return [...messages, message]
-        });
-      },
-    });
-
-    props.client.subscribe({ channels });
-
-    return leaveApplication;
-  }, []);
+    
+  }, []); */
 
   const sendMessage = useCallback(
 
@@ -98,10 +109,23 @@ const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
 // Use Title and Wrapper like any other React component – except they're styled!
 return(
   
-  <Wrapper > 
+  <ChatDemoWrapper >
+    
+     <EventDetails skin="" store={props.store} client={props.client}/>
 
+     <LiveFeedPanel skin="" store={props.store} client={props.client} />
+     
+     <MessageListPanelWrapper>
+     
+          <MessageListPanel skin="" store={props.store} client={props.client} />
 
-  </Wrapper>
+     </MessageListPanelWrapper>
+       
+       
+       {/* <ContentModPanel skin={props.skin} store={props.store} client={props.client}>
+
+       </ContentModPanel> */}
+  </ChatDemoWrapper>
   
 );
 
@@ -186,5 +210,4 @@ return(
 
 
 
-export { ChatDemo };
 

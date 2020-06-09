@@ -1,19 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-//import { Test } from './LiveFeedPanel.styles';
+import { LiveFeedPanelWrapper } from './LiveFeedPanel.styles';
 
-const LiveFeedPanel = (props) => (
-  <div className="LiveFeedPanelWrapper">
-    Test content
-  </div>
-);
+interface LiveFeedPanelProps {
+  skin: string,
+  store: any,
+  client: any,
+}
 
-LiveFeedPanel.propTypes = {
-  // bla: PropTypes.string,
-};
+export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPanelProps) => {
 
-LiveFeedPanel.defaultProps = {
-  // bla: 'test',
-};
+  return(
+  <LiveFeedPanelWrapper>
 
-export default LiveFeedPanel;
+  </LiveFeedPanelWrapper>
+
+    
+  );
+
+}
+

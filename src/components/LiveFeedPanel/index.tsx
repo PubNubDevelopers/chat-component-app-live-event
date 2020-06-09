@@ -1,3 +1,1 @@
-import LiveFeedPanel from './LiveFeedPanel';
-
-export default LiveFeedPanel;
+export * from './LiveFeedPanel';

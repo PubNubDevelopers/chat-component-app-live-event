@@ -18,7 +18,7 @@ import {
   ButtonLoginGoogle, 
   ButtonLoginFacebook, 
   LoginForm, 
-  PubNubDesigner, 
+  LoginWrapper, 
   CenterLoginBox
 } from "./Login.style"
 //const imageSrc = require('/images/loginwallpaper-wallpaper.png')
@@ -30,7 +30,8 @@ import PromotionAd from "../PromotionAd";
 
 
 interface LoginInitProps {
- simulate: true
+
+ simulate: boolean
 }
 
 
@@ -38,7 +39,7 @@ const Login: React.SFC<LoginInitProps> = (props: LoginInitProps) => {
 
 return(
 
-  <PubNubDesigner >
+  <LoginWrapper >
 
   <CenterLoginBox>
 
@@ -70,7 +71,7 @@ return(
 
     </CenterLoginBox>
 
-  </PubNubDesigner>
+  </LoginWrapper>
 
 );
 

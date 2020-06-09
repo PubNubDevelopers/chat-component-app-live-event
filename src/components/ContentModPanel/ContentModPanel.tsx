@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import { Test } from './ContentModPanel.styles';
+import { ContentModPanelWrapper } from './ContentModPanel.styles';
 
-const ContentModPanel = (props) => (
-  <div className="ContentModPanelWrapper">
-    Test content
-  </div>
+interface ContentModPanelProps {
+  skin: string,
+  store: any,
+  client: any,
+}
+
+export const ContentModPanel: React.SFC<ContentModPanelProps> = (props: ChatInitProps) => {
+return(
+  <ContentModPanelWrapper>
+    
+  </ContentModPanelWrapper>
 );
 
 ContentModPanel.propTypes = {
@@ -16,4 +23,4 @@ ContentModPanel.defaultProps = {
   // bla: 'test',
 };
 
-export default ContentModPanel;
+};

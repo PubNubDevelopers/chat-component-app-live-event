@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const PromotionAdWrapper = styled.div`
 display: flex;
 left                : 0px;
 position            : absolute;
@@ -9,17 +9,15 @@ transform           : rotate(0deg);
 width : 273px;
 height: 560px;
 z-index: 50;
-opacity: 0.7;
-//mix-blend-mode: soft-light;
-
+opacity: 1;
 -webkit-background-size: contain;
 -moz-background-size: contain;
 -o-background-size: contain;
 background-size: contain;
 object-fit: contain;
 background: url("images/promotionAd.png") no-repeat;
-background-color: rgba(255, 255, 255, 0.5);
-
+background-color: rgba(255, 255, 255, 0.7);
+background-blend-mode: hard-light;
 `;
 
 export const Container = styled.div`

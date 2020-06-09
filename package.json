@@ -43,7 +43,8 @@
     "styled-components": "^5.1.1",
     "url-loader": "^4.1.0",
     "webpack": "^4.37.0",
-    "write-file-webpack-plugin": "^4.5.1"
+    "write-file-webpack-plugin": "^4.5.1",
+    "react-jitsi": "1.0.3"
   },
   "scripts": {
     "bundle": "webpack",

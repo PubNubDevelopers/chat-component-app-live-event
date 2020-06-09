@@ -45,27 +45,23 @@ export const Advert = styled.div`
 
 `
 // Create a Wrapper component that'll render a <section> tag with some styles
-export const Wrapper = styled.div`
+export const ChatDemoWrapper = styled.div`
 opacity: 1;
-filter: alpha(opacity=40); 
-//position: absolute;
-//padding: 1em;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
-  object-fit: contain;
-  //text-align: center;
-  //margin-top: 150px;
-  width: 3000px;
-  height: 3000px;
-  background: url("images/wallpaper@3x.png") no-repeat center fixed;
-  z-index: 1;
-  display: grid;
-  margin: auto; 
-
-  
-
+-webkit-background-size: contain;
+-moz-background-size: contain;
+-o-background-size: contain;
+//background: url("images/wallpaper.png") repeat;
+background: black;
+z-index: 1;
+display: grid;
+margin: auto;
+height: 800px;
+width: 1280px;
+object-fit: contain;
+left                : 0px;
+position            : relative;
+top                 : 0px;
+transform           : rotate(0deg);
 `;
 export const Block1 = styled.div`
 z-index: 3;
