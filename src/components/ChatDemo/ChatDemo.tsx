@@ -107,13 +107,25 @@ console.log();
   //const bgurl = "url(" + bg_img + ")";
 
 // Use Title and Wrapper like any other React component – except they're styled!
+
+const opts = {
+  height: "100%",
+  width:  "973px",
+  playerVars: {
+    // https://developers.google.com/youtube/player_parameters
+    autoplay: 1,
+  },
+};
+
 return(
   
   <ChatDemoWrapper >
-    
+
      <EventDetails skin="" store={props.store} client={props.client}/>
 
-     <LiveFeedPanel skin="" store={props.store} client={props.client} />
+     <LiveFeedPanel skin="" videoID="jZtxlp664yU" store={props.store} client={props.client} opts={opts} onReady="(event) => {
+       event.target.pauseVideo();
+     }"/>
      
      <MessageListPanelWrapper>
      

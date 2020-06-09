@@ -42,7 +42,7 @@ const App = () => {
      <ThemeProvider theme={appTheme}>
        <Provider store={store}>
         <PubNubProvider client={pubnub}>
-        <ApplicationRouter simulate={true} client={pubnub}/>
+        <ApplicationRouter simulate={false} store={store} client={pubnub}/>
   {/* <Normalize />
    <GlobalStyles />
 

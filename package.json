@@ -32,8 +32,10 @@
     "pubnub-redux": "0.0.9-beta",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-jitsi": "1.0.3",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
+    "react-youtube": "^7.11.2",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
@@ -43,8 +45,7 @@
     "styled-components": "^5.1.1",
     "url-loader": "^4.1.0",
     "webpack": "^4.37.0",
-    "write-file-webpack-plugin": "^4.5.1",
-    "react-jitsi": "1.0.3"
+    "write-file-webpack-plugin": "^4.5.1"
   },
   "scripts": {
     "bundle": "webpack",

@@ -15,7 +15,7 @@ export const LiveFeedPanelWrapper = styled.div`
     -o-background-size: contain;
     background-size: contain;
     object-fit: contain;
-    background: url("images/stream.png") no-repeat;
+    //background: url("images/stream.png") no-repeat;
     background-color: rgba(255, 255, 255, 0.7);
     background-blend-mode: hard-light;
 `;

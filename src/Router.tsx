@@ -30,10 +30,10 @@ export const ApplicationRouter = (props: ApplicationRouterInitProps) => {
 
   const loggedIn = useSelector(isUserLoggedIn);
 
-  //var directToEvent = (loggedIn || props.simulate) ;
+  var directToEvent = (loggedIn || props.simulate) ;
   //Comment previous line and uncomment the following line
   //to go directly to LiveEvent without going through Login screen.
-  const directToEvent = true;
+  directToEvent = false;
   
   //view will contain the login screen or chat depending if the user is logged in or not:
   const view = directToEvent  ? <ChatDemo skin="" store={props.store} client={props.client}/> : <Login simulate={props.simulate} />;
