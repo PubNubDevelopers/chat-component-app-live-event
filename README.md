@@ -5,7 +5,7 @@
 - Development environment can be started with `npm install && npm start`
 - Template design Sketch file is symbolized to prepare for one to one maping with React components.
 - Login page is "pixel perfect" beside color and luminosity to be fixed.
-- Event page is now more advanced but I had to modify the Sketch file and split the EventInfo Sketch component into two while keeping the first one to comply with Styled Components requirements, but then found a way to make it transparent.
+- Event page is now more advanced but I had to modify the Sketch file and split the EventInfo Sketch component into two while keeping the first one to comply with Styled Components requirements, but then found a way to make it transparent to events (click events, not only the event being displayed per say).
 - Event Page is now accessible upon app run. Login Screen can be bypassed (search for Router.tsx below for more information)
 
 #### Background
