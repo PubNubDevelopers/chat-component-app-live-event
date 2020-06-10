@@ -112,9 +112,19 @@ return(  <EventDetailWrapper>
     </EventDetailWrapper>
   );
 ```
-####  LiveFeedPanel
 
-This is the part of the screen where the event itself is to be displayed.
+#### LiveFeedPanel
+
+This is the part of the screen where the event itself is to be displayed. This is a simple example using a YouTube stream that is simple passed inside the LiveFeedPanelWrapper tags. The parameters to control the display of the YouTube stream source is passed using props.
+These props are passed from a higher level component in the component tree wher you have defined them, so there should be no need to edit this file unless you want to add a streaming provider of your own or change the default provider.
+
+```tsx
+ return(
+  <LiveFeedPanelWrapper>
+      <YouTube videoId={props.videoID} opts={props.opts} onReady={props.onReady} />
+  </LiveFeedPanelWrapper>
+  );
+```
 
 ### Event selection:
 

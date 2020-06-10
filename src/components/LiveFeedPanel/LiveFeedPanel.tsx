@@ -20,7 +20,7 @@ export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPane
 
   return(
   <LiveFeedPanelWrapper>
- <YouTube videoId={props.videoID} opts={props.opts} onReady={props.onReady} />
+      <YouTube videoId={props.videoID} opts={props.opts} onReady={props.onReady} />
   </LiveFeedPanelWrapper>
 
     
