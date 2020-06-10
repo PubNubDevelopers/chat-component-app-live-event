@@ -5,16 +5,26 @@
     "version": "0.2.0",
     "configurations": [
 
-
         {
-            "type": "chrome",
+            "type": "browser-preview",
+            "request": "attach",
+            "name": "Browser Preview: Attach"
+        },
+        {
+            "type": "browser-preview",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}",
-            "serverReadyAction":{
-                "action": "openExternally"
-            }
-        }
+            "name": "Browser Preview: Launch",
+            "url": "http://localhost:8080"
+        },
+        // {
+        //     "type": "chrome",
+        //     "request": "launch",
+        //     "name": "Launch Chrome against localhost",
+        //     "url": "http://localhost:8080",
+        //     "webRoot": "${workspaceFolder}",
+        //     "serverReadyAction":{
+        //         "action": "openExternally"
+        //     }
+        // }
     ]
 }

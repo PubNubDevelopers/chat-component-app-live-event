@@ -1,6 +1,8 @@
 # ReactJS Live Stream Chat Starter Kit
 
 
+![Login screen](/src/img/LiveEditing.gif)
+
 #### Project status
 - Development environment can be started with `npm install && npm start`
 - Template design Sketch file is symbolized to prepare for one to one maping with React components.
@@ -81,7 +83,7 @@ You can try it out by adding your own image file instead of the one on the login
 
 The Live Event screen itself is divided into multiple panels, each panel matches a component, which itself can contain more components in order to make make the UI more modular when needed.
 
-#### Live Event Detail
+#### Live Event Detail (TBC)
 
 ```tsx
 return(  <EventDetailWrapper>
