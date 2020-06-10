@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 
 
+
+
 export const BottomShareButtonWrapper = styled.div`
 display: flex;
 position: absolute;
@@ -18,18 +20,44 @@ font-stretch: normal;
 font-style: normal;
 line-height: normal;
 letter-spacing: normal;
+background-color: #000000;
 margin-left: 600px;
-opacity: 0.7;
+opacity: 1;
+border-radius: 7px;
+width: 80px;
+height: 32px;
+padding-left: 30px;
+padding-right: 30px;
+padding-top: 5px;`
+
+export const BottomFollowButtonWrapper = styled.div`
+display: flex;
+position: absolute;
+width: auto;
+height: 32px;
+padding-left: 30px;
+padding-right: 30px;
+padding-top: 5px;
+top: 0px;
+font-family: Roboto;
+font-size: 20px;
+font-weight: 500;
+font-stretch: normal;
+font-style: normal;
+line-height: normal;
+letter-spacing: normal;
+margin-left: 500px;
+opacity: 1;
 border-radius: 7px;
 background-color: #000000;
-width: 200px;
+width: 80px;
 height: 32px;
 padding-left: 30px;
 padding-right: 30px;
 padding-top: 5px;`
 
 export const EventDetailWrapper = styled.div`
-
+pointer-events: none;
 `
 
 export const TitleWrapper = styled.div`

@@ -1,5 +1,5 @@
 import React from 'react';
-import { EventDetailWrapper, EventDetailsTopWrapper, EventDetailsBottomWrapper, TitleWrapper,BottomShareButtonWrapper } from './EventDetails.styles';
+import { EventDetailWrapper,BottomFollowButtonWrapper, BottomShareButtonWrapper, EventDetailsTopWrapper, EventDetailsBottomWrapper, TitleWrapper } from './EventDetails.styles';
 
 
 interface EventDetailsProps {
@@ -26,6 +26,13 @@ export const EventDetails: React.SFC<EventDetailsProps> = (props: EventDetailsPr
                         </div>
                           
                       </BottomShareButtonWrapper>
+
+                      <BottomFollowButtonWrapper> 
+                        <div>
+                        <img src="/images/follow.png"></img>
+                        </div>
+                          
+                      </BottomFollowButtonWrapper>
         </EventDetailsBottomWrapper>
 
 
