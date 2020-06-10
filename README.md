@@ -75,9 +75,44 @@ You can try it out by adding your own image file instead of the one on the login
 1. Drop a file into the /src/img directory and remember its name because you will need it in the next step.
 2. Then simply change the name of the image file in the PromotionAd.style.tsx where it shows: `background: url("images/promotionAd.png") no-repeat;`
 
-### Live Event:
+### Live Event
 
-TO BE COMPLETED
+The Live Event screen itself is divided into multiple panels, each panel matches a component, which itself can contain more components in order to make make the UI more modular when needed.
+
+#### Live Event Detail
+
+```tsx
+return(  <EventDetailWrapper>
+
+        <EventDetailsTopWrapper>
+            <div><img src="/images/statusBar.png"></img></div>
+            <TitleWrapper><span>eSport: Las Vegas Tournament 2020</span></TitleWrapper>
+        </EventDetailsTopWrapper>
+
+
+        <EventDetailsBottomWrapper>
+                      <BottomShareButtonWrapper> 
+                        <div>
+                        <img src="/images/share.png"></img>
+                        </div>
+                          
+                      </BottomShareButtonWrapper>
+
+                      <BottomFollowButtonWrapper> 
+                        <div>
+                        <img src="/images/follow.png"></img>
+                        </div>
+                          
+                      </BottomFollowButtonWrapper>
+        </EventDetailsBottomWrapper>
+
+
+    </EventDetailWrapper>
+  );
+```
+####  LiveFeedPanel
+
+This is the part of the screen where the event itself is to be displayed.
 
 ### Event selection:
 
@@ -114,7 +149,8 @@ TO BE COMPLETED: SHOW VISUAL MAP
 
 ##### In: src/components/Login.tsx
 
-```...
+```tsx
+...
 
 interface LoginInitProps {
  simulate: true
@@ -160,6 +196,7 @@ return(
 );
 ...
 ```
+
 ## Using the Sketch file
 
 TO BE COMPLETED

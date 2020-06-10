@@ -38,7 +38,7 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
     // This is required to show the current user leave immediately rather than
     // wating for the timeout period
     //useEffect(() => console.log(props), [props]);
-
+t
     props.client.unsubscribeAll();
   };
 
