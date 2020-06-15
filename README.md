@@ -243,10 +243,12 @@ TO BE COMPLETED
 
 TO BE COMPLETED
 
-## Some optional, yet useful, third party tools.
+## Third party tools
 
-### About Zeplin:
+### Zeplin
 
 ![Code Maping](/src/img/Design2CodeMatch.png)
 
 ![Code Maping](/src/img/Visual2CodeMaping.png)
+
+![Code Maping](/src/img/VisualCodeZeplinView.png)
