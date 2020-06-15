@@ -12,34 +12,30 @@
     ],
     "components": [
         {
-            "path": "src/components/EventListPanel",
+            "path": "src/components/PromotionAd/PromotionAd.tsx",
             "zeplinNames": [
-                "eventList",
-                "PubNub live event chat - event list",
-                "datePicker",
-                "leftMenu",
-                "selectedEvent"
+                "promotionAd"
             ]
         },
         {
-            "path": "src/components/Login",
-            "zeplinNames": [
-                "PubNub live event chat - login",
-                "logIn",
-                "companyLogo",
-                "promotionAd",
-                "desktopBg"
-            ]
-        },
-        {
-            "path": "src/components/ContentModPanel",
+            "path": "src/components/ContentModPanel/ContentModPanel.tsx",
             "zeplinNames": [
                 "settings",
                 "PubNub live event chat - settings"
             ]
         },
         {
-            "path": "src/components/LiveFeedPanel",
+            "path": "src/components/EventListPanel/EventListPanel.tsx",
+            "zeplinNames": [
+                "eventList",
+                "datePicker",
+                "PubNub live event chat - event list",
+                "leftMenu",
+                "selectedEvent"
+            ]
+        },
+        {
+            "path": "src/components/MessageListPanel/MessageListPanel.tsx",
             "zeplinNames": [
                 "hostMessage",
                 "blockedUser",
@@ -48,14 +44,41 @@
                 "deletedMessage",
                 "messageListHeader",
                 "MessageListSettings",
-                "messageInput",
-                "menuMessageReactions",
-                "messageItem",
-                "emoiInput",
-                "PubNub live event chat - current event",
-                "background",
-                "bg"
+                "messageItem"
             ]
+        },
+        {
+            "path": "src/components/LiveFeedPanel/LiveFeedPanel.tsx",
+            "zeplinNames": [
+                "PubNub live event chat - current event",
+                "emoji splash",
+                "addStreamReactions",
+                "stream"
+            ]
+        },
+        {
+            "path": "src/components/ChatDemo/ChatDemo.tsx",
+            "zeplinNames": [
+                "background"
+            ]
+        },
+        {
+            "path": "src/components/EventDetailsBottom/EventDetailsBottom.tsx",
+            "zeplinNames": []
+        },
+        {
+            "path": "src/components/Login/Login.tsx",
+            "zeplinNames": [
+                "PubNub live event chat - login",
+                "companyLogo",
+                "logIn",
+                "promotionAd",
+                "desktopBg"
+            ]
+        },
+        {
+            "path": "src/components/EventDetailsTop/EventDetailsTop.tsx",
+            "zeplinNames": []
         }
     ],
     "github": {

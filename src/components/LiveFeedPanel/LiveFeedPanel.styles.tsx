@@ -21,6 +21,10 @@ export const LiveFeedPanelWrapper = styled.div`
 `;
 
 export const FormGroup = styled.div`
+    display: flex;
+    left: 33%;
+    top: 33%;
+    position: absolute;
 	color: palevioletred;
     display: block;
 	width: 300px;
@@ -29,10 +33,19 @@ export const FormGroup = styled.div`
 
 export const Label = styled.label`
 	margin-bottom: 0.5em;
-	color: palevioletred;
+	color: ;
     display: block;
 `;
 
+export const Button = styled.input`
+	padding: 0.5em;
+	color: blue;
+	background: papayawhip;
+	border: none;
+	border-radius: 3px;
+	width: 100%;
+	margin-bottom: 0.5em;
+`;
 
 export const Input = styled.input`
 	padding: 0.5em;

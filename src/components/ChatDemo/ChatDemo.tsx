@@ -2,7 +2,8 @@ import React, { useCallback, FunctionComponent, useEffect, useState } from 'reac
 import {ChatDemoWrapper} from "./ChatDemo.style"
 import {LiveFeedPanel} from "../LiveFeedPanel"
 import {MessageListPanel} from "../MessageListPanel"
-import {EventDetails} from "../EventDetails"
+import {EventDetailsTop} from "../EventDetailsTop"
+import {EventDetailsBottom} from "../EventDetailsBottom"
 // import { createPubNubListener } from 'pubnub-redux';
 // import { createAppStore } from "../../store";
 // import PubNub from 'pubnub';
@@ -38,7 +39,7 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
     // This is required to show the current user leave immediately rather than
     // wating for the timeout period
     //useEffect(() => console.log(props), [props]);
-t
+
     props.client.unsubscribeAll();
   };
 
@@ -121,11 +122,13 @@ return(
   
   <ChatDemoWrapper >
 
-     <EventDetails skin="" store={props.store} client={props.client}/>
+     <EventDetailsTop skin="" store={props.store} client={props.client}/>
 
      <LiveFeedPanel skin="" videoID="jZtxlp664yU" store={props.store} client={props.client} opts={opts} onReady="(event) => {
        event.target.pauseVideo();
      }"/>
+
+   <EventDetailsBottom skin="" store={props.store} client={props.client}/>
      
      <MessageListPanelWrapper>
      
