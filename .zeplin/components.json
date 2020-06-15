@@ -63,10 +63,6 @@
             ]
         },
         {
-            "path": "src/components/EventDetailsBottom/EventDetailsBottom.tsx",
-            "zeplinNames": []
-        },
-        {
             "path": "src/components/Login/Login.tsx",
             "zeplinNames": [
                 "PubNub live event chat - login",
@@ -78,10 +74,18 @@
         },
         {
             "path": "src/components/EventDetailsTop/EventDetailsTop.tsx",
-            "zeplinNames": []
+            "zeplinNames": [
+                "eventDetailsTop"
+            ]
+        },
+        {
+            "path": "src/components/EventDetailsBottom/EventDetailsBottom.tsx",
+            "zeplinNames": [
+                "eventDetailsBottom"
+            ]
         }
     ],
     "github": {
-        "repository": "https://github.com/PubNubDevelopers/typescript-ref-app-stream-chat.git"
+        "repository": "PubNubDevelopers/typescript-ref-app-stream-chat"
     }
 }
