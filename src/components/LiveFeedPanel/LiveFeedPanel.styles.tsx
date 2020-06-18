@@ -6,7 +6,7 @@ export const LiveFeedPanelWrapper = styled.div`
     position            : absolute;
     top                 : 0px;
     transform           : rotate(0deg);
-    width : 76%;
+    width : 85%;
     height: 80%;
     z-index: 50;
     opacity: 1;

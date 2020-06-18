@@ -80,7 +80,7 @@ export const EventDetailsTopWrapper = styled.div`
  display: flex;
  position: absolute;
  width: 640px;
- height: 80%;
+ height: 32px;
  left: 20px;
  top: 30px;
  z-index: 150;

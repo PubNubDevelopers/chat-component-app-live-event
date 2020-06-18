@@ -36,6 +36,11 @@ module.exports = {
       exclude: /node_modules/,
       use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
     },
+    //Font files
+    {
+      test: /\.(woff2|woff|eot|ttf|otf)$/,
+      use: ['file-loader'],
+    },
     // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
     {
       enforce: "pre",

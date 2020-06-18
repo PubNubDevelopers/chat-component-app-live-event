@@ -46,6 +46,10 @@ export const Advert = styled.div`
 `
 // Create a Wrapper component that'll render a <section> tag with some styles
 export const ChatDemoWrapper = styled.div`
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: local('Roboto'), url(fonts/Roboto.woff) format('woff');
+}
 opacity: 1;
 -webkit-background-size: contain;
 -moz-background-size: contain;
@@ -56,7 +60,7 @@ z-index: 1;
 display: grid;
 margin: auto;
 height: 800px;
-width: 1280px;
+width: 100%;
 object-fit: contain;
 left                : 0px;
 position            : relative;
@@ -86,7 +90,7 @@ margin-left: auto;
 margin-right: auto;
 margin-bottom: auto;
 margin-top: 100px;
-`; 
+`;
 
 export const Grid =styled.div`
 display: grid;

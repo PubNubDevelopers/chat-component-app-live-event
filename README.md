@@ -1,7 +1,7 @@
 # ReactJS Live Stream Chat Starter Kit
 
 
-![Login screen](/src/img/LiveEditing.gif)
+![Login screen](src/img/LiveEditing.gif)
 
 #### Project status
 - Development environment can be started with `npm install && npm start`
@@ -71,7 +71,7 @@ If you want to bypass our beautiful login screen and access the Live Event selec
 
 ### Login:
 
-![Login screen](/src/img/ScreenshotReactAppLogin.jpg)
+![Login screen](src/img/ScreenshotReactAppLogin.jpg)
 
 The code  to customize the Login screen with your design can be found in /src/components/PromotionAd/PromotionAd.styles.tsx
 To change the design all you need to do is edit the design file included inside the directory: The name of the file is Login.style.tsx.
@@ -117,8 +117,14 @@ return(  <EventDetailWrapper>
 
 #### LiveFeedPanel
 
-This is the part of the screen where the event itself is to be displayed. This is a simple example using a YouTube stream that is simple passed inside the LiveFeedPanelWrapper tags. The parameters to control the display of the YouTube stream source is passed using props.
-These props are passed from a higher level component in the component tree wher you have defined them, so there should be no need to edit this file unless you want to add a streaming provider of your own or change the default provider.
+This is the part of the screen where the event itself is to be displayed. 
+
+This is a simple example using a YouTube stream that is simple passed inside the LiveFeedPanelWrapper tags. 
+
+The parameters to control the display of the YouTube stream source is passed using props.
+
+
+These props are passed from a higher level component in the component tree where you have previously defined them, so there should be no need to edit this file unless you want to add a streaming provider of your own or change the settings for the default Stream provider.
 
 ```tsx
  return(
@@ -138,9 +144,24 @@ TO BE COMPLETED
 
 ## Using the Sketch file
 
+This Live Event Chat app is based on a professional UI design built with [Sketch](https://www.sketch.com/). You can find the Sketch file used for this design in the root of this repository in a file named: "Live Event Chat.sketch".
+
+The Sketch file contains Sketch "Symbols". Each Symbol matches a React Component and a React "Styled Component".
+
 ### PubNub Symbols
 
-TO BE COMPLETED
+The simplest way to modify the provided Sketch file design provided and to quickly reflect the changes in the app is by modifying the matching Symbol in the Sketch file for the React Component you wish to change the display for.
+
+The best way to understand the relationship between components and the Sketch file Symbols is by cutting the code as shown below. A React Component named PromotionAd is cut before being pasted again, and before it is pasted again you see the picture disappear on the page rendered in the browser. This illustrate the correspondance between the code and the visibility of a component rendered live on the screen:
+
+![Login screen](src/img/LiveEditing.gif)
+
+This was about deleting the PromotionAd component all together from the page. But say you want to change the picture but keep that PromotionAd React Component on the page, then, first open the Sketch file and find the promotionAd Symbol then we will use the very powerful "Symbol Override" feature to pick another picture and easilly export it from Sketch to our img directory that contains all our images assets. You can see how it is done below:
+
+Open the Sketch file and select "Layers" from the Side Bar on the left of the screen. Type: "promotionAd" in the "Search Layer" box then click on Symbol in the Inspector pane on the right of the screen:
+   
+ 	
+
 
 ## Updating the Sketch file and generating new elements
 
@@ -211,11 +232,9 @@ return(
 ...
 ```
 
-## Using the Sketch file
 
-TO BE COMPLETED
 
-## Using the PubNub Styled Chat Components
+## More about PubNub Styled Chat Components
 
 TO BE COMPLETED
 
@@ -247,8 +266,8 @@ TO BE COMPLETED
 
 ### Zeplin
 
-![Code Maping](/src/img/Design2CodeMatch.png)
+![Code Maping](src/img/Design2CodeMatch.png)
 
-![Code Maping](/src/img/Visual2CodeMaping.png)
+![Code Maping](src/img/Visual2CodeMaping.png)
 
-![Code Maping](/src/img/VisualCodeZeplinView.png)
+![Code Maping](src/img/VisualCodeZeplinView.png)
