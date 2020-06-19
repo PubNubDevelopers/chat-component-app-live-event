@@ -1,5 +1,5 @@
 import React from 'react';
-import { EventDetailWrapper,BottomFollowButtonWrapper, BottomShareButtonWrapper, EventDetailsTopWrapper, EventDetailsBottomWrapper, TitleWrapper } from './EventDetailsTop.styles';
+import { EventDetailsTopWrapper, TitleWrapper } from './EventDetailsTop.styles';
 
 
 interface EventDetailsTopProps {

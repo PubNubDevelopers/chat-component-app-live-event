@@ -4,8 +4,8 @@ export const EventIDWrapper = styled.span`
     width: 330px;
     height: 28px;
     position: absolute;
-    margin-left: 150px;
-    margin-top: 70px;
+    left: 70px;
+    margin-top: 40px;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 500;
@@ -18,9 +18,9 @@ export const EventIDWrapper = styled.span`
 export const HostNameWrapper = styled.span`
     position: absolute;
     width: 360px;
-    height: 18px;
+    heigth: 18px;
     display: inline;
-    margin-left: 150px;
+    left: 70px;
     margin-top: 12px;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
@@ -34,39 +34,36 @@ export const HostNameWrapper = styled.span`
 
 export const HostImageWrapper = styled.img`
 
-margin-top: 10px;
+top: 18px;
 margin-left: 7px;
-top: 0px;
-left: 20px;
-width: 100px;
+left: 0px;
+width: 50px;
 //display: inline;
-heigth: 100px;
+heigth: 50px;
 position: absolute;`
 
 export const BottomButtonImgWrapper = styled.img`
-width: 18px;
+width: 15px;
 height: auto;
-margin-top: 10px;
+margin-top: 7px;
 margin-left: 7px;
 top: 0px;
 position: absolute;`
 
 export const BottomButtonTextWrapper = styled.span`
-margin-top: 10px;
+margin-top: 7px;
 margin-left: 35px;
 top: 0px;
 position: absolute;
 `
+
 export const BottomShareButtonWrapper = styled.div`
-margin-left: 510px;
+left: 410px;
 display: inline;
 position: absolute;
-padding-left: 30px;
-padding-right: 30px;
-padding-top: 5px;
-top: 30px;
+top: 18px;
 font-family: 'Roboto', sans-serif;
-font-size: 20px;
+font-size: 15px;
 //font-weight: 500;
 //font-stretch: normal;
 //font-style: normal;
@@ -74,28 +71,24 @@ letter-spacing: normal;
 background-color: #001AFF;
 opacity: 1;
 border-radius: 5px;
-width: 80px;
-height: 32px;
+width: 60px;
+height: 25px;
 padding-left: 7px;
 padding-right: 30px;
 padding-top: 5px;`
 
 export const BottomFollowButtonWrapper = styled.div`
-margin-left: 660px;
+left: 540px;
 display: inline;
 position: absolute;
-width: 80px;
-height: 32px;
+width: 60px;
+height: 25px;
 padding-left: 7px;
 padding-right: 30px;
 padding-top: 5px;
-top: 30px;
+top: 18px;
 font-family: 'Roboto', sans-serif;
-font-size: 20px;
-font-weight: 500;
-font-stretch: normal;
-font-style: normal;
-line-height: normal;
+font-size: 15px;
 letter-spacing: normal;
 opacity: 1;
 border-radius: 5px;
@@ -108,9 +101,8 @@ pointer-events: none;
 export const ReactionsWrapper = styled.div`
 height: 30px;
 width: 100px;
-left: 777px;
-margin-top: 25px;
-margin-left: 0px;
+left: 640px;
+top: 15px;
 padding-left: 10px;
 padding-right: 10px;
 font-family: Roboto;
@@ -136,9 +128,9 @@ background-image: url(${props => `/images/reaction` + props.reaction + `@3x.png`
 background-size: contain;
 background-repeat: no-repeat;
 top: 7px;
-height: 40px;
-width: 40px;
-left: ${props => (50 * parseInt(props.appearindex)) + "px"  } ;
+height: 25px;
+width: 25px;
+left: ${props => (30 * parseInt(props.appearindex)) + "px"  } ;
 padding-right: 20px;
 padding-left: 0px;
 font-family: Roboto;
