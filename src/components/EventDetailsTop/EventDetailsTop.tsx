@@ -3,9 +3,7 @@ import { EventDetailsTopWrapper, TitleWrapper } from './EventDetailsTop.styles';
 
 
 interface EventDetailsTopProps {
-  skin: any,
-  store: any,
-  client: any,
+
 }
 
 export const EventDetailsTop: React.SFC<EventDetailsTopProps> = (props: EventDetailsTopProps) => {

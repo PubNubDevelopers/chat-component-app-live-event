@@ -66,7 +66,8 @@ export const ButtonLoginFacebook = styled.button `
     width: 217px;
     position: relative;
     margin: auto;
-    background: url("images/loginFBButton.png") no-repeat;
+    background-image: url("images/loginFBButton.png");
+    background-color: white;
 `;
 
 export const ButtonLoginGoogle = styled.button `

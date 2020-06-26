@@ -31,7 +31,6 @@ import PromotionAd from "../PromotionAd";
 
 interface LoginInitProps {
 
- simulate: boolean
 }
 
 

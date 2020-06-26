@@ -1,7 +1,20 @@
 import React, { useState } from 'react';
+import ReactDOM from "react-dom";
 import Jitsi from 'react-jitsi';
 import YouTube from 'react-youtube';
-import { LiveFeedPanelWrapper, FormGroup, Label, Input, Message, Button } from './LiveFeedPanel.styles';
+import { 
+  LiveFeedPanelWrapper, 
+  FormGroup, 
+  Label, 
+  Input, 
+  Message, 
+  Button,
+  ButtonCreateEvent,
+  EventNameWrapper,
+  CreateEventWrapper,
+  HostNameWrapper,
+  CreateEventButtonWrapper
+} from './LiveFeedPanel.styles';
 
 
 const theme = {
@@ -10,17 +23,14 @@ const theme = {
 
 
 interface LiveFeedPanelProps {
-  skin: string,
-  store: any,
-  client: any,
   opts:any ,
   onReady: any
   videoID: any
 }
 
 export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPanelProps) => {
-  const [displayName, setDisplayName] = useState('No Live Event playing')
-  const [roomName, setRoomName] = useState('noevent')
+  const [displayName, setDisplayName] = useState('Event-00000-00000')
+  const [roomName, setRoomName] = useState('Event-Location-00000-00001')
   const [password, setPassword] = useState('')
   const [loader, setLoader] = useState({})
   const [onCall, setOnCall] = useState(false)
@@ -37,7 +47,7 @@ export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPane
                             containerStyle={{
                               width: '100%', 
                               height: '100%' ,
-                                //display: 'flex',
+
                                 alignItems: 'center',
                                 justifyContent: 'center',
                               
@@ -47,13 +57,28 @@ export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPane
 
                           
                       <>
-                      <FormGroup>
+                  <CreateEventWrapper>
+
+                  <EventNameWrapper>
+                      <EventNameInput></EventNameInput>
+                  </EventNameWrapper>
+
+                  <HostNameWrapper>
+                    <HostNameInput></HostNameInput>
+                  </HostNameWrapper>
+<CreateEventButtonWrapper>
+<ButtonCreateEvent>START EVENT</ButtonCreateEvent>
+</CreateEventButtonWrapper>
+                  
+
+</CreateEventWrapper>
+                      {/* <FormGroup>
                         <Label htmlFor="eventName">New Event Name</Label>
                         <input id="eventName" type='text' placeholder='Event name' value={roomName} onChange={(e: React.ChangeEvent<HTMLInputElement>): void => setRoomName(e.target.value)} />
                         <Message>Type a name for the event!</Message>
                         <Button type='submit'  onClick={(): void => setOnCall(true)} />
-                        {/* <Button onClick={(): void => setOnCall(true)} type='submit'> Let&apos;s start! </Button> */}
-                      </FormGroup>
+                        {/* <Button onClick={(): void => setOnCall(true)} type='submit'> Let&apos;s start! </Button> 
+                      </FormGroup> */}
                       </>
     )
   }
@@ -61,5 +86,63 @@ export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPane
 
 )}
 
+const EventNameInput = (): JSX.Element => {
+  const [inputValue, setInputValue] = useState<string>("");
+  return (
+      <input
+          type="text"
+          value={inputValue}
+          placeholder="Event name"
+          onChange={(
+              ev: React.ChangeEvent<HTMLInputElement>,
+          ): void => setInputValue(ev.target.value)}
+      />
+  );
+};
 
+const HostNameInput = (): JSX.Element => {
+  const [inputValue, setInputValue] = useState<string>("");
+  return (
+      <input
+          type="text"
+          value={inputValue}
+          placeholder="Your host name"
+          onChange={(
+              ev: React.ChangeEvent<HTMLInputElement>,
+          ): void => setInputValue(ev.target.value)}
+      />
+  );
+};
+function CreateEventButton() {
+  // initialise with null, but tell TypeScript we are looking for an HTMLInputElement
+  const inputEl = React.useRef<HTMLInputElement>(null);
+  const onButtonClick = () => {
+    // strict null checks need us to check if inputEl and current exist.
+    // but once current exists, it is of type HTMLInputElement, thus it
+    // has the method focus! ✅
+    if (inputEl && inputEl.current) {
+      inputEl.current.focus();
+    }
+  };
+  return (
+    <>
+      {/* in addition, inputEl only can be used with input elements. Yay! */}
+      {/* <input ref={inputEl} type="text" /> */}
+      <button onClick={onButtonClick}>Focus the input</button>
+    </>
+  );
+}
+// const CreateEventButton = (): JSX.Element => {
+//   const [inputValue, setInputValue] = useState<string>("");
+//   return (
+//       <submit
+//           type="text"
+//           value={inputValue}
+//           placeholder="Your host name"
+//           onChange={(
+//               ev: React.ChangeEvent<HTMLInputElement>,
+//           ): void => setInputValue(ev.target.value)}
+//       />
+//   );
+// };
 

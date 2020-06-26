@@ -18,15 +18,15 @@ import {EventDetailsBottom} from "../EventDetailsBottom"
 // import LELogin from '../components/LELogin';
 import PromotionAd from "../PromotionAd";
 import { MessageListPanelWrapper } from '../MessageListPanel/MessageListPanel.styles';
+import { LiveEventContext } from './liveevents-context';
+
 interface ChatInitProps {
-  skin: string,
-  store: any,
-  client: any,
+
 }
 
 export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
   //const ChatDemo:FunctionComponent<{ props?: ChatInitProps }> = ({ props = {} }) => {
-  const channels = ['awesomeChannel'];
+  
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   useEffect(() => console.log(messages), [messages]);
@@ -40,17 +40,18 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
     // wating for the timeout period
     //useEffect(() => console.log(props), [props]);
 
-    props.client.unsubscribeAll();
+    //props.client.unsubscribeAll();
   };
 
  
 
-/*   useEffect(() => {
-    // Start listening for messages and events from PubNub
+useEffect(() => {
+    //Start listening for messages and events from Pub
+    //props.client.addListener();
     //props.client.addListener(createPubNubListener(props.store.dispatch));
     //props.client.addListener(createTypingIndicatorsListener(props.store.dispatch));
     return leaveApplication();
-  }, []); */
+  }, []);
 
   useEffect(() => {
     window.addEventListener("beforeunload", () => { leaveApplication() });
@@ -83,20 +84,7 @@ console.log();
     
   }, []); */
 
-  const sendMessage = useCallback(
 
-    async message => {
-      await props.client.publish({
-        channel: channels[0],
-        message,
-      });
-
-      setInput('');
-    },
-
-
-    [props.client, setInput]
-  );
 
   //return (<div>Test</div>);
 
@@ -122,17 +110,17 @@ return(
   
   <ChatDemoWrapper >
 
-     <EventDetailsTop skin="" store={props.store} client={props.client}/>
+     { false && <EventDetailsTop/>}
 
-     <LiveFeedPanel skin="" videoID="jZtxlp664yU" store={props.store} client={props.client} opts={opts} onReady="(event) => {
+     <LiveFeedPanel videoID="jZtxlp664yU"  opts={opts} onReady="(event) => {
        event.target.pauseVideo();
      }"/>
 
-   <EventDetailsBottom skin="" store={props.store} client={props.client}/>
+   <EventDetailsBottom />
      
      <MessageListPanelWrapper>
      
-          <MessageListPanel skin="" store={props.store} client={props.client} />
+          <MessageListPanel/>
 
      </MessageListPanelWrapper>
        

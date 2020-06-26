@@ -45,9 +45,6 @@ export class UserMessage implements Message {
 
 interface MessageProps {
   message: UserMessage;
-  skin: any,
-  store: any,
-  client: any,
 }
 
 export const Message: React.SFC<MessageProps> = (props: MessageProps) => {

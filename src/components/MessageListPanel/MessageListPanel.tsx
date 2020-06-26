@@ -9,9 +9,7 @@ import * as sampleMessagesData from  './sample.json';
 
 
 interface MessageListPanelProps {
-  skin: any,
-  store: any,
-  client: any,
+
 
 }
 
@@ -36,7 +34,7 @@ export const MessageListPanel: React.SFC<MessageListPanelProps> = (props: Messag
   return (
 
     <div>
-      <MessageList messages={ sampleMessagesData} skin="" store={props.store} client={props.client}/ >
+      <MessageList messages={ sampleMessagesData} / >
 
       <ComposeMessageBoxWrapper>
         <UserImgWrapper src="/images/hostImage@3x.png" />

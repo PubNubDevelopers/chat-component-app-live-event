@@ -9,6 +9,8 @@ import PubNub from 'pubnub';
 import { ApplicationRouter } from "./Router";
 import { ThemeProvider } from "styled-components";
 import { PubNubProvider,PubNubConsumer, usePubNub } from 'pubnub-react';
+import {LiveEventContext} from "./liveevents-context";
+import { useAppState } from "./AppStateContext"
 
 import './App.css';
 
@@ -35,14 +37,30 @@ const store = createAppStore({
     }
   });
 
-const App = () => {
+  const eventState = {
+    eventID: "0001",
+    loading: false,
+    error: null,
+    participantsCount: 0,
+    hostName: 'Your name',
+    pubnubconfig: pubnubConfig,
+    pubnubclient: pubnub,
+    pubnubstore: store,
+    simulate: true,
+    events: []
 
+
+  } 
+const App = () => {
+  const {state, dispatch} = useAppState()
    return (
 
      <ThemeProvider theme={appTheme}>
        <Provider store={store}>
         <PubNubProvider client={pubnub}>
-        <ApplicationRouter simulate={false} store={store} client={pubnub}/>
+
+        <ApplicationRouter/>
+
   {/* <Normalize />
    <GlobalStyles />
 

@@ -175,7 +175,7 @@ padding-right: 30px;
 padding-top: 5px;`
 
 export const BottomFollowButtonWrapper = styled.div`
-left: 540px;
+left: 530px;
 display: inline;
 position: absolute;
 width: 60px;
@@ -198,9 +198,9 @@ pointer-events: none;
 export const ReactionsWrapper = styled.div`
 height: 30px;
 width: 100px;
-left: 640px;
-top: 15px;
-padding-left: 10px;
+left: 650px;
+top: 7px;
+padding-left: 0px;
 padding-right: 10px;
 font-family: Roboto;
 font-size: 20px;
@@ -218,18 +218,22 @@ background-color: #000000;
 
 export const ReactionButtonWrapper = styled.div.attrs(props => ({
     //reaction: "LOL",
+    //srcOverride: ""
     //appearindex: "3"
   }))`
 position: absolute;
-background-image: url(${props => `/images/reaction` + props.reaction + `@3x.png`});
+background-image: url(${props => props.srcOverride ? props.srcOverride : `/images/reaction` + props.reaction + `@3x.png` });
+
+
+//background-image: url(${props => `/images/reaction` + props.reaction + `@3x.png`});
 background-size: contain;
 background-repeat: no-repeat;
 top: 7px;
-height: 25px;
-width: 25px;
-left: ${props => (30 * parseInt(props.appearindex)) + "px"  } ;
-padding-right: 20px;
-padding-left: 0px;
+height: 35px;
+width: 35px;
+left: ${props => (props.appearindex == "1") ?  0 + `px` : (35 * (parseInt(props.appearindex) -1) ) + `px` } ;
+padding-right: 30px;
+padding-left: 10px;
 font-family: Roboto;
 font-size: 20px;
 font-weight: 500;

@@ -14,9 +14,7 @@ import { ReactionButtonWrapper,
 } from './EventDetailsBottom.styles';
 import type {} from "styled-components/cssprop";
 interface EventDetailsBottomProps {
-  skin: any,
-  store: any,
-  client: any,
+
 }
 
 export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = (props: EventDetailsBottomProps) => {
@@ -40,7 +38,7 @@ export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = (props: Ev
                       <BottomShareButtonWrapper> 
 
                         <div>
-                        <BottomButtonImgWrapper src="/images/iconShare@3x.png"/>
+                        <BottomButtonImgWrapper src="/images/iconShare@3x.png" />
                         <BottomButtonTextWrapper>Share</BottomButtonTextWrapper>
                         </div>
                       </BottomShareButtonWrapper>
@@ -53,31 +51,16 @@ export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = (props: Ev
                       </BottomFollowButtonWrapper>
 
                       <ReactionsWrapper> 
-                        <ReactionButtonWrapper reaction="LOL" appearindex="1" />
-                        <ReactionButtonWrapper reaction="Heart" appearindex="2" > </ReactionButtonWrapper>
-                        {/* <ReactionButtonWrapper reaction="ThumbUp" appearindex="3" > </ReactionButtonWrapper> */}
-                        <Emoji appearindex="3" emoji_white_color={emoji_white_color}>
-<EmojiHand>
-  <EmojiThumb ></EmojiThumb>
-</EmojiHand>
-</Emoji>
-
-{/* <Emoji emoji_white_color={emoji_white_color}>
-<EmojiHaha>
-  <EmojiFace >
-  <EmojiEyes></EmojiEyes>
-  <EmojiMouth>
-    <EmojiTongue></EmojiTongue>
-  </EmojiMouth>
-  </EmojiFace>
-</EmojiHaha>
-</Emoji> */}
-
-
-
-
-                        <ReactionButtonWrapper reaction="Mad" appearindex="4" > </ReactionButtonWrapper>
-                        <ReactionButtonWrapper reaction="Sad" appearindex="5" > </ReactionButtonWrapper>
+                        <ReactionButtonWrapper srcOverride="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2298_E0Jyd9BW8ML0PDLn60wlVeuEhVRHSyGw.gif" reaction="LOL" appearindex="1" />
+                        <ReactionButtonWrapper srcOverride="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2304_b7hKIS35rjCAPVbD8EnPSfYTJJC1b0o5.gif" reaction="Heart" appearindex="2" > </ReactionButtonWrapper>
+                        <ReactionButtonWrapper srcOverride="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2402_X1lpqTxi33xSwSTLOSPTfMo1KyYWyUTe.gif" reaction="ThumbUp" appearindex="3" > </ReactionButtonWrapper>
+                        {/* <Emoji appearindex="3" emoji_white_color={emoji_white_color}>
+                            <EmojiHand>
+                              <EmojiThumb ></EmojiThumb>
+                            </EmojiHand>
+                            </Emoji> */}
+                        <ReactionButtonWrapper srcOverride="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2322_ps7ltjKbJF1Mvz2MsxJj08EIo3Lyip7f.gif" reaction="Mad" appearindex="4" > </ReactionButtonWrapper>
+                        <ReactionButtonWrapper srcOverride="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2318_tJL75iT2zYJkH995p8NgDeTuHTc3WZVV.gif" reaction="Sad" appearindex="5" > </ReactionButtonWrapper>
                       </ReactionsWrapper>
 
         </EventDetailsBottomWrapper>

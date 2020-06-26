@@ -1,5 +1,72 @@
 import styled from 'styled-components';
 
+export const CreateEventWrapper = styled.div`
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    //display: block;
+    left: 310px;
+    width: 40%;
+`;   
+
+export const EventNameWrapper = styled.div.attrs(props => ({
+    // we can define static props
+
+  }))`
+    border-radius: 9px;
+    border-width: 1px;
+    color: red;
+    top: 151px;
+    height: 30px;
+    width: 180px;
+    padding-left: 35px;
+    position: absolute;
+    margin: auto;
+    `;
+
+    export const HostNameWrapper = styled.div.attrs(props => ({
+        // we can define static props
+      }))`
+        border-radius: 9px;
+        border-width: 1px;
+        color: red;
+        top: 191px;
+        height: 30px;
+        width: 180px;
+        padding-left: 35px;
+        position: absolute;
+        margin: auto;
+        `;
+
+ export const CreateEventButtonWrapper = styled.div.attrs(props => ({
+    // we can define static props
+  }))`
+    border-radius: 9px;
+    border-width: 1px;
+    color: red;
+    top: 90px;
+    height: 30px;
+    width: 180px;
+    padding-left: 15px;
+    position: absolute;
+    margin: auto;
+    `;       
+export const ButtonCreateEvent = styled.button `
+border-radius: 20px;
+border-width: 0px;
+color: #262323;
+top: 150px;
+height: 55.5px;
+width: 180px;
+padding-left: 60px;
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+background-image: url("images/companyLogo.png");
+background-repeat: no-repeat;
+background-position-x: 10px;
+background-position-y: 6px;`;
+
 export const LiveFeedPanelWrapper = styled.div`
     display: flex;
     left                : 0px;
