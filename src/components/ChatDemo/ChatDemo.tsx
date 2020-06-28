@@ -1,4 +1,4 @@
-import React, { useCallback, FunctionComponent, useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import {ChatDemoWrapper} from "./ChatDemo.style"
 import {LiveFeedPanel} from "../LiveFeedPanel"
 import {MessageListPanel} from "../MessageListPanel"
@@ -18,7 +18,8 @@ import {EventDetailsBottom} from "../EventDetailsBottom"
 // import LELogin from '../components/LELogin';
 import PromotionAd from "../PromotionAd";
 import { MessageListPanelWrapper } from '../MessageListPanel/MessageListPanel.styles';
-import { LiveEventContext } from './liveevents-context';
+import { LiveEventContext } from '../../liveevents-context';
+import { useAppState,AppStateProvider,AppStateContext } from "../../AppStateContext"
 
 interface ChatInitProps {
 
@@ -31,9 +32,10 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
   const [input, setInput] = useState('');
   useEffect(() => console.log(messages), [messages]);
   useEffect(() => console.log(props), [props]);
+ 
   const [time, setTime] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
-
+  
   //useEffect(() => console.log(props.store.dispatch), [props.store.dispatch]);
   const leaveApplication = () => {
     // This is required to show the current user leave immediately rather than
@@ -58,31 +60,7 @@ useEffect(() => {
   }, []);
 
 
-  /* useEffect(() => {
 
-    // props.client.getMessage('channel1', (msg) => {
-    //     console.log(msg);
-    // });
-    try{
-      props.client.addListener({
-        message: (message) => {
-  
-          setMessages(function (messages) {
-            return [...messages, message]
-          });
-        },
-      });
-  
-      props.client.subscribe({ channels });
-    }
-      catch{
-console.log();
-  }
-  return leaveApplication;
-
-
-    
-  }, []); */
 
 
 

@@ -2,13 +2,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import keyConfiguration from "../config/pubnub-keys.json";
-import { createAppStore } from "./store";
-import { Provider } from "react-redux";
 import { appTheme } from "./Theme";
 import PubNub from 'pubnub';
 import { ApplicationRouter } from "./Router";
 import { ThemeProvider } from "styled-components";
-import { PubNubProvider,PubNubConsumer, usePubNub } from 'pubnub-react';
 import {LiveEventContext} from "./liveevents-context";
 import { useAppState } from "./AppStateContext"
 
@@ -31,33 +28,12 @@ const pubnub = new PubNub({
   uuid:"023402340SDFSFS23BBF"
 });
 
-const store = createAppStore({
-    pubnub: {
-      api: pubnub
-    }
-  });
-
-  const eventState = {
-    eventID: "0001",
-    loading: false,
-    error: null,
-    participantsCount: 0,
-    hostName: 'Your name',
-    pubnubconfig: pubnubConfig,
-    pubnubclient: pubnub,
-    pubnubstore: store,
-    simulate: true,
-    events: []
 
 
-  } 
 const App = () => {
-  const {state, dispatch} = useAppState()
    return (
 
      <ThemeProvider theme={appTheme}>
-       <Provider store={store}>
-        <PubNubProvider client={pubnub}>
 
         <ApplicationRouter/>
 
@@ -65,8 +41,6 @@ const App = () => {
    <GlobalStyles />
 
           */}
-   </PubNubProvider>
-       </Provider>
      </ThemeProvider>
    );
 };
