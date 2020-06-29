@@ -1,11 +1,6 @@
 import React, { useCallback, createContext, useReducer, useContext,useState,useEffect } from "react"
-// import { nanoid } from "nanoid"
-// import { findItemIndexById } from "./utils/findItemIndexById"
-// import { moveItem } from "./utils/moveItem"
-// import { DragItem } from "./DragItem"
 import { generateUUID } from 'pubnub';
 const PubNub = require('pubnub');
-import { createAppStore } from "./store";
 import Pubnub, { SubscribeParameters } from "pubnub";
 
 interface Event {
@@ -78,21 +73,39 @@ type Action =
       type: "ADD_MESSAGE_LIST"
       payload: { listname: string, listId: string, events:[] }
     }
-    | {
-      type: "ADD_MESSAGE"
-      payload: { listId: string, 
+  | {
+    type: "ADD_MESSAGE"
+    payload: { listId: string, 
+      messagecontent: string 
+      internalKey: string,
+      key: string,
+      senderId: string,
+      message: string,
+      UserAvatar: string,
+      timetoken: null,
+      senderName: string,
+      dateFormat: string,
+      reactions: null,
+      addMessageReaction: null,
+      addActions: null
+    }
+  }
+  | {
+      type: "SEND_MESSAGE"
+      payload: { 
+        //listId: string, 
         messagecontent: string 
-        internalKey: string,
-        key: string,
+        //internalKey: string,
+        //key: string,
         senderId: string,
         message: string,
         UserAvatar: string,
         timetoken: null,
         senderName: string,
         dateFormat: string,
-        reactions: null,
-        addMessageReaction: null,
-        addActions: null
+        //reactions: null,
+        //addMessageReaction: null,
+        //addActions: null
       }
     }
 
@@ -109,30 +122,50 @@ export const AppStateContext = createContext<AppStateContextProps>(
 const appStateReducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
 
-case "ADD_MESSAGE": {
-  return {
-    ...state,
-    messages : [...state.messages,{ 
-      // id: "1", 
-      ...action.payload, 
-      messages: [] 
+    case "ADD_MESSAGE": {
+      return {
+        ...state,
+        messages : [...state.messages,{ 
+          // id: "1", 
+          ...action.payload, 
+          messages: [] 
+        }
+        ]
+      }
+      /*
+            internalKey: string,
+            key: string,
+            senderId: string,
+            message: string,
+            UserAvatar: string,
+            timetoken: null,
+            senderName: string,
+            dateFormat: string,
+            reactions: null,
+            addMessageReaction: null,
+            addActions: null
+    */
     }
-    ]
-  }
-  /*
-        internalKey: string,
-        key: string,
-        senderId: string,
-        message: string,
-        UserAvatar: string,
-        timetoken: null,
-        senderName: string,
-        dateFormat: string,
-        reactions: null,
-        addMessageReaction: null,
-        addActions: null
-*/
-}
+    case "SEND_MESSAGE": {
+      state.pubnub.publish({
+        channel: 'liveeventdemo',
+        message: `{
+          "internalKey": "86e41229-37a3-44ac-9979-fe91d49f59be",
+          "key": "fd856b37-daba-4fef-aaf9-238be310df4a",
+          "senderId": "bc296603-b349-43de-8574-0a3a9392e30a",
+          "message": "${action.payload}",
+          "UserAvatar": "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1",
+          "timetoken": "1592439990",
+          "senderName": "noswick1",
+          "dateFormat": null,
+          "reactions": null,
+          "addMessageReaction": null,
+          "addActions": null
+      }`,
+      });
+      
+      return {...state}
+    }
 
     case "ADD_EVENT": {
       state.events.events.push({
@@ -152,11 +185,7 @@ case "ADD_MESSAGE": {
   }
 }
 
-//   const store = createAppStore({
-//       pubnub: {
-//         api: pubnub
-//       }
-//     });
+
 const appData: AppState = {
     simulateLogin: true,
     users: [],
@@ -177,20 +206,8 @@ const appData: AppState = {
 
 export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [state, dispatch] = useReducer(appStateReducer, appData)
-  const [count, setCount] = useState(0);
-  useEffect(() => console.log(count), [count]);
 
-  // const sendMessage = useCallback(
-  //   async message => {
-  //     await pubnub.publish({
-  //       channel: channels[0],
-  //       message,
-  //     });
- 
-  //     setInput('');
-  //   },
-  //   [pubnub, setInput]
-  // );
+
   useEffect(() => {
 
 
@@ -222,8 +239,7 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
         channel: 'liveeventdemo',
         message,
       });
- 
-      //setInput('');
+
     },
     [
       //pubnub, 
@@ -231,7 +247,7 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
     ]
   );
 
-useEffect(() => console.log(state.pubnub), [state.pubnub]);
+   useEffect(() => console.log(state.pubnub), [state.pubnub]);
 
   return (
     <AppStateContext.Provider value={{state:appData}}>
