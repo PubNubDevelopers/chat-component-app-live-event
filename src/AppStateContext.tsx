@@ -1,7 +1,6 @@
-import React, { useCallback, createContext, useReducer, useContext,useState,useEffect } from "react"
+import React, { useCallback, createContext, useReducer, useContext, useState, useEffect } from "react"
 import { generateUUID } from 'pubnub';
-const PubNub = require('pubnub');
-import Pubnub, { SubscribeParameters } from "pubnub";
+import PubNub, { SubscribeParameters } from "pubnub";
 
 interface Event {
   id: string,
@@ -15,68 +14,105 @@ interface EventList {
   events: Event[],
 }
 interface User {
-    id: string,
-    username: string,
-  }
-  
-  interface UserList {
-    id: string,
-    listname: string,
-    users: User[],
-  }
+  id: string,
+  username: string,
+}
 
-  interface Message {
-    id: string,
-    content: string,
-    internalKey: string,
-    key: string,
-    senderId: string,
-    message: string,
-    UserAvatar: string,
-    timetoken: null,
-    senderName: string,
-    dateFormat: string,
-    reactions: null,
-    addMessageReaction: null,
-    addActions: null
-  }
+interface UserList {
+  id: string,
+  listname: string,
+  users: User[],
+}
+export interface Message {
+  internalKey: string ;
+
+}
+
+export class UserMessage implements Message {
+
+    id: string;
+  content: string;
+  internalKey: string;
+  key: string;
+  senderId: string;
+  message: string;
+  UserAvatar: string;
+  timetoken: null;
+  senderName: string;
+  dateFormat: string;
+  reactions: null;
+  addMessageReaction: null;
+  addActions: null;
   
-  interface MessageList {
-    id: string,
-    listname: string,
-    messages: Event[],
+
+  constructor(payload: string) {
+    this.internalKey = generateUUID.toString();
+    var data = JSON.parse(payload);
+    if (!data.key ) {
+      throw new Error('Invalid message payload received: ' + payload);
+    }
+    this.id=data.id;
+    this.content=data.content;
+    this.message = data.message;
+    this.key= data.key;
+    this.UserAvatar= data.UserAvatar;
+    this.timetoken= data.timetoken;
+    this.senderId= data.senderId;
+    this.senderName= data.senderName;
+    this.dateFormat= data.dateFormat;
+    this.reactions= data.reactions;
+    this.addMessageReaction= data.addMessageReaction;
+    this.addActions= data.addActions;
   }
+}
+// interface Message {
+//   id: string,
+//   content: string,
+//   internalKey: string,
+//   key: string,
+//   senderId: string,
+//   message: string,
+//   UserAvatar: string,
+//   timetoken: null,
+//   senderName: string,
+//   dateFormat: string,
+//   reactions: null,
+//   addMessageReaction: null,
+//   addActions: null
+// }
+
 
 export interface AppState {
   simulateLogin: true,
   users: UserList, //For login simulation only since Users list is usually not stored here
   events: EventList, //For event pickup simulation only since Users list is usually not stored here
-  messages: MessageList, //Where the current Messages to be displayed are stored.
+  messages: Message[], //Where the current Messages to be displayed are stored.
   pubnub: Pubnub, //Our link to PubNub
   defaultchannel: SubscribeParameters //The default channel associated to the demo, should be associated with an Event.
 }
 
 type Action =
   | {
-      type: "ADD_USER_LIST"
-      payload: string
-    }
+    type: "ADD_USER_LIST"
+    payload: string
+  }
   | {
-      type: "ADD_EVENT_LIST"
-      payload: { listname: string, listId: string, events:[] }
-    }
+    type: "ADD_EVENT_LIST"
+    payload: { listname: string, listId: string, events: [] }
+  }
   | {
-      type: "ADD_EVENT"
-      payload: {  id: string, eventname: string, eventchannel: SubscribeParameters}
-    }  
+    type: "ADD_EVENT"
+    payload: { id: string, eventname: string, eventchannel: SubscribeParameters }
+  }
   | {
-      type: "ADD_MESSAGE_LIST"
-      payload: { listname: string, listId: string, events:[] }
-    }
+    type: "ADD_MESSAGE_LIST"
+    payload: { listname: string, listId: string, events: [] }
+  }
   | {
     type: "ADD_MESSAGE"
-    payload: { listId: string, 
-      messagecontent: string 
+    payload: {
+      listId: string,
+      messagecontent: string
       internalKey: string,
       key: string,
       senderId: string,
@@ -91,23 +127,20 @@ type Action =
     }
   }
   | {
-      type: "SEND_MESSAGE"
-      payload: { 
-        //listId: string, 
-        messagecontent: string 
-        //internalKey: string,
-        //key: string,
-        senderId: string,
-        message: string,
-        UserAvatar: string,
-        timetoken: null,
-        senderName: string,
-        dateFormat: string,
-        //reactions: null,
-        //addMessageReaction: null,
-        //addActions: null
-      }
+    type: "SEND_MESSAGE"
+    payload: {
+      messagecontent: string
+      senderId: string,
+      message: string,
+      UserAvatar: string,
+      timetoken: null,
+      senderName: string,
+      dateFormat: string,
+      reactions: null,
+      addMessageReaction: null,
+      addActions: null
     }
+  }
 
 
 
@@ -123,15 +156,18 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
 
     case "ADD_MESSAGE": {
-      return {
+
+      const debugMerged: AppState = {
         ...state,
-        messages : [...state.messages,{ 
-          // id: "1", 
-          ...action.payload, 
-          messages: [] 
+        messages: [...state.messages as List<Message>, {
+          ...action.payload
         }
         ]
-      }
+      };
+
+      return debugMerged;
+
+
       /*
             internalKey: string,
             key: string,
@@ -147,6 +183,7 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
     */
     }
     case "SEND_MESSAGE": {
+
       state.pubnub.publish({
         channel: 'liveeventdemo',
         message: `{
@@ -163,8 +200,8 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
           "addActions": null
       }`,
       });
-      
-      return {...state}
+
+      return { ...state }
     }
 
     case "ADD_EVENT": {
@@ -174,9 +211,9 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
         eventchannel: action.payload.eventchannel
       });
 
-      return {...state}
+      return { ...state }
     }
-   
+
     default: {
       return state
     }
@@ -187,20 +224,20 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
 
 
 const appData: AppState = {
-    simulateLogin: true,
-    users: [],
-    messages: [],
-    events: [],
-    pubnub: new PubNub({
-        publishKey: "pub-c-9d0ab7cd-fac4-46d4-82b0-c45e46dd4793",
-        subscribeKey: "sub-c-419013b0-9953-11ea-9123-e6a08f73ae22",
-        uuid: generateUUID.toString()
-      }),
-    defaultchannel:    {
-          channels: ['liveeventdemo'],
+  simulateLogin: true,
+  users: [],
+  messages: [],
+  events: [],
+  pubnub: new PubNub({
+    publishKey: "pub-c-9d0ab7cd-fac4-46d4-82b0-c45e46dd4793",
+    subscribeKey: "sub-c-419013b0-9953-11ea-9123-e6a08f73ae22",
+    uuid: generateUUID.toString()
+  }),
+  defaultchannel: {
+    channels: ['liveeventdemo'],
     withPresence: true
-    
-    } 
+
+  }
 
 }
 
@@ -211,29 +248,29 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
   useEffect(() => {
 
 
-    try{
-        state.pubnub.addListener({
+    try {
+      state.pubnub.addListener({
         message: (messageEvent) => {
           console.log(`RECEIVING MESSAGE ${messageEvent.message}`);
           dispatch({
             type: "ADD_MESSAGE",
-            payload: messageEvent.message 
+            payload: messageEvent.message
           });
         },
       });
       state.pubnub.subscribe(state.defaultchannel);
       state.pubnub.publish({
         channel: 'liveeventdemo',
-        message: '{"status":"test after subscribe"}',
+        message: { "internalKey": "86e41229-37a3-44ac-9979-fe91d49f59be", "key": "fd856b37-daba-4fef-aaf9-238be310df4a", "senderId": "bc296603-b349-43de-8574-0a3a9392e30a", "message": "Profit-focused disintermediate budgetary management", "UserAvatar": "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", "timetoken": "1592439990", "senderName": "noswick1", "dateFormat": null, "reactions": null, "addMessageReaction": null, "addActions": null },
       });
 
     } catch (e) {
       console.log(`Subscribe error ${e.message}`);
     }
 
-}, [state.pubnub]); 
+  }, []);
 
-    const sendMessage = useCallback(
+  const sendMessage = useCallback(
     async message => {
       await state.pubnub.publish({
         channel: 'liveeventdemo',
@@ -247,10 +284,10 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
     ]
   );
 
-   useEffect(() => console.log(state.pubnub), [state.pubnub]);
+  useEffect(() => console.log(state.pubnub), [state.pubnub]);
 
   return (
-    <AppStateContext.Provider value={{state:appData}}>
+    <AppStateContext.Provider value={{ state, dispatch }}>
       {children}
     </AppStateContext.Provider>
   );

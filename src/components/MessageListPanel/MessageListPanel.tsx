@@ -6,6 +6,7 @@ import { MessageList } from '../MessageList/MessageList';
 import { MessageListWrapper } from '../MessageList/MessageList.styles';
 import {UserMessage} from '../Message/Message';
 import * as sampleMessagesData from  './sample.json';
+import { AppStateProvider,useAppState, Message } from "../../AppStateContext"
 
 
 interface MessageListPanelProps {
@@ -15,27 +16,17 @@ interface MessageListPanelProps {
 
 export const MessageListPanel: React.SFC<MessageListPanelProps> = (props: MessageListPanelProps) => {
 
-
-  //Dumnmy data before connecting to PubNub
-  // messages.push(new UserMessage(`{
-  //   "key":"GFTYRH1", 
-  //   "senderId":"",
-  //   "message":"Incredible!!!",
-  //   "UserAvatar": "",
-  //   "timetoken": "",
-  //   "senderName": "Patricia",
-  //   "dateFormat": "",
-  //   "reactions": "",
-  //   "addMessageReaction": "",
-  //   "addActions": ""
-  // }`));
-  //messages.push(new UserMessage(`{"msgid":"DSFDFSF", "name":"Patricia","message":"Incredible!!!"}`));
-
+  const {state} = useAppState(); 
   return (
-
     <div>
-      <MessageList messages={ sampleMessagesData} / >
+      
+      <AppStateProvider>
+      {
 
+      <MessageList messages={state.messages}/>
+      
+      }
+      </AppStateProvider>
       <ComposeMessageBoxWrapper>
         <UserImgWrapper src="/images/hostImage@3x.png" />
         <TextInputWrapper></TextInputWrapper>
@@ -44,6 +35,4 @@ export const MessageListPanel: React.SFC<MessageListPanelProps> = (props: Messag
 
     </div>
   );
-
-
 }
