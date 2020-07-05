@@ -30,7 +30,7 @@ export interface Message {
 
 export class UserMessage implements Message {
 
-    id: string;
+  id: string;
   content: string;
   internalKey: string;
   key: string;
@@ -260,7 +260,7 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
       });
       state.pubnub.subscribe(state.defaultchannel);
       state.pubnub.publish({
-        channel: 'liveeventdemo',
+        channel: state.defaultchannel,
         message: { "internalKey": "86e41229-37a3-44ac-9979-fe91d49f59be", "key": "fd856b37-daba-4fef-aaf9-238be310df4a", "senderId": "bc296603-b349-43de-8574-0a3a9392e30a", "message": "Profit-focused disintermediate budgetary management", "UserAvatar": "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", "timetoken": "1592439990", "senderName": "noswick1", "dateFormat": null, "reactions": null, "addMessageReaction": null, "addActions": null },
       });
 
@@ -284,7 +284,9 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
     ]
   );
 
-  useEffect(() => console.log(state.pubnub), [state.pubnub]);
+
+
+  
 
   return (
     <AppStateContext.Provider value={{ state, dispatch }}>

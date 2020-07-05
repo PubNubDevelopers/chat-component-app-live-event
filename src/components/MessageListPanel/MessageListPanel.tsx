@@ -21,12 +21,9 @@ export const MessageListPanel: React.SFC<MessageListPanelProps> = (props: Messag
     <div>
       
       <AppStateProvider>
-      {
-
-      <MessageList messages={state.messages}/>
-      
-      }
+        {<MessageList messages={state.messages}/>}
       </AppStateProvider>
+      
       <ComposeMessageBoxWrapper>
         <UserImgWrapper src="/images/hostImage@3x.png" />
         <TextInputWrapper></TextInputWrapper>

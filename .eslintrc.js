@@ -3,7 +3,17 @@ module.exports = {
     //parser: "@typescript-eslint/parser", // Specifies the ESLint parser
     "parser": "babel-eslint",
     "rules": {
-      "strict": 0
+      "strict": 0,
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "trailingComma": "all",
+          "bracketSpacing": false,
+          "printWidth": 120,
+          "tabWidth": 2,
+          "semi": false
+        }]
     },
     parserOptions: {
   

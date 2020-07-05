@@ -72,13 +72,6 @@ export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPane
                   
 
 </CreateEventWrapper>
-                      {/* <FormGroup>
-                        <Label htmlFor="eventName">New Event Name</Label>
-                        <input id="eventName" type='text' placeholder='Event name' value={roomName} onChange={(e: React.ChangeEvent<HTMLInputElement>): void => setRoomName(e.target.value)} />
-                        <Message>Type a name for the event!</Message>
-                        <Button type='submit'  onClick={(): void => setOnCall(true)} />
-                        {/* <Button onClick={(): void => setOnCall(true)} type='submit'> Let&apos;s start! </Button> 
-                      </FormGroup> */}
                       </>
     )
   }

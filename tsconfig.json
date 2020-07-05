@@ -26,7 +26,7 @@
     "typeRoots": [ "./types", "./node_modules/@types"]
   },
   "include": [
-    "src", "setup"
+    "src", "setup",".github/actions/**/*.ts", "**/*.ts"
   ],
   "exclude": ["node_modules", "typings"]
 }
