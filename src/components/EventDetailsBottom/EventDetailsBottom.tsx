@@ -12,19 +12,18 @@ import { ReactionButtonWrapper,
   BaseEmoji,EmojiHand,EmojiThumb,Emoji,EmojiHaha,EmojiFace,EmojiEyes,EmojiMouth,EmojiTongue,
   TitleWrapper 
 } from './EventDetailsBottom.styles';
+import { AppStateProvider,useAppState, Message } from "../../AppStateContext"
+
 import type {} from "styled-components/cssprop";
+
 interface EventDetailsBottomProps {
 
 }
 
 export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = (props: EventDetailsBottomProps) => {
-  const emoji_base_color = "#FFDA6A";
-  const emoji_like_color ="#548DFF";
-  const emoji_love_color="#F55064";
-  const emoji_angry_color= "#D5234C";
-  const emoji_white_color= "#FFFFFF";
-  const emoji_black_color= "#000000";
-  const emoji_text_color= "#8A8A8A";
+
+  const {state} = useAppState(); 
+
   return( 
 
         <EventDetailsBottomWrapper>
@@ -32,8 +31,8 @@ export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = (props: Ev
 
           <HostImageWrapper src="/images/hostImage@3x.png"/>
 
-            <HostNameWrapper>eLeague Las Vegas Tournament</HostNameWrapper>
-                <EventIDWrapper>Event  ID: 246 209 481</EventIDWrapper>
+            <HostNameWrapper>{state.eventName}</HostNameWrapper>
+            <EventIDWrapper>Event  ID: {state.eventId}</EventIDWrapper>
 
                       <BottomShareButtonWrapper> 
 

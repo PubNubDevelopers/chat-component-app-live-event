@@ -1,6 +1,20 @@
 import React, { useCallback, createContext, useReducer, useContext, useState, useEffect } from "react"
 import { generateUUID } from 'pubnub';
 import PubNub, { SubscribeParameters } from "pubnub";
+import keyConfiguration from "../config/pubnub-keys.json";
+
+
+const pubnubConfig = Object.assign(
+  {},
+  {
+    // Ensure that subscriptions will be retained if the network connection is lost
+    restore: true,
+        heartbeatInterval: 0
+  },
+  keyConfiguration
+);
+
+
 
 interface Event {
   id: string,
@@ -29,20 +43,18 @@ export interface Message {
 }
 
 export class UserMessage implements Message {
-
   id: string;
-  content: string;
   internalKey: string;
-  key: string;
+  key?: string;
   senderId: string;
   message: string;
-  UserAvatar: string;
-  timetoken: null;
+  UserAvatar?: string;
+  timetoken?: null;
   senderName: string;
-  dateFormat: string;
-  reactions: null;
-  addMessageReaction: null;
-  addActions: null;
+  dateFormat?: string;
+  reactions?: null;
+  addMessageReaction?: null;
+  addActions?: null;
   
 
   constructor(payload: string) {
@@ -52,7 +64,6 @@ export class UserMessage implements Message {
       throw new Error('Invalid message payload received: ' + payload);
     }
     this.id=data.id;
-    this.content=data.content;
     this.message = data.message;
     this.key= data.key;
     this.UserAvatar= data.UserAvatar;
@@ -84,10 +95,14 @@ export class UserMessage implements Message {
 
 export interface AppState {
   simulateLogin: true,
+  pubnubConf: typeof pubnubConfig,
+  eventName: string,
+  eventId: string,
+  ownerAvatar: string,
   users: UserList, //For login simulation only since Users list is usually not stored here
   events: EventList, //For event pickup simulation only since Users list is usually not stored here
-  messages: Message[], //Where the current Messages to be displayed are stored.
-  pubnub: Pubnub, //Our link to PubNub
+  messages: UserMessage[], //Where the current Messages to be displayed are stored.
+  pubnub: PubNub, //Our link to PubNub
   defaultchannel: SubscribeParameters //The default channel associated to the demo, should be associated with an Event.
 }
 
@@ -112,7 +127,7 @@ type Action =
     type: "ADD_MESSAGE"
     payload: {
       listId: string,
-      messagecontent: string
+      messageContent: string
       internalKey: string,
       key: string,
       senderId: string,
@@ -129,37 +144,29 @@ type Action =
   | {
     type: "SEND_MESSAGE"
     payload: {
-      messagecontent: string
-      senderId: string,
-      message: string,
-      UserAvatar: string,
-      timetoken: null,
-      senderName: string,
-      dateFormat: string,
-      reactions: null,
-      addMessageReaction: null,
-      addActions: null
+      messageContent: string
     }
   }
 
 
 
 interface AppStateContextProps {
-  state: AppState
+  state: AppState,
+  
 }
 
 export const AppStateContext = createContext<AppStateContextProps>(
   {} as AppStateContextProps
 )
 
-const appStateReducer = (state: AppState, action: Action): AppState => {
+export const appStateReducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
 
     case "ADD_MESSAGE": {
 
       const debugMerged: AppState = {
         ...state,
-        messages: [...state.messages as List<Message>, {
+        messages: [...state.messages as List<Message> , {
           ...action.payload
         }
         ]
@@ -185,6 +192,7 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
     case "SEND_MESSAGE": {
 
       state.pubnub.publish({
+        //channel: state.defaultchannel.channels[0],
         channel: 'liveeventdemo',
         message: `{
           "internalKey": "86e41229-37a3-44ac-9979-fe91d49f59be",
@@ -193,7 +201,7 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
           "message": "${action.payload}",
           "UserAvatar": "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1",
           "timetoken": "1592439990",
-          "senderName": "noswick1",
+          "senderName": "Mr. Robot",
           "dateFormat": null,
           "reactions": null,
           "addMessageReaction": null,
@@ -225,7 +233,11 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
 
 const appData: AppState = {
   simulateLogin: true,
-  users: [],
+  eventName: "PubNub Live Event",
+  eventId: "PNEVT001",
+  eventHostAvatar: "",
+  messageBuffer: "",
+  users: [] ,
   messages: [],
   events: [],
   pubnub: new PubNub({
@@ -233,22 +245,20 @@ const appData: AppState = {
     subscribeKey: "sub-c-419013b0-9953-11ea-9123-e6a08f73ae22",
     uuid: generateUUID.toString()
   }),
+  pubnubConf: pubnubConfig,
   defaultchannel: {
     channels: ['liveeventdemo'],
     withPresence: true
-
   }
 
 }
 
 export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
+  
   const [state, dispatch] = useReducer(appStateReducer, appData)
-
-
   useEffect(() => {
-
-
     try {
+      console.log(`Subscribing to channel: ${state.defaultchannel.channels[0] ? state.defaultchannel.channels[0] : 'liveeventdemo'}`);
       state.pubnub.addListener({
         message: (messageEvent) => {
           console.log(`RECEIVING MESSAGE ${messageEvent.message}`);
@@ -260,7 +270,7 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
       });
       state.pubnub.subscribe(state.defaultchannel);
       state.pubnub.publish({
-        channel: state.defaultchannel,
+        channel: state.defaultchannel.channels[0],
         message: { "internalKey": "86e41229-37a3-44ac-9979-fe91d49f59be", "key": "fd856b37-daba-4fef-aaf9-238be310df4a", "senderId": "bc296603-b349-43de-8574-0a3a9392e30a", "message": "Profit-focused disintermediate budgetary management", "UserAvatar": "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", "timetoken": "1592439990", "senderName": "noswick1", "dateFormat": null, "reactions": null, "addMessageReaction": null, "addActions": null },
       });
 

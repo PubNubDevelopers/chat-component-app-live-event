@@ -1,11 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { MessageListPanelWrapper } from './MessageListPanel.styles';
 import { TextInputWrapper, ComposeMessageBoxWrapper, UserImgWrapper, EmojiInputWrapper } from '../ComposeMessageBox/ComposeMessageBox.styles';
 import { MessageList } from '../MessageList/MessageList';
-import { MessageListWrapper } from '../MessageList/MessageList.styles';
-import {UserMessage} from '../Message/Message';
-import * as sampleMessagesData from  './sample.json';
 import { AppStateProvider,useAppState, Message } from "../../AppStateContext"
 
 
@@ -21,7 +17,7 @@ export const MessageListPanel: React.SFC<MessageListPanelProps> = (props: Messag
     <div>
       
       <AppStateProvider>
-        {<MessageList messages={state.messages}/>}
+        {<MessageList  messages={state.messages}/>}
       </AppStateProvider>
       
       <ComposeMessageBoxWrapper>

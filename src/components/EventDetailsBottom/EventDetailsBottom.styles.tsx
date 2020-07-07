@@ -168,8 +168,8 @@ letter-spacing: normal;
 background-color: #001AFF;
 opacity: 1;
 border-radius: 5px;
-width: 60px;
-height: 25px;
+width: 90px;
+height: 30px;
 padding-left: 7px;
 padding-right: 30px;
 padding-top: 5px;`
@@ -178,8 +178,8 @@ export const BottomFollowButtonWrapper = styled.div`
 left: 530px;
 display: inline;
 position: absolute;
-width: 60px;
-height: 25px;
+width: 90px;
+height: 30px;
 padding-left: 7px;
 padding-right: 30px;
 padding-top: 5px;
