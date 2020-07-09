@@ -3,6 +3,7 @@ import { MessageListPanelWrapper } from './MessageListPanel.styles';
 import { TextInputWrapper, ComposeMessageBoxWrapper, UserImgWrapper, EmojiInputWrapper } from '../ComposeMessageBox/ComposeMessageBox.styles';
 import { MessageList } from '../MessageList/MessageList';
 import { AppStateProvider,useAppState, Message } from "../../AppStateContext"
+import { ComposeMessageBox,SendMessageField } from '../ComposeMessageBox/ComposeMessageBox';
 
 
 interface MessageListPanelProps {
@@ -18,13 +19,16 @@ export const MessageListPanel: React.SFC<MessageListPanelProps> = (props: Messag
       
       <AppStateProvider>
         {<MessageList  messages={state.messages}/>}
-      </AppStateProvider>
+      
       
       <ComposeMessageBoxWrapper>
         <UserImgWrapper src="/images/hostImage@3x.png" />
-        <TextInputWrapper></TextInputWrapper>
+        {/* <TextInputWrapper> */}
+<SendMessageField/>
+       {/* </TextInputWrapper> */}
         <EmojiInputWrapper src="/images/emojiInput@3x.png" />
       </ComposeMessageBoxWrapper>
+      </AppStateProvider>
 
     </div>
   );

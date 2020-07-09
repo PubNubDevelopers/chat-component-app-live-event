@@ -77,7 +77,7 @@ useEffect(() => {
 
 const opts = {
   height: "100%",
-  width:  "973px",
+  width:  "850px",
   playerVars: {
     // https://developers.google.com/youtube/player_parameters
     autoplay: 1,
@@ -90,9 +90,9 @@ return(
 
      { false && <EventDetailsTop/>}
 
-     <LiveFeedPanel videoID="jZtxlp664yU"  opts={opts} onReady="(event) => {
+     <LiveFeedPanel videoID="jZtxlp664yU"  opts={opts} onReady={(event) => {
        event.target.pauseVideo();
-     }"/>
+     }}/>
 
    <EventDetailsBottom />
      

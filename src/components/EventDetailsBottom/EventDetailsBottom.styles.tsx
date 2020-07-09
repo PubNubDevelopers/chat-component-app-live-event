@@ -292,7 +292,7 @@ export const EventDetailsTopWrapper = styled.div`
 export const EventDetailsBottomWrapper = styled.div`
  display: flex;
  position: absolute;
- width: 1000px;
+ width: 900px;
  height: 100px;
  left: 0px;
  top: 660px;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from "react-dom";
-import Jitsi from 'react-jitsi';
+// import Jitsi from 'react-jitsi';
 import YouTube from 'react-youtube';
 import { 
   LiveFeedPanelWrapper, 
@@ -36,8 +36,7 @@ export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPane
   const [onCall, setOnCall] = useState(false)
   return(
   <LiveFeedPanelWrapper>
-      {/* <YouTube videoId={props.videoID} opts={props.opts} onReady={props.onReady} /> */}
-      {onCall
+      {/* {onCall
                     ? (
                         <Jitsi
                             roomName={roomName}
@@ -47,17 +46,16 @@ export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPane
                             containerStyle={{
                               width: '100%', 
                               height: '100%' ,
-
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                              
+                              alignItems: 'center',
+                              justifyContent: 'center',
                             }}
                         />)
-                    : (
+                    : ( */}
 
-                          
                       <>
-                  <CreateEventWrapper>
+                            <YouTube videoId={props.videoID} opts={props.opts} onReady={props.onReady} />
+
+                  {/* <CreateEventWrapper>
 
                   <EventNameWrapper>
                       <EventNameInput></EventNameInput>
@@ -66,15 +64,15 @@ export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPane
                   <HostNameWrapper>
                     <HostNameInput></HostNameInput>
                   </HostNameWrapper>
-<CreateEventButtonWrapper>
-<ButtonCreateEvent>START EVENT</ButtonCreateEvent>
-</CreateEventButtonWrapper>
+                  <CreateEventButtonWrapper>
+                  <ButtonCreateEvent>START EVENT</ButtonCreateEvent>
+                  </CreateEventButtonWrapper>
                   
 
-</CreateEventWrapper>
+                  </CreateEventWrapper> */}
                       </>
-    )
-  }
+    {/* )
+  } */}
   </LiveFeedPanelWrapper>
 
 )}
