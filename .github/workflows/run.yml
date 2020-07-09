@@ -30,4 +30,4 @@ jobs:
     - name: Run a multi-line script
       run: |
         yarn install
-        yarn start
+        yarn build
