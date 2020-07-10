@@ -9,49 +9,26 @@ interface MessageListProps {
 
 export const MessageList: React.SFC<MessageListProps> = (props: MessageListProps) => {
   
-  const elementRef = useRef(null);  
-
-  // function getScroll() {
-  //   const data = elementRef.current ?  elementRef.current.getBoundingCLientRect() : 0;
-  //   const { bottom, top, left, right } = data;
-  //   return { bottom, top, left, right };
-  // }
-
-  const handleScroll = () => {
-
-    if (elementRef.current !== null) {
-      console.log("Scrolling...");
-      elementRef.current.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
-      //setScrollPosition(getScroll())
-    }
-
-  }
-  useEffect(() => {
-    
-    if (elementRef.current !== null) {
-      elementRef.addEventListener('scroll', handleScroll);
-      return () => elementRef.removeEventListener('scroll', handleScroll)
-    }
  
-  }, []) // Empty array ensures that effect is only run on mount and unmount
 
- //const [scrollPosition, setScrollPosition] = useState(handleScroll)
+  const messagesEndRef = useRef(null)
 
+  const scrollToBottom = () => {
+    (messagesEndRef && messagesEndRef.current) ? messagesEndRef.current.scrollIntoView({ behavior: "smooth" }) : {}
+  }
+
+  useEffect(scrollToBottom, [props.messages]); 
 
   const Messages = Array.from(props.messages).map( (onemessage: UserMessage) => {
-    
-    
-
-
+    //const elementRef = useRef(null);  
     return (
       <>
-      <div ref={elementRef} />
+      <div ref={messagesEndRef} />
       <Message message={onemessage} key={onemessage.key}/>
       </>
     );
-
-    }
-    );
+  }
+  );
 
 return (
   <MessageListWrapper>

@@ -15,7 +15,28 @@ const pubnubConfig = Object.assign(
   keyConfiguration
 );
 
+export const appData: AppState = {
+  simulateLogin: true,
+  eventName: "PubNub Live Event",
+  eventId: "PNEVT001",
+  eventHostAvatar: "",
+  messageBuffer: "",
+  users: [] ,
+  messages: [],
+  events: [],
+ 
+  pubnubConf: pubnubConfig,
+  defaultchannel: {
+    channels: ['liveeventdemo'],
+    withPresence: true
+  },
+  pubnub: new PubNub({
+    publishKey: pubnubConfig.publishKey,
+    subscribeKey: pubnubConfig.subscribeKey,
+    uuid: UUIDstamped001
+  }),
 
+}
 
 interface Event {
   id: string,
@@ -61,7 +82,6 @@ export class UserMessage implements Message {
   constructor(payload: string) {
     const tmpKey = generateUUID();
     this.internalKey = tmpKey;
-    debugger;
     console.log(payload);
     var data = JSON.parse(payload);
     if (!data.key ) {
@@ -242,28 +262,7 @@ const UUIDstamped004 = generateUUID();
 
 
 
-export const appData: AppState = {
-  simulateLogin: true,
-  eventName: "PubNub Live Event",
-  eventId: "PNEVT001",
-  eventHostAvatar: "",
-  messageBuffer: "",
-  users: [] ,
-  messages: [],
-  events: [],
- 
-  pubnubConf: pubnubConfig,
-  defaultchannel: {
-    channels: ['liveeventdemo'],
-    withPresence: true
-  },
-  pubnub: new PubNub({
-    publishKey: pubnubConfig.publishKey,
-    subscribeKey: pubnubConfig.subscribeKey,
-    uuid: UUIDstamped001
-  }),
 
-}
 export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
   
   const [state, dispatch] = useReducer(appStateReducer, appData)
