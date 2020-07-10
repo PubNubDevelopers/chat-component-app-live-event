@@ -267,7 +267,7 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
       state.pubnub.subscribe(state.defaultchannel);
       if (state.messageListFilter.length > 0) {
         console.log(`Filtering  message: ${state.messageListFilter}`);
-        //state.pubnub.setFilterExpression("language_tone !== 'offensive'");
+        state.pubnub.setFilterExpression("language_tone !== 'offensive'");
       }
       
 
