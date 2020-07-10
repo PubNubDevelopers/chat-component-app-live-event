@@ -5,26 +5,40 @@ import keyConfiguration from "../config/pubnub-keys.json";
 import { debug } from "console";
 
 
+//These are shared UUIDs that we can use when needed for messages, users and  internally.
+const UUIDstamped001 = generateUUID();
+const UUIDstamped002 = generateUUID();
+const UUIDstamped003 = generateUUID();
+const UUIDstamped004 = generateUUID();
+
+
+//This is the configuration for our PubNub connection.
 const pubnubConfig = Object.assign(
   {},
   {
-    // Ensure that subscriptions will be retained if the network connection is lost
-    restore: true,
-        heartbeatInterval: 0
+      // Ensure that subscriptions will be retained if the network connection is lost
+      restore: true,
+      //TODO
+      heartbeatInterval: 0
   },
   keyConfiguration
 );
 
+
 export const appData: AppState = {
   simulateLogin: true,
   eventName: "PubNub Live Event",
+  maxMessagesInList: 200,
   eventId: "PNEVT001",
+  messageListFilter: "",
+  //messageListFilter: "language_tone !== 'offensive",
   eventHostAvatar: "",
   messageBuffer: "",
   users: [] ,
   messages: [],
   events: [],
  
+ //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
   pubnubConf: pubnubConfig,
   defaultchannel: {
     channels: ['liveeventdemo'],
@@ -77,7 +91,7 @@ export class UserMessage implements Message {
   reactions?: null;
   addMessageReaction?: null;
   addActions?: null;
-  
+
 
   constructor(payload: string) {
     const tmpKey = generateUUID();
@@ -100,28 +114,13 @@ export class UserMessage implements Message {
     this.addActions= data.addActions;
   }
 }
-// interface Message {
-//   id: string,
-//   content: string,
-//   internalKey: string,
-//   key: string,
-//   senderId: string,
-//   message: string,
-//   UserAvatar: string,
-//   timetoken: null,
-//   senderName: string,
-//   dateFormat: string,
-//   reactions: null,
-//   addMessageReaction: null,
-//   addActions: null
-// }
-
 
 export interface AppState {
   simulateLogin: true,
   pubnubConf: typeof pubnubConfig,
   eventName: string,
   eventId: string,
+  messageListFilter: string,
   ownerAvatar: string,
   users: UserList, //For login simulation only since Users list is usually not stored here
   events: EventList, //For event pickup simulation only since Users list is usually not stored here
@@ -150,21 +149,6 @@ type Action =
   | {
     type: "ADD_MESSAGE",
     payload: string
-    // payload: {
-    //   listId: string,
-    //   messageContent: string
-    //   internalKey: string,
-    //   key: string,
-    //   senderId: string,
-    //   message: string,
-    //   UserAvatar: string,
-    //   timetoken: null,
-    //   senderName: string,
-    //   dateFormat: string,
-    //   reactions: null,
-    //   addMessageReaction: null,
-    //   addActions: null
-    // }
   }
   | {
     type: "SEND_MESSAGE",
@@ -188,6 +172,11 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
 
     case "ADD_MESSAGE": {
+
+      if (state.messages.length > state.maxMessagesInList ){
+        state.messages.shift();
+      }
+
       const debugMerged: AppState = {
         ...state,
         messages: [...state.messages as List<UserMessage> , {
@@ -255,20 +244,16 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
   }
 }
 
-const UUIDstamped001 = generateUUID();
-const UUIDstamped002 = generateUUID();
-const UUIDstamped003 = generateUUID();
-const UUIDstamped004 = generateUUID();
-
-
 
 
 export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
-  
+
   const [state, dispatch] = useReducer(appStateReducer, appData)
   useEffect(() => {
     try {
       console.log(`Subscribing to channel: ${state.defaultchannel.channels[0] ? state.defaultchannel.channels[0] : 'liveeventdemo'}`);
+ 
+      //This where PubNub receives messages subscribed by the channel.
       state.pubnub.addListener({
         message: (messageEvent) => {
           console.log(`RECEIVING MESSAGE ${messageEvent.message.key}`);
@@ -278,22 +263,13 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
           });
         },
       });
+
       state.pubnub.subscribe(state.defaultchannel);
-      // const tmpUUID = generateUUID();
-      // state.pubnub.publish({
-      //   channel: state.defaultchannel.channels[0],
-      //   message: { "internalKey": tmpUUID, 
-      //   "key": tmpUUID, 
-      //   "senderId": tmpUUID, 
-      //   "message": "Profit-focused disintermediate budgetary management", 
-      //   "UserAvatar": "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", 
-      //   "timetoken": "1592439990", 
-      //   "senderName": "noswick1", 
-      //   "dateFormat": null, 
-      //   "reactions": null, 
-      //   "addMessageReaction": null, 
-      //   "addActions": null },
-      // });
+      if (state.messageListFilter.length > 0) {
+        console.log(`Filtering  message: ${state.messageListFilter}`);
+        //state.pubnub.setFilterExpression("language_tone !== 'offensive'");
+      }
+      
 
     } catch (e) {
       console.log(`Subscribe error ${e.message}`);

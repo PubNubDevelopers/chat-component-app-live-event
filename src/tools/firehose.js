@@ -83,15 +83,30 @@ while (true) {
         var objValue = jsonObject[index];
         console.log(`payload: ${objValue}`);
       console.log(`Sending msg w/ timetoken`);
+
+      var filterMessageJSON =  {};
+      if (index%3 == 0){
+        console.log(`Setting up as  offensive message.`);
+       filterMessageJSON = {
+            meta: { 
+            }
+        };
+    } else {
+        filterMessageJSON = {
+            meta: { 
+                "language_tone":"offensive"
+            }
+        };
+
+    }
       pubnub.publish(
           {
               message: objValue,
               channel: channelName,
               sendByPost: true, // true to send via post
               storeInHistory: false, //override default storage options
-              meta: { 
-                  "sender": "firehose_live_event"
-              }   // publish extra meta with the request
+                // publish extra meta with the request
+              filterMessageJSON,
           }, 
           function (status, response) {
               if (status.error) {
