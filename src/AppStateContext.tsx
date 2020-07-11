@@ -27,22 +27,22 @@ const pubnubConfig = Object.assign(
 //This is where you define the Live Event Properties.
 export const appData: AppState = {
   simulateLogin: true,
-  eventName: "PubNub Live Event",
-  maxMessagesInList: 200,
-  eventId: "PNEVT001",
-  messageListFilter: ``,
+  eventName: "PubNub Live Event", //Event name as displayed by components.
+  maxMessagesInList: 200, //Max number of messages at most in the message list.
+  eventId: "PNEVT001", //Event ID as displayed by components.
+  messageListFilter: ``, //See README before changing this value.
   //messageListFilter: `"language_tone" !== "offensive"`,
-  eventHostAvatar: "",
-  messageBuffer: "",
-  users: [] ,
-  messages: [],
-  events: [],
+  eventHostAvatar: "", //The URL for the host avatar graphic file
+  messageBuffer: "", //Future use.
+  users: [] , //Future use.
+  messages: [], //Array of UserMessages Where live event messages are streamed into.
+  events: [] as Event[], //Future use
  
  //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
   pubnubConf: pubnubConfig,
-  defaultchannel: {
-    channels: ['liveeventdemo.row1'],
-    withPresence: true
+  defaultchannel: ``
+    channels: ['liveeventdemo.row1'], //Only one channel, split in different rows if required and load in props, can be set by load balancer.
+    withPresence: true //Presence can be set to false here.
   },
   pubnub: new PubNub({
     publishKey: pubnubConfig.publishKey,
@@ -262,10 +262,10 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
         },
       });
 
-      //Lets' subscribe on the default channel for now.
+      //Lets' subscribe on the default channel.
       state.pubnub.subscribe(state.defaultchannel);
 
-
+      //In case our App MessageListFilter propery we filter.
       if (state.messageListFilter.length > 0) {
         console.log(`Filtering  message: ${state.messageListFilter}`);
         state.pubnub.setFilterExpression(state.messageListFilter);
@@ -276,7 +276,7 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
       console.log(`Subscribe error ${e.message}`);
     }
 
-  }, []);
+  }, [appData]);
 
 
   return (

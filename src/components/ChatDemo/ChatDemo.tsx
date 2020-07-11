@@ -1,61 +1,51 @@
-import React, { useEffect, useState,useContext } from 'react';
-import {ChatDemoWrapper} from "./ChatDemo.style"
-import {LiveFeedPanel} from "../LiveFeedPanel"
-import {MessageListPanel} from "../MessageListPanel"
-import {EventDetailsTop} from "../EventDetailsTop"
-import {EventDetailsBottom} from "../EventDetailsBottom"
+import React, { useEffect, useState, useContext } from 'react';
+import { ChatDemoWrapper } from "./ChatDemo.style"
+import { LiveFeedPanel } from "../LiveFeedPanel"
+import { MessageListPanel } from "../MessageListPanel"
+import { EventDetailsTop } from "../EventDetailsTop"
+import { EventDetailsBottom } from "../EventDetailsBottom"
 import PromotionAd from "../PromotionAd";
 import { MessageListPanelWrapper } from '../MessageListPanel/MessageListPanel.styles';
-import { useAppState,AppStateProvider,AppStateContext } from "../../AppStateContext"
+import { useAppState, AppStateProvider, AppStateContext } from "../../AppStateContext"
 
 interface ChatInitProps {
-
+  //You can set props here to send to the ChatDemo component.
+  //propexample? : string,
 }
 
 export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
-  //const ChatDemo:FunctionComponent<{ props?: ChatInitProps }> = ({ props = {} }) => {
-  
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
- 
-  const [time, setTime] = useState<number | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  
 
-const opts = {
-  height: "100%",
-  width:  "850px",
-  playerVars: {
-    // https://developers.google.com/youtube/player_parameters
-    autoplay: 1,
-  },
-};
 
-return(
-  
-  <ChatDemoWrapper >
+  const opts = {
+    height: "100%",
+    width: "850px",
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+    },
+  };
 
-     { false && <EventDetailsTop/>}
+  return (
 
-     <LiveFeedPanel videoID="jZtxlp664yU"  opts={opts} onReady={(event) => {
-       event.target.pauseVideo();
-     }}/>
+    <ChatDemoWrapper >
 
-   <EventDetailsBottom />
-     
-     <MessageListPanelWrapper>
-     
-          <MessageListPanel/>
+      {false && <EventDetailsTop />}
 
-     </MessageListPanelWrapper>
-       
-       
-       {/* <ContentModPanel skin={props.skin} store={props.store} client={props.client}>
+      <LiveFeedPanel videoID="jZtxlp664yU" opts={opts} onReady={(event: { target: { pauseVideo: () => void; }; }) => {
+        event.target.pauseVideo();
+      }} />
 
-       </ContentModPanel> */}
-  </ChatDemoWrapper>
-  
-);
+      <EventDetailsBottom />
+
+      <MessageListPanelWrapper>
+
+        <MessageListPanel />
+
+      </MessageListPanelWrapper>
+
+    </ChatDemoWrapper>
+
+  );
 
 }
 
