@@ -24,14 +24,14 @@ const pubnubConfig = Object.assign(
   keyConfiguration
 );
 
-
+//This is where you define the Live Event Properties.
 export const appData: AppState = {
   simulateLogin: true,
   eventName: "PubNub Live Event",
   maxMessagesInList: 200,
   eventId: "PNEVT001",
-  messageListFilter: "",
-  //messageListFilter: "language_tone !== 'offensive",
+  messageListFilter: ``,
+  //messageListFilter: `"language_tone" !== "offensive"`,
   eventHostAvatar: "",
   messageBuffer: "",
   users: [] ,
@@ -41,7 +41,7 @@ export const appData: AppState = {
  //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
   pubnubConf: pubnubConfig,
   defaultchannel: {
-    channels: ['liveeventdemo'],
+    channels: ['liveeventdemo.row1'],
     withPresence: true
   },
   pubnub: new PubNub({
@@ -96,7 +96,6 @@ export class UserMessage implements Message {
   constructor(payload: string) {
     const tmpKey = generateUUID();
     this.internalKey = tmpKey;
-    console.log(payload);
     var data = JSON.parse(payload);
     if (!data.key ) {
       throw new Error('Invalid message payload received: ' + payload);
@@ -207,7 +206,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
       const msgId: string = generateUUID();
       state.pubnub.publish({
         //channel: state.defaultchannel.channels[0],
-        channel: 'liveeventdemo',
+        channel: 'liveeventdemo.row1',
         message: {
           "internalKey": msgId,
           "key": msgId,
@@ -251,12 +250,11 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [state, dispatch] = useReducer(appStateReducer, appData)
   useEffect(() => {
     try {
-      console.log(`Subscribing to channel: ${state.defaultchannel.channels[0] ? state.defaultchannel.channels[0] : 'liveeventdemo'}`);
  
       //This where PubNub receives messages subscribed by the channel.
       state.pubnub.addListener({
         message: (messageEvent) => {
-          console.log(`RECEIVING MESSAGE ${messageEvent.message.key}`);
+          //console.log(`RECEIVING MESSAGE ${messageEvent.message.key}`);
           dispatch({
             type: "ADD_MESSAGE",
             payload: messageEvent.message
@@ -264,10 +262,13 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
         },
       });
 
+      //Lets' subscribe on the default channel for now.
       state.pubnub.subscribe(state.defaultchannel);
+
+
       if (state.messageListFilter.length > 0) {
         console.log(`Filtering  message: ${state.messageListFilter}`);
-        state.pubnub.setFilterExpression("language_tone !== 'offensive'");
+        state.pubnub.setFilterExpression(state.messageListFilter);
       }
       
 

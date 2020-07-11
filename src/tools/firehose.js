@@ -67,7 +67,14 @@ async function asyncForEach(array, callback) {
         subscribeKey: subscribeKey,
         publishKey: publishKey,
         uuid: UUIDstamped001,
-        ssl: true
+        logVerbosity:  false, 
+        requestMessageCountThreshold: 200, //PNRequestMessageCountExceededCategory is thrown when the number of messages into the payload is above of requestMessageCountThreshold.
+        restore: false, //true to allow catch up on the front-end applications.
+        keepAlive: true, //If set to true, SDK will use the same TCP connection for each HTTP request, instead of opening a new one for each new request.
+        //origin: 'ps.pndsn.com', //If a custom domain is required, SDK accepts it here.
+        ssl: true,
+        listenToBrowserNetworkEvents: true, //If the browser fails to detect the network changes from WiFi to LAN and vice versa or you get reconnection issues, set the flag to false. This allows the SDK reconnection logic to take over.
+        suppressLeaveEvents: true, //When true the SDK doesn't send out the leave requests.
     });
 
     console.log(`Firehose process acquired PubNub connection.`);
@@ -81,34 +88,34 @@ while (true) {
         
         await waitFor(between(200,600));
         var objValue = jsonObject[index];
-        console.log(`payload: ${objValue}`);
       console.log(`Sending msg w/ timetoken`);
 
       var filterMessageJSON =  {};
-      if (index%3 == 0){
+      if (index%7 == 0){
         console.log(`Setting up as  offensive message.`);
        filterMessageJSON = {
-            meta: { 
-            }
         };
     } else {
         filterMessageJSON = {
-            meta: { 
                 "language_tone":"offensive"
-            }
         };
 
     }
+
+    const msgPayload = {
+        message: objValue,
+        channel: channelName,
+        sendByPost: true, // true to send via post
+        storeInHistory: false, 
+        //ttl: 10//override default storage options
+          // publish extra meta with the request
+        meta: filterMessageJSON,
+    };
+    console.log(`payload: ${JSON.stringify(msgPayload)}`);
+
       pubnub.publish(
-          {
-              message: objValue,
-              channel: channelName,
-              sendByPost: true, // true to send via post
-              storeInHistory: false, //override default storage options
-                // publish extra meta with the request
-              filterMessageJSON,
-          }, 
-          function (status, response) {
+        msgPayload, 
+        function (status, response) {
               if (status.error) {
                   // handle error
                   console.log(`ERROR: ${status}`);
