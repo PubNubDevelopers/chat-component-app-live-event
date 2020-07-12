@@ -53,9 +53,7 @@
     "webpack": "^3.3.11",
     "write-file-webpack-plugin": "^4.5.1",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "config-yargs":"16.13.1"
-  },
+    "webpack-dev-server": "^3.11.0"  },
   "scripts": {
     "bundle": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
