@@ -7,21 +7,24 @@ import { debug } from "console";
 
 //These are shared UUIDs that we can use when needed for messages, users and  internally.
 const UUIDstamped001 = generateUUID();
-const UUIDstamped002 = generateUUID();
-const UUIDstamped003 = generateUUID();
-const UUIDstamped004 = generateUUID();
+//const UUIDstamped002 = generateUUID();
+//const UUIDstamped003 = generateUUID();
+//const UUIDstamped004 = generateUUID();
 
 
 //This is the configuration for our PubNub connection.
+//We merge the keys from KeyConfiguration with basic configuration options for PubNub
 const pubnubConfig = Object.assign(
   {},
   {
-      // Ensure that subscriptions will be retained if the network connection is lost
-      restore: true,
-      //TODO
-      heartbeatInterval: 0
+      restore: true,       // Ensure that subscriptions will be retained if the network connection is lost
+      uuid: UUIDstamped001, // Our connection unique identifier, very important to avoid being charged for the same user in MAU mode.
+      ssl: true, //Encrypted end to end from  browser to PubNub network.
+      presenceTimeout: 130, // 
+      logVerbosity: false, //Show more in the browser console when enabled.
+      heartbeatInterval: 0 //
   },
-  keyConfiguration
+  keyConfiguration //Our keys extracted from the config directory in  the  pubnub-keys.json file
 );
 
 //This is where you define the Live Event Properties.
@@ -30,25 +33,23 @@ export const appData: AppState = {
   eventName: "PubNub Live Event", //Event name as displayed by components.
   maxMessagesInList: 200, //Max number of messages at most in the message list.
   eventId: "PNEVT001", //Event ID as displayed by components.
-  messageListFilter: ``, //See README before changing this value.
-  //messageListFilter: `"language_tone" !== "offensive"`,
+  messageListFilter: `language_tone != 'offensive'`, //See README before changing this value.
+  //messageListFilter: `language_tone != 'offensive'`,
   eventHostAvatar: "", //The URL for the host avatar graphic file
   messageBuffer: "", //Future use.
-  users: [] , //Future use.
+  //users: [] , //Future use.
   messages: [], //Array of UserMessages Where live event messages are streamed into.
-  events: [] as Event[], //Future use
- 
- //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
-  pubnubConf: pubnubConfig,
-  defaultchannel: ``
+  events: [] , //Future use
+  pubnubConf: pubnubConfig,  //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
+  defaultchannel: {
     channels: ['liveeventdemo.row1'], //Only one channel, split in different rows if required and load in props, can be set by load balancer.
     withPresence: true //Presence can be set to false here.
   },
   pubnub: new PubNub({
     publishKey: pubnubConfig.publishKey,
-    subscribeKey: pubnubConfig.subscribeKey,
-    uuid: UUIDstamped001
+    subscribeKey: pubnubConfig.subscribeKey
   }),
+  message: "",
 
 }
 
@@ -81,7 +82,7 @@ export interface Message {
 export class UserMessage implements Message {
   id: string;
   internalKey: string;
-  key?: string;
+  key: string;
   senderId: string;
   message: string;
   UserAvatar?: string;
@@ -114,17 +115,23 @@ export class UserMessage implements Message {
   }
 }
 
+//This is the default settings for your Live Event Chat App.
+//Change these settings to your liking.
 export interface AppState {
   simulateLogin: true,
-  pubnubConf: typeof pubnubConfig,
   eventName: string,
   eventId: string,
+  maxMessagesInList: number,
   messageListFilter: string,
+  messageBuffer?: string;
+  message: string;
   ownerAvatar: string,
+  eventHostAvatar: string,
   users: UserList, //For login simulation only since Users list is usually not stored here
-  events: EventList, //For event pickup simulation only since Users list is usually not stored here
-  messages: UserMessage[], //Where the current Messages to be displayed are stored.
-  pubnub: PubNub, //Our link to PubNub
+  events?: EventList, //For event pickup simulation only since Users list is usually not stored here
+  messages: UserMessage[], //Where the  Messages from all participants to the event are stored.
+  pubnub: PubNub,
+  pubnubConf: typeof pubnubConfig, //Our link to PubNub
   defaultchannel: SubscribeParameters //The default channel associated to the demo, should be associated with an Event.
 }
 
@@ -260,10 +267,27 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
             payload: messageEvent.message
           });
         },
+
       });
+
+    //   state.pubnub.addListener({
+    //     presence: function(p) {
+    //       console.log(JSON.stringify(p));
+    //         // handle presence
+    //         var action = p.action; // Can be join, leave, state-change or timeout
+    //         var channelName = p.channel; // The channel for which the message belongs
+    //         var occupancy = p.occupancy; // No. of users connected with the channel
+    //         var state = p.state; // User State
+    //         var channelGroup = p.subscription; //  The channel group or wildcard subscription match (if exists)
+    //         var publishTime = p.timestamp; // Publish timetoken
+    //         var timetoken = p.timetoken;  // Current timetoken
+    //         var uuid = p.uuid; // UUIDs of users who are connected with the channel
+    //     }
+    // });
 
       //Lets' subscribe on the default channel.
       state.pubnub.subscribe(state.defaultchannel);
+
 
       //In case our App MessageListFilter propery we filter.
       if (state.messageListFilter.length > 0) {
