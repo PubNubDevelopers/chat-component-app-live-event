@@ -20,10 +20,11 @@ module.exports = {
       // we use babel-loader to load our jsx and tsx files
     {
       test: /\.(ts|js)x?$/,
-      //exclude: /node_modules/,
+      exclude: /node_modules/,
       use: {
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
+
     },
     
     // css-loader to bundle all the css files into one file and style-loader to add all the styles  inside the style tag of the document

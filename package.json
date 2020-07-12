@@ -78,7 +78,7 @@
     "source-map-loader": "^0.2.4",
     "ts-loader": "^7.0.5",
     "typescript": "3.9.3",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "3.3.12"
   },
   "babel": {
     "presets": [
