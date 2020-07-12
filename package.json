@@ -1,6 +1,9 @@
 {
   "name": "typescript-ref-app-stream-chat",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "engines": {
+    "yarn": "1.22.4"
+  },
   "private": true,
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.10.1",
@@ -16,13 +19,12 @@
     "@types/pubnub": "^4.27.2",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "@types/react-redux": "^7.1.2",
     "@types/react-transition-group": "4.4.0",
     "@types/styled-components": "^5.0.1",
     "babel-plugin-styled-components": "^1.10.7",
     "cli-progress": "^3.8.2",
     "copy-webpack-plugin": "^6.0.1",
-    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react": "^7.20.3",
     "file-loader": "^6.0.0",
     "file-system": "^2.2.2",
     "import-fresh": "3.2.1",
@@ -31,11 +33,9 @@
     "postcss-css-variables": "^0.17.0",
     "postcss-loader": "^3.0.0",
     "pubnub": "4.27.6",
-    "pubnub-react@rc": "2.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-form": "^4.0.1",
-    "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
     "react-youtube": "^7.11.2",
     "reselect": "^4.0.0",
@@ -46,7 +46,7 @@
     "typings-for-css-modules-loader": "^1.7.0",
     "url-loader": "^4.1.0",
     "watch-ignore-webpack-plugin": "^1.0.0",
-    "webpack": "^4.37.0",
+    "webpack": "^4.43.0",
     "write-file-webpack-plugin": "^4.5.1"
   },
   "scripts": {
