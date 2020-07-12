@@ -25,3 +25,5 @@ dist/
 dist/*.*.hot-update.json
 dist/*.hot-update.json
 .github/actions/**/*.js
+src/img/loginMergedBG.svg
+stats.json
