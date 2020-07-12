@@ -185,7 +185,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
 
       const debugMerged: AppState = {
         ...state,
-        messages: [...state.messages as List<UserMessage> , {
+        messages: [...state.messages as Array<UserMessage> , {
           ...action.payload
         }
         ]
