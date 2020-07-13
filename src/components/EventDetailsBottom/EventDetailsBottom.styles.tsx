@@ -178,7 +178,7 @@ export const BottomFollowButtonWrapper = styled.div`
 left: 530px;
 display: inline;
 position: absolute;
-width: 90px;
+width: 95px;
 height: 30px;
 padding-left: 7px;
 padding-right: 30px;

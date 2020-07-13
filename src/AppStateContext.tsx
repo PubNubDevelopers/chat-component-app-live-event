@@ -174,20 +174,25 @@ export const AppStateContext = createContext<AppStateContextProps>(
   {} as AppStateContextProps
 )
 
+//This is where the interaction with the back end operates.
+//The functions below are accessible through passing parameters to a dispatch function always accessible in our components. 
 export const appStateReducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
 
+    //ADD_MESSAGE adds an incoming message to our internal MessageList buffer.
     case "ADD_MESSAGE": {
-
+      //If the messagelist is over our cap we discard the oldest message in the list.
       if (state.messages.length > state.maxMessagesInList ){
         state.messages.shift();
       }
 
       const debugMerged: AppState = {
         ...state,
-        messages: [...state.messages as Array<UserMessage> , {
-          ...action.payload
-        }
+        messages: [
+          ...state.messages as Array<UserMessage>,
+          {
+            ...action.payload
+          }
         ]
       };
 

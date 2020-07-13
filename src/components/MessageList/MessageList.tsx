@@ -8,13 +8,17 @@ interface MessageListProps {
 }
 
 export const MessageList: React.SFC<MessageListProps> = (props: MessageListProps) => {
-  
- 
 
-  const messagesEndRef = useRef(null)
 
+  const messagesEndRef = useRef(null) //This is our reference to the instance of this component in the DOM
+  //const listBottomPos = messagesEndRef.current.getBoundingClientRect().bottom;
+  //console.log(`listBottomPos: ${listBottomPos}`);
   const scrollToBottom = () => {
-    (messagesEndRef && messagesEndRef.current) ? messagesEndRef.current.scrollIntoView({ behavior: "smooth" }) : {}
+    (
+      messagesEndRef
+      && messagesEndRef.current
+      //&& messagesEndRef.current.
+    ) ? messagesEndRef.current.scrollIntoView({ behavior: "smooth" }) : {}
   }
 
   useEffect(scrollToBottom, [props.messages]); 

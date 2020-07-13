@@ -57,7 +57,7 @@
   "scripts": {
     "bundle": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode production --open",
+    "start": "webpack-dev-server --mode development --open --hot",
     "dev": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "firehose": "node src/tools/firehose.js start liveeventdemo.row1" 
