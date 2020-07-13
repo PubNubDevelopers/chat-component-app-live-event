@@ -105,11 +105,10 @@ while (true) {
     const msgPayload = {
         message: objValue,
         channel: channelName,
-        sendByPost: true, // true to send via post
-        storeInHistory: false, 
-        //ttl: 10//override default storage options
-          // publish extra meta with the request
-        meta: filterMessageJSON,
+        sendByPost: true, // true to send via post, uses compression.
+        ttl: 1, //How many hours to store the messages in history. Matches a one hour event.
+        storeInHistory: false, //We do not store history for this demo.
+        meta: filterMessageJSON, // publish extra meta with the request
     };
     console.log(`payload: ${JSON.stringify(msgPayload)}`);
 
@@ -118,9 +117,9 @@ while (true) {
         function (status, response) {
               if (status.error) {
                   // handle error
-                  console.log(`ERROR: ${status}`);
+                  console.log(`ERROR publishing message from PubNub SDK: ${status}`);
               } else {
-                  console.log(`message Published w/ timetoken ${response.timetoken}`);
+                  console.log(`message Published through PubNub SDK w/ timetoken ${response.timetoken}`);
               }
           }
 

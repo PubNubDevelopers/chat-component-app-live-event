@@ -214,6 +214,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
       state.pubnub.publish({
         //channel: state.defaultchannel.channels[0],
         channel: 'liveeventdemo.row1',
+        sendByPost: true,
         message: {
           "internalKey": msgId,
           "key": msgId,
