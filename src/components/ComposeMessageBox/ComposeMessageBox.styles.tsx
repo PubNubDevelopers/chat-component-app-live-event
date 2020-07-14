@@ -4,36 +4,35 @@ export const ComposeMessageBoxWrapper = styled.div`
  //display: flex;
  background-color: black;
  width: 200px;
-    height: 60px;
+ height: 90px;
  margin-left: 0px;
  left: 0px;
-    top: 658px;
+ top: 658px;
  position: absolute;
 `;
 
-export const TextInputWrapper = styled.input.attrs({ 
-   type: 'text',
+export const TextInputWrapper = styled.div.attrs({ 
    placeholder: "Type your message here...",
       //value: 'Submit'
 
- })`
-margin-top: 9px;
-margin-left: 0px;
-padding-left: 20px;
-padding-right: 60px;
-left: 55px;
-top: 0px;
-height: 47px;
-width: 260px;
+})`
+ 
+text-align: center;
+padding-left: 50px;
+margin-right: 50px;
+top: 12px;
+width: 120px;
+position: absolute;
+left: 10px;
 border-width: 0px;
 border-radius: 230px;
 background-color: rgba(255, 255, 255, 0.1);
 color: white;
-position: absolute;`
+`
 
 
 export const UserImgWrapper = styled.img `
-margin-top: 14px;
+margin-top: 9px;
 margin-left: 10px;
 top: 0px;
 height: 40px;

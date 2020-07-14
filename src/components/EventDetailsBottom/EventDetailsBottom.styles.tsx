@@ -131,7 +131,7 @@ export const HostNameWrapper = styled.span`
 
 export const HostImageWrapper = styled.img`
 
-top: 18px;
+top: 10px;
 margin-left: 7px;
 left: 0px;
 width: 50px;
@@ -292,7 +292,7 @@ export const EventDetailsTopWrapper = styled.div`
 export const EventDetailsBottomWrapper = styled.div`
  display: flex;
  position: absolute;
- width: 900px;
+ width: 850px;
  height: 100px;
  left: 0px;
  top: 660px;

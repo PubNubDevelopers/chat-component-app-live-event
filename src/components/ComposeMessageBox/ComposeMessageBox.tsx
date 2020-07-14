@@ -42,24 +42,25 @@ export const SendMessageField = () => {
   return (
     <section style={{ 
       textAlign: "center",
-      paddingLeft: "50px",
+      paddingLeft: "15px",
       marginRight: "50px",
-      top: "23px",
-      width: "120px",
-      position:"absolute",
-      left: "10px",
+      paddingTop: "12px",
+      top: "-4px",
+      width: "258px",
+      height: "46px",
+      position: "absolute",
+      left: "45px",
       borderWidth: "0px",
       borderRadius: "230px",
-      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      backgroundColor: "white",
       color:"white",
-      
       }}>
       {/* <div>
         <button onClick={handleBtnClick}>Focus and Populate Text Field</button>
       </div> */}
       {/* <input onKeyPress={handleKeyDown} ref={textAreaEl} id="story" rows="5" cols="33" /> */}
 
-      <input onKeyPress={handleKeyDown} ref={textAreaEl} id="messageContent"  />
+      <input onKeyPress={handleKeyDown} style={{ position: "absolute", fontSize:"larger", width: "170px", borderWidth: "0px", borderRadius: "100px", backgroundColor: "white", top: "8px", height: "30px", left: "15px"}} ref={textAreaEl} id="messageContent" />
     </section>
   );
 };

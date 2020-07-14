@@ -8,6 +8,7 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.10.1",
+    "@n8tb1t/use-scroll-position": "^1.0.43",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -21,11 +22,11 @@
     "@types/react-transition-group": "4.4.0",
     "@types/styled-components": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@webpack-cli/serve": "^0.2.0",
     "babel-plugin-styled-components": "^1.10.7",
     "cli-progress": "^3.8.2",
     "command-line-args": "^5.1.1",
     "copy-webpack-plugin": "^6.0.1",
-    "@webpack-cli/serve": "^0.2.0",
     "css-loader": "^3.6.0",
     "eslint-plugin-react": "^7.20.3",
     "file-loader": "^6.0.0",
@@ -50,18 +51,19 @@
     "typings-for-css-modules-loader": "^1.7.0",
     "url-loader": "^4.1.0",
     "watch-ignore-webpack-plugin": "^1.0.0",
-    "webpack": "^3.3.11",
-    "write-file-webpack-plugin": "^4.5.1",
+    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"  },
+    "webpack-dev-server": "^3.11.0",
+    "write-file-webpack-plugin": "^4.5.1"
+  },
   "scripts": {
     "bundle": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open --hot",
     "dev": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
-    "firehose": "node src/tools/firehose.js start liveeventdemo.row1" 
-   },
+    "firehose": "node src/tools/firehose.js start liveeventdemo.row1"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

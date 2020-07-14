@@ -1,45 +1,58 @@
-import React, { useCallback, FunctionComponent, useEffect, useState, useContext,useRef } from 'react';
+import React, { useCallback,FunctionComponent, useReducer, useEffect, useState, useContext, useRef } from 'react';
 import { MessageListWrapper } from './MessageList.styles';
 import { Message } from '../Message/Message';
-import {UserMessage} from '../../AppStateContext';
+import { UserMessage, appStateReducer, appData,useAppState } from '../../AppStateContext';
+import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 
 interface MessageListProps {
-  messages: UserMessage[],
+  messages?: UserMessage[],
 }
 
 export const MessageList: React.SFC<MessageListProps> = (props: MessageListProps) => {
-
-
+  
+  const { state } = useAppState();
+  const [stopOnScroll, setStopOnScroll] = useState(false);
   const messagesEndRef = useRef(null) //This is our reference to the instance of this component in the DOM
   //const listBottomPos = messagesEndRef.current.getBoundingClientRect().bottom;
   //console.log(`listBottomPos: ${listBottomPos}`);
   const scrollToBottom = () => {
+
     (
-      messagesEndRef
+      !stopOnScroll
+      && messagesEndRef
       && messagesEndRef.current
-      //&& messagesEndRef.current.
     ) ? messagesEndRef.current.scrollIntoView({ behavior: "smooth" }) : {}
+
   }
 
-  useEffect(scrollToBottom, [props.messages]); 
+  useScrollPosition(({ prevPos, currPos }) => {
+    //const bottom = messagesEndRef.current.scrollHeight - currPos.y;//=== e.target.clientHeight;
+    const isShow = currPos.y > prevPos.y
+    console.log(`${isShow}`);
+    if (isShow !== stopOnScroll) setStopOnScroll(isShow)
+  }, [])
 
-  const Messages = Array.from(props.messages).map( (onemessage: UserMessage) => {
-    //const elementRef = useRef(null);  
+    useEffect(scrollToBottom, [state.messages]);
+
+  
+
+  const Messages = Array.from(state.messages).map((onemessage: UserMessage) => {
+    //const elementRef = useRef();  
     return (
       <>
-      <div ref={messagesEndRef} />
-      <Message message={onemessage} key={onemessage.key}/>
+        <div ref={messagesEndRef} />
+        <Message message={onemessage} key={onemessage.key} />
       </>
     );
   }
   );
 
-return (
-  <MessageListWrapper>
+  return (
+    <MessageListWrapper>
       {Messages}
-  </MessageListWrapper>
+    </MessageListWrapper>
 
-);
+  );
 
 }
 

@@ -13,7 +13,8 @@ module.exports = {
   },
   devServer: {
     inline: true,
-    port: 8080,
+    host: '0.0.0.0', //Listen on all interfaces so local lan browser can access.
+    port: 8080, //port number where to run run the web app i.e.: http://localhost:8080
     historyApiFallback: true,
     bonjour: true,
   },

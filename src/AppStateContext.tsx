@@ -35,9 +35,10 @@ export const appData: AppState = {
   eventId: "PNEVT001", //Event ID as displayed by components.
   messageListFilter: `language_tone != 'offensive'`, //See README before changing this value.
   //messageListFilter: `language_tone != 'offensive'`,
-  eventHostAvatar: "", //The URL for the host avatar graphic file
+  eventHostAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
+  eventAvatar:"/images/companyLogo@3x.png",
   messageBuffer: "", //Future use.
-  //users: [] , //Future use.
+  //users: [] ,temnte //Future use.
   messages: [], //Array of UserMessages Where live event messages are streamed into.
   events: [] , //Future use
   pubnubConf: pubnubConfig,  //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
@@ -127,6 +128,7 @@ export interface AppState {
   message: string;
   ownerAvatar: string,
   eventHostAvatar: string,
+  eventAvatar: string,
   users: UserList, //For login simulation only since Users list is usually not stored here
   events?: EventList, //For event pickup simulation only since Users list is usually not stored here
   messages: UserMessage[], //Where the  Messages from all participants to the event are stored.
