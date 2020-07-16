@@ -226,13 +226,19 @@ TO BE COMPLETED
 
 ## Using the Sketch file
 
-This Live Event Chat app is based on a professional UI design built with [Sketch](https://www.sketch.com/). You can find the Sketch file used for this design in the root of this repository in a file named: "Live Event Chat.sketch".
+This Live Event Chat app provides a very simple way to show how it is possible to add Chat fonctionalities to an existing React app or simply use as a template for your own Live Chat Event.
+Some simple components are provided that you can simply copy and paste in your code. Or you can run this application on a server, as is, to experiment with PubNub scalability and responsiveness.
+
+The Live Event Chat app is based on a professional UI design built with [Sketch](https://www.sketch.com/). You can find the Sketch file used for this design in the root of this repository in a file named: "Live Event Chat.sketch".
 
 The Sketch file contains Sketch "Symbols". Each Symbol matches a React Component and a React "Styled Component".
 
 By generating Symbols from Sketch graphics it is possible to isolate the parts of the screen that matches the components in code and group these parts into clearly defined and reusable Symbols. Sketch Symbols can be reused in a new Sketch design document by simply dragging them from the Sketch Symbols List to the artboard.
 
 It is also common practice to use such named: "Design Systems" when working with large projects involving both a development and a design team so their working on the same components can stay synchronized and usable by the rest of the teams and future team members so they have a quick view as well as easy drilling into each component, both from code and design. One popular design system is Zeplin and its use for this project is described at the end of this document. Zeplin is not needed to run this project, nor Sketch, but they will allow you to reuse this project effectively if you are working in an environment where the engineering and design team must work effectively together.
+
+This project contains a Live Event Chat simulator of chat messages.
+
 
 ### PubNub Symbols
 
@@ -328,6 +334,22 @@ return(
 );
 ...
 ``` -->
+
+### Simulating chat users sending messages.
+
+This project contains a script file in the tools directory named firehose.js. You can simply run it from the command line by running:
+
+```tsx
+yarn firehose
+```
+
+If you want to change the channel the messages are sent you can edit the package.json file and search for the line containing "node firehose.js liveeventdemo.row1" and change "liveeventdemo.row1" to whatever channel you are using when running the project. Please note that "liveeventdemo.row1" is an arbitrary name but must be the same for people to see the same messages showing up from the firehose script.
+You can edit this script to change the timing or the source of the messages sent through the channel.
+You can also run the firehose.js file individually by running the following from the terminal after you cd inside the tools directory:
+
+```script
+node firehose.js channelname
+```
 
 ### About React
 
