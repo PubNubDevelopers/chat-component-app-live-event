@@ -31,7 +31,7 @@ const pubnubConfig = Object.assign(
 export const appData: AppState = {
   simulateLogin: true,
   eventName: "PubNub Live Event", //Event name as displayed by components.
-  maxMessagesInList: 200, //Max number of messages at most in the message list.
+  maxMessagesInList: 200, //Max number of messages displayed at most in the message list. the more messages the more memory will be consumed by the browser.
   eventId: "PNEVT001", //Event ID as displayed by components.
   messageListFilter: `language_tone != 'offensive'`, //See README before changing this value.
   //messageListFilter: `language_tone != 'offensive'`,
@@ -39,7 +39,7 @@ export const appData: AppState = {
   eventAvatar:"/images/companyLogo@3x.png",
   messageBuffer: "", //Future use.
   //users: [] ,temnte //Future use.
-  messages: [], //Array of UserMessages Where live event messages are streamed into.
+  messages: [], //Array of UserMessages, intitalized to empty, Where live event messages are streamed into.
   events: [] , //Future use
   pubnubConf: pubnubConfig,  //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
   defaultchannel: {

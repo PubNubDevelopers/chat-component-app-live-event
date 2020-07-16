@@ -1,7 +1,7 @@
 # ReactJS Live Stream Chat Starter Kit
 
 
-![Login screen](src/img/LiveEditing.gif)
+<!-- ![Login screen](src/img/LiveEditing.gif) -->
 
 #### Project status 
 - LOTS OF CHANGES WILL UPDATE STATUS SOON
@@ -49,20 +49,22 @@ Using Overrides one can simply override each component property, including graph
 
 * A sample Sketch design file that maps to the css delivered in the source code so your Chat app can look designer generated.
 
-* React files, and React js libraries, in typescript, allowing to run a web server application for hosting a Chat app. It can run on your computer or served hosted anywhere on the Internet for public access (The goal of this repo is not based on best security practices so you may want to bring in your security expert before doing so).
+* React files, and React js libraries, in typescript, allowing to run a web server application for hosting a Chat app and connect to it locally and through your LAN. It can run on your computer or served hosted anywhere on the Internet for public access.
 
-* A list of third party libraries used in the app is available in the package.json file. The command « yarn install » ran from the terminal will update your code with fresh cloned files for the versions of these libraries indicated right after their names under the header: dependencies in the package.json file located at the top of the project directory.
+* A list of third party libraries used in the app is available in the package.json file, you don't need to open it to run the app. The command « yarn install » ran from the terminal will update your code with fresh cloned files for the versions of these libraries, it looks on that package.json file to make sure all libraries are available to your app.
 
-* The PubNub Live Event Chat Component library to display the chat UI and content.
+* The PubNub Live Event Chat Components library to display the chat UI and content.
 
 
 ## In the project directory:
 
 1. Install ReactJS if not done already.
 2. Clone this repository in your work directory.
-3. Try this Web App on your computer. Launch a terminal, cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically:
+3. Try this Web App on your computer. Launch a terminal, cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" is optional but will send messages to the sample channel the app will be connecting to.):
 
     `yarn install`
+
+    `yarn firehose`
 
     `yarn start`
 
@@ -76,21 +78,13 @@ If you want to bypass our beautiful login screen and access the Live Event selec
       </AppStateProvider>
 </Wrapper>
 ```
-(no need to restart since webpack reloads the chat server files automatically when detecting a change in one of them):
+(You do not need to restart the App by running "yarn start" since webpack reloads the chat server files automatically when detecting a change in one of them, so if you have a browser openeed to your app address you will see the updates on the page immediately):
  
 `directToEvent = true;`
 
 ## Visuals
 
-### Login:
 
-![Login screen](src/img/ScreenshotReactAppLogin.jpg)
-
-The code  to customize the Login screen with your design can be found in /src/components/PromotionAd/PromotionAd.styles.tsx
-To change the design all you need to do is edit the design file included inside the directory: The name of the file is Login.style.tsx.
-You can try it out by adding your own image file instead of the one on the login screen for example:
-1. Drop a file into the /src/img directory and remember its name because you will need it in the next step.
-2. Then simply change the name of the image file in the PromotionAd.style.tsx where it shows: `background: url("images/promotionAd.png") no-repeat;`
 
 ### Live Event
 
@@ -163,8 +157,7 @@ These props are passed from a higher level component in the component tree where
 
 #### ComposeMessageBoxWrapper
 
-
-````tsx   
+````tsx
       <ComposeMessageBoxWrapper>
         <UserImgWrapper src="/images/hostImage@3x.png" />
         <TextInputWrapper></TextInputWrapper>
@@ -173,11 +166,12 @@ These props are passed from a higher level component in the component tree where
 ````
 
 
-### Event selection:
+
+<!-- ### Event selection:
 
 TO BE COMPLETED
 
-### Moderator:
+### Moderator: -->
 
 TO BE COMPLETED
 
@@ -198,9 +192,21 @@ The best way to understand the relationship between components and the Sketch fi
 This was about deleting the PromotionAd component all together from the page. But say you want to change the picture but keep that PromotionAd React Component on the page, then, first open the Sketch file and find the promotionAd Symbol then we will use the very powerful "Symbol Override" feature to pick another picture and easilly export it from Sketch to our img directory that contains all our images assets. You can see how it is done below:
 
 Open the Sketch file and select "Layers" from the Side Bar on the left of the screen. Type: "promotionAd" in the "Search Layer" box then click on Symbol in the Inspector pane on the right of the screen:
-   
- 	
 
+![Login screen](src/img/ScreenshotReactAppLogin.jpg)
+
+The tag to customize the Login screen with your design can be found in /src/components/PromotionAd/PromotionAd.styles.tsx
+To change the design all you need to do is edit the design file included inside the directory: The name of the file is Login.style.tsx.
+
+You can try it out by adding your own image file instead of the one on the login screen for example:
+1. Drop a file into the /src/img directory and remember its name because you will need it in the next step.
+2. Then simply change the name of the image file in the PromotionAd.style.tsx where it shows: `background: url("images/promotionAd.png") no-repeat;`
+
+
+
+TO BE COMPLETED
+
+## Get started with the code template
 
 ## Updating the Sketch file and generating new elements
 
@@ -212,13 +218,12 @@ TO BE COMPLETED
 
 ### Continuous integration of updated included Sketch designs
 
-TO BE COMPLETED
-
-## Get started with the code template
-
 ### Using the PubNub Chat Components
 
-#### Login
+#### Chat Components
+
+#### Login Components
+
 TO BE COMPLETED: SHOW VISUAL MAP
 
 ##### In: src/components/Login.tsx
@@ -271,34 +276,41 @@ return(
 ...
 ```
 
+### About React
 
-## Learn More
+A JavaScript library for building user interfaces. <https://reactjs.org/>
 
-TO BE COMPLETED
+### About TypeScript
 
-### About React:
+TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. 
 
-TO BE COMPLETED
+Any browser. Any host. Any OS. Open source.
 
-### About TypeScript:
-
-TO BE COMPLETED
+<https://www.typescriptlang.org>
 
 ### About PubNub React library for Java Script: 
 
-TO BE COMPLETED
+This is the library used internally by the component to connect this React web application with the PubNub backend. You don't need to learn it to use the existing components, but it is required if you want to build your own components.
 
-### About Styled Components: https://styled-components.com/docs/basics#styling-any-component 
+### About Styled Components
 
-TO BE COMPLETED
+Styled Components is simply the name of a library now commonly used along with React Apps because it allows to wrap visual React Components around Wrapper components that control the look of the Components wrapped inside.
 
-### About Sketch: 
+You don't need to learn it to use the existing components, but it is required if you want to build your own components or if you want to customize the components provided in this repository.
 
-TO BE COMPLETED
+(<https://styled-components.com/docs/basics#styling-any-component>)
 
-## Third party tools
+### About Sketch
 
-### Zeplin
+Create, prototype, collaborate, and bring your ideas to life with the design platform used by over one million people — from freelancers, to the world’s largest teams.
+
+(htpps://sketch.com)
+
+### About Zeplin
+
+The better way to share, organize and collaborate on designs—built with developers in mind.
+
+(<https://zeplin.io/>)
 
 ![Code Maping](src/img/Design2CodeMatch.png)
 

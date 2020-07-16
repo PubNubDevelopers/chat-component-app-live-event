@@ -26,9 +26,7 @@ export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = (props: Ev
 
   return( 
 
-        <EventDetailsBottomWrapper>
-
-
+      <EventDetailsBottomWrapper>
       <HostImageWrapper src={state.eventAvatar}/>
 
             <HostNameWrapper>{state.eventName}</HostNameWrapper>
