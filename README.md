@@ -205,7 +205,7 @@ It is used often within a loop to display a list of messages by other components
 
 #### ComposeMessageBox
 
-This is the where the chat user composes messages to be sent to the event chat channel.
+This is where the chat user composes messages to be sent to the event chat channel.
 
 ````tsx
       <ComposeMessageBoxWrapper>
