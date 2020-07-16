@@ -230,6 +230,10 @@ This Live Event Chat app is based on a professional UI design built with [Sketch
 
 The Sketch file contains Sketch "Symbols". Each Symbol matches a React Component and a React "Styled Component".
 
+By generating Symbols from Sketch graphics it is possible to isolate the parts of the screen that matches the components in code and group these parts into clearly defined and reusable Symbols. Sketch Symbols can be reused in a new Sketch design document by simply dragging them from the Sketch Symbols List to the artboard.
+
+It is also common practice to use such named: "Design Systems" when working with large projects involving both a development and a design team so their working on the same components can stay synchronized and usable by the rest of the teams and future team members so they have a quick view as well as easy drilling into each component, both from code and design. One popular design system is Zeplin and its use for this project is described at the end of this document. Zeplin is not needed to run this project, nor Sketch, but they will allow you to reuse this project effectively if you are working in an environment where the engineering and design team must work effectively together.
+
 ### PubNub Symbols
 
 The simplest way to modify the provided Sketch file design provided and to quickly reflect the changes in the app is by modifying the matching Symbol in the Sketch file for the React Component you wish to change the display for.
@@ -361,7 +365,8 @@ The better way to share, organize and collaborate on designs—built with develo
 
 (<https://zeplin.io/>)
 
-If you have Sketch installed you can install the Zeplin extension to Sketch and you will be able to connect this project with Sketch through your Zeplin account.
+If you have Sketch installed you can install the Zeplin extension to Sketch and you will be able to connect this project with Sketch through your Zeplin account. You can learn about how Zeplin and Sketch work together to compose a so called "Design System" as it is commonly used for large projects. (<https://webdesign.tutsplus.com/articles/sketch-and-zeplin-helping-designers-and-developers-collaborate--cms-26421>)
+
 
 ![Code Maping](src/img/Design2CodeMatch.png)
 
@@ -386,7 +391,7 @@ It is based on this map that it becomes possible to automatically sync all digit
 
 ![Code Maping](src/img/Visual2CodeMaping.png)
 
-(If you use Microsoft Visual Code you can install the Zeplin extension and automatically configure the maping between your code and Zeplin components)
+(If you use Microsoft Visual Code you can install the Zeplin extension and automatically configure the maping between your code and Zeplin components (<https://blog.zeplin.io/introducing-zeplin-for-visual-studio-code-edbc922a5784>))
 
 ![Code Maping](src/img/VisualCodeZeplinView.png)
 
