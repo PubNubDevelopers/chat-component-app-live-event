@@ -89,8 +89,6 @@ If you want to bypass our beautiful login screen and access the Live Event selec
 
 (You do not need to restart the App by running "yarn start" since webpack reloads the chat server files automatically when detecting a change in one of them, so if you have a browser openeed to your app address you will see the updates on the page immediately):
 
-`directToEvent = true;`
-
 ## Visuals
 
 ### Live Event
