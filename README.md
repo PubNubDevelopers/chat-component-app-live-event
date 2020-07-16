@@ -49,15 +49,26 @@ Using Overrides one can simply override each component property, including graph
 
 * The PubNub Live Event Chat Components library to display the chat UI and content.
 
-## In the project directory:
+You can run this web app on your computer or try it out by clicking here (TO DO: Add codesandbox.io link).
 
-1. Install ReactJS if not done already.
+## Run the app on your computer
 
-2. Clone this repository in your work directory.
+1. Install git if not done already. 
 
-3. Edit the pubnub-keys.json file, in the config directory, with the publish and subscribe keys you can find on the pubnub portal (<https://admin.pubnub.com>)
+(<https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>)
 
-4. Try this Web App on your computer. Launch a terminal, cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" is optional but will send messages to the sample channel the app will be connecting to.):
+1. Install React JS and git if not done already. 
+   (<https://reactjs.org/docs/add-react-to-a-website.html#add-react-in-one-minute>)
+
+2. Clone this repository in your work directory from the terminal after cd into it:
+
+```script
+# git clone git@github.com:PubNubDevelopers/typescript-ref-app-stream-chat.git
+```
+
+1. Edit the pubnub-keys.json file, in the config directory, with the publish and subscribe keys you can find on the pubnub portal (<https://admin.pubnub.com>)
+
+2. Try this Web App on your computer. Launch a terminal, cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" is optional but will send messages to the sample channel the app will be connecting to.):
 
     `yarn install`
 
