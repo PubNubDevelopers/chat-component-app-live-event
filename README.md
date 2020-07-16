@@ -3,13 +3,7 @@
 
 <!-- ![Login screen](src/img/LiveEditing.gif) -->
 
-#### Project status 
-- LOTS OF CHANGES WILL UPDATE STATUS SOON
-- Development environment can be started with `yarn install && yarn start`
-- Template design Sketch file is symbolized to prepare for one to one maping with React components.
-- Login page is "pixel perfect" beside color and luminosity to be fixed.
-- Event page is now more advanced but I had to modify the Sketch file and split the EventInfo Sketch component into two while keeping the first one to comply with Styled Components requirements, but then found a way to make it transparent to events (click events, not only the event being displayed per say).
-- Event Page is now accessible upon app run. Login Screen can be bypassed (search for Router.tsx below for more information)
+
 
 #### Background
 React JS is now the most used framework used by Internet companies to develop the web apps they generate most revenue from.
@@ -26,7 +20,7 @@ A reliable Chat back-end provider offers message deliverability, presence indica
 
 ## What to do with this repository?
 
-This is an example of how to integrate open source components, including React chat components, with one notable message and presence service provider: PubNub. 
+This is an example of how to integrate open source components, including React chat components, with one notable message and presence service provider: PubNub.
 
 Even though PubNub is offering a solid Java Script SDK to drive the React components along with the business specific logic, you will not need it to know it to run this demo. It is preferable to be familiar with Typescript and React if you wish to modify our React Components for your own use.
 
@@ -55,12 +49,15 @@ Using Overrides one can simply override each component property, including graph
 
 * The PubNub Live Event Chat Components library to display the chat UI and content.
 
-
 ## In the project directory:
 
 1. Install ReactJS if not done already.
+
 2. Clone this repository in your work directory.
-3. Try this Web App on your computer. Launch a terminal, cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" is optional but will send messages to the sample channel the app will be connecting to.):
+
+3. Edit the pubnub-keys.json file, in the config directory, with the publish and subscribe keys you can find on the pubnub portal (<https://admin.pubnub.com>)
+
+4. Try this Web App on your computer. Launch a terminal, cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" is optional but will send messages to the sample channel the app will be connecting to.):
 
     `yarn install`
 
@@ -78,20 +75,36 @@ If you want to bypass our beautiful login screen and access the Live Event selec
       </AppStateProvider>
 </Wrapper>
 ```
+
 (You do not need to restart the App by running "yarn start" since webpack reloads the chat server files automatically when detecting a change in one of them, so if you have a browser openeed to your app address you will see the updates on the page immediately):
- 
+
 `directToEvent = true;`
 
 ## Visuals
 
-
-
 ### Live Event
 
-The Live Event screen itself is divided into multiple panels, each panel matches a component, which itself can contain more components in order to make make the UI more modular when needed.
+The Live Event screen itself is divided into multiple panels, each panel is a React Component you can reuse for your own app. The components used in this app contain standard PubNub React Chat components.
 
+To use this code into your own Live Event React app using TypeScript all you have to do is to copy the components folders to your project from the src directory in this repository along with the AppStateContext.tsx file.
+
+To customize this project non visual settings you can change the Live Event parameters in the AppStateContext.tsx file:
+
+```tsx
+//This is where you define the Live Event Properties.
+export const appData: AppState = {
+  simulateLogin: true,
+  eventName: "PubNub Live Event", //Event name as displayed by components.
+  maxMessagesInList: 200, //Max number of messages displayed at most in the message list. the more messages the more memory will be consumed by the browser.
+  eventId: "PNEVT001", //Event ID as displayed by components.
+  messageListFilter: `language_tone != 'offensive'`, //See README before changing this value.
+  //messageListFilter: `language_tone != 'offensive'`,
+  eventHostAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
+  eventAvatar:"/images/companyLogo@3x.png",
+```
 
 #### ChatDemo
+
 This is the main screen where participants can view the Event and chat with other event participants.
 It is located in the src/components/ChatDemo/ChatDemo.tsx file:
 
@@ -116,14 +129,15 @@ It is located in the src/components/ChatDemo/ChatDemo.tsx file:
 ````
 
 #### LiveFeedPanel
-This is the part of the screen where the event itself is to be displayed. 
+
+This is the part of the screen where the event itself is to be displayed.
 
 This is a simple example using a YouTube stream that is simple passed inside the LiveFeedPanelWrapper tags.
 
 The parameters to control the display of the YouTube stream source is passed using props.
 
-
 These props are passed from a higher level component in the component tree where you have previously defined them, so there should be no need to edit this file unless you want to add a streaming provider of your own or change the settings for the default Stream provider.
+
 ```tsx
  <LiveFeedPanelWrapper>
 
@@ -147,15 +161,40 @@ These props are passed from a higher level component in the component tree where
 
  <LiveFeedPanelWrapper>
 ```
+
 #### MessageListPanel
 
 ```tsx
       <AppStateProvider>
-        {<MessageList messages={state.messages}/>}
+        {<MessageList/>}
       </AppStateProvider>
 ```
 
-#### ComposeMessageBoxWrapper
+#### Message
+
+This component displays each message in the message list.
+
+```tsx
+<Message message={onemessage} key={onemessage.key} />
+```
+
+It is used often within a loop to display a list of messages by other components such as by the MessageList component that loops within the current list of messages in a channel to display, one by one, in a loop or in map as it is shown below:
+
+```tsx
+  const Messages = Array.from(state.messages).map((onemessage: UserMessage) => {
+    return (
+      <>
+        <div ref={messagesEndRef} />
+        <Message message={onemessage} key={onemessage.key} />
+      </>
+    );
+  }
+  );
+```
+
+#### ComposeMessageBox
+
+This is the where the chat user composes messages to be sent to the event chat channel.
 
 ````tsx
       <ComposeMessageBoxWrapper>
@@ -165,15 +204,14 @@ These props are passed from a higher level component in the component tree where
       </ComposeMessageBoxWrapper>
 ````
 
-
-
 <!-- ### Event selection:
 
 TO BE COMPLETED
 
-### Moderator: -->
-
+### Moderator: 
 TO BE COMPLETED
+
+-->
 
 ## Using the Sketch file
 
@@ -199,32 +237,32 @@ The tag to customize the Login screen with your design can be found in /src/comp
 To change the design all you need to do is edit the design file included inside the directory: The name of the file is Login.style.tsx.
 
 You can try it out by adding your own image file instead of the one on the login screen for example:
+
 1. Drop a file into the /src/img directory and remember its name because you will need it in the next step.
+
 2. Then simply change the name of the image file in the PromotionAd.style.tsx where it shows: `background: url("images/promotionAd.png") no-repeat;`
 
+### PubNub Live Chat Components
 
+#### AppStateProvider Component
 
-TO BE COMPLETED
+```tsx
+      <AppStateProvider>
+        {<MessageList/>}
+      </AppStateProvider>
+```
 
-## Get started with the code template
+This component is not a visual component, meaning it that it does not render on the screen, instead it must be included around any of the other PubNub Chat components that display any of Chat related data, this includes the ComposeMessageBox Component and the MessageList component.
 
-## Updating the Sketch file and generating new elements
+#### MessageList Component
 
-TO BE COMPLETED
+```tsx
+      <AppStateProvider>
+        {<MessageList/>}
+      </AppStateProvider>
+```
 
-### Sync css and graphics manually from included Sketch designs
-
-TO BE COMPLETED
-
-### Continuous integration of updated included Sketch designs
-
-### Using the PubNub Chat Components
-
-#### Chat Components
-
-#### Login Components
-
-TO BE COMPLETED: SHOW VISUAL MAP
+<!-- #### Login Components
 
 ##### In: src/components/Login.tsx
 
@@ -274,7 +312,7 @@ return(
   </PubNubDesigner>
 );
 ...
-```
+``` -->
 
 ### About React
 
@@ -282,15 +320,15 @@ A JavaScript library for building user interfaces. <https://reactjs.org/>
 
 ### About TypeScript
 
-TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. 
+TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
 
 Any browser. Any host. Any OS. Open source.
 
 <https://www.typescriptlang.org>
 
-### About PubNub React library for Java Script: 
+### About PubNub React library for Java Script
 
-This is the library used internally by the component to connect this React web application with the PubNub backend. You don't need to learn it to use the existing components, but it is required if you want to build your own components.
+This is the library used internally by the components to connect this React web application with the PubNub backend. You don't need to learn it to use the existing components, but it is required if you want to build your own components.
 
 ### About Styled Components
 
@@ -312,8 +350,34 @@ The better way to share, organize and collaborate on designs—built with develo
 
 (<https://zeplin.io/>)
 
+If you have Sketch installed you can install the Zeplin extension to Sketch and you will be able to connect this project with Sketch through your Zeplin account.
+
 ![Code Maping](src/img/Design2CodeMatch.png)
+
+Zeplin will let you keep a bird view on how your design in Sketch maps with your code if you wish to create advanced UI from your Sketch files and wish to keep track at all time of the matching components and their visual counterpart both in code and visual by visually linking all involved digital resources. Digital resources can include your github repository, your local IDE files, and you can add more because Zeplin, itself a plugin for Sketch, does support plugins, called extensions, (<https://extensions.zeplin.io/>) of its own.
+
+This project contains a components.json file in the  .zeplin directory. You can edit this file to map Zeplin objects to your code components. This is how we map our PubNub components to the Zeplin project accessible on the web:
+
+```json
+            "path": "src/components/MessageListPanel/MessageListPanel.tsx",
+            "zeplinNames": [
+                "hostMessage",
+                "blockedUser",
+                "messageList",
+                "menuMessageAdminActions",
+                "deletedMessage",
+                "messageListHeader",
+                "MessageListSettings",
+                "messageItem"
+            ]
+```
+It is based on this map that it becomes possible to automatically sync all digital asserts and display their correspondance from the Zeplin app on the web or the desktop:
 
 ![Code Maping](src/img/Visual2CodeMaping.png)
 
+(If you use Microsoft Visual Code you can install the Zeplin extension and automatically configure the maping between your code and Zeplin components)
+
 ![Code Maping](src/img/VisualCodeZeplinView.png)
+
+
+

@@ -37,7 +37,6 @@ export const MessageList: React.SFC<MessageListProps> = (props: MessageListProps
   
 
   const Messages = Array.from(state.messages).map((onemessage: UserMessage) => {
-    //const elementRef = useRef();  
     return (
       <>
         <div ref={messagesEndRef} />
