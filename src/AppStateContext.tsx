@@ -7,9 +7,6 @@ import { debug } from "console";
 
 //These are shared UUIDs that we can use when needed for messages, users and  internally.
 const UUIDstamped001 = generateUUID();
-//const UUIDstamped002 = generateUUID();
-//const UUIDstamped003 = generateUUID();
-//const UUIDstamped004 = generateUUID();
 
 
 //This is the configuration for our PubNub connection.
@@ -40,7 +37,6 @@ export const appData: AppState = {
   messageBuffer: "", //Future use.
   //users: [] ,temnte //Future use.
   messages: [], //Array of UserMessages, intitalized to empty, Where live event messages are streamed into.
-  //eslint-disable-next-line @typescript-eslint
   events: [], //Future use
   pubnubConf: pubnubConfig,  //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
   defaultchannel: {

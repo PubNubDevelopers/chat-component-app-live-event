@@ -2,7 +2,7 @@ const PubNub = require('pubnub');
 const _cliProgress = require('cli-progress');
 const readline = require("readline");
 const fs = require('file-system');
-
+let keys;
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -10,7 +10,7 @@ const rl = readline.createInterface({
 
 //Where the config file containing the private PubNub Keys used by the live event demo is located.
 //They can be edited manually or ran by this script.
-const CONFIG_FILE = 'config/pubnub-keys.json';
+const CONFIG_FILE = 'src/config/pubnub-keys.json';
 const PAYLOAD_FILE = 'src/tools/sample.json';
 const UUIDstamped001 = PubNub.generateUUID();
 
@@ -33,7 +33,7 @@ function addKeysAndStartScript() {
                 }
                 fs.writeFile(CONFIG_FILE, JSON.stringify(updateKeys), (err) => {
                     if (!err) console.log( `\nYour keys have been saved to ${CONFIG_FILE} file.`);
-                     scriptStart(publishKey, subscribeKey);
+                     scriptStart(publishKey, subscribeKey, `liveeventdemo.row1`);
                     console.log("Sending msgs completed.");
 
                 });
@@ -58,7 +58,9 @@ async function asyncForEach(array, callback) {
     }
   }
 
-  const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
+const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
+  
+
   const scriptStart = async (publishKey, subscribeKey, channelName) => {
 
     console.log(`Firehose process activating on the "${channelName}" channel`);
@@ -117,7 +119,7 @@ while (true) {
         function (status, response) {
               if (status.error) {
                   // handle error
-                  console.log(`ERROR publishing message from PubNub SDK: ${status}`);
+                  console.log(`ERROR publishing message from PubNub SDK: ${status.error}`);
               } else {
                   console.log(`message Published through PubNub SDK w/ timetoken ${response.timetoken}`);
               }
@@ -144,8 +146,14 @@ try {
         }
     }
     catch (e) {
-        console.log(`\nError looking for PubNub keys in ${CONFIG_FILE} ${e}`);
-        process.exit(0);
+        if (e == NOENT) {
+            console.log(`\nError no file for keys ${CONFIG_FILE} ${e}`);
+            process.exit(0);
+        } else {
+            console.log(`\nError looking for PubNub keys in ${CONFIG_FILE} ${e}`);
+            process.exit(0);
+        }
+
     }
     keys = JSON.parse(rawdata);
     if(keys && keys.publishKey.length && keys.subscribeKey.length) {

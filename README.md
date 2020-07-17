@@ -46,26 +46,56 @@ Using Overrides one can simply override each component property, including graph
 
 * The PubNub Live Event Chat Components library to display the chat UI and content.
 
+## PubNub Account
+
+To run this application you must obtain publish and subscribe keys from your PubNub Account. If you don't already have an account, you can create one for free.
+
+### Sign in to your PubNub Dashboard.
+
+#### Click Create New App.
+
+* Give your app a name, and select Chat App as the app type.
+
+* Click Create.
+
+* Click your new app to open its settings, then click its keyset.
+
+* Enable the Objects feature. Presence and PubNub Functions should have been enabled when the keyset was created.
+
+* Select a region to store your user data (e.g. US East).
+
+* Locate the Publish and Subscribe keys. You'll need these keys to include in this project.
+
 You can run this web app on your computer or try it out by clicking here (TO DO: Add codesandbox.io link).
 
-## Run the app on your computer
+## Run the app on your local machine
 
-1. Install git if not done already. 
+### Setting up a Node.js development environment
+
+First, if you did not already, prepare your machine for node.js based development. Most of the tooling used for this demo relies on it.
+
+The best way to install node.js is to first install nvm from the command line by following the instructions here (<https://github.com/nvm-sh/nvm#installation>).
+
+Then you can run:
+
+```bash
+nvm install stable
+```
+
+* Install git if not done already.
 
 (<https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>)
 
-1. Install React JS and git if not done already. 
-   (<https://reactjs.org/docs/add-react-to-a-website.html#add-react-in-one-minute>)
-
-2. Clone this repository in your work directory from the terminal after cd into it:
+* Clone this repository in your work directory from the terminal after cd into it:
 
 ```script
-# git clone git@github.com:PubNubDevelopers/typescript-ref-app-stream-chat.git
+# git clone https://github.com/PubNubDevelopers/typescript-ref-app-stream-chat.git
 ```
 
-1. Edit the pubnub-keys.json file, in the config directory, with the publish and subscribe keys you can find on the pubnub portal (<https://admin.pubnub.com>)
+* Install yarn: `curl -o- -L https://yarnpkg.com/install.sh | bash`
+* Edit the pubnub-keys.json file, in the src/config directory, with the publish and subscribe keys you can find on the pubnub portal (<https://admin.pubnub.com>)
 
-2. Try this Web App on your computer. Launch a terminal, cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" is optional but will send messages to the sample channel the app will be connecting to.):
+* Launch the terminal and cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" is optional but will send messages to the sample channel the app will be connecting to.):
 
     `yarn install`
 
@@ -75,7 +105,8 @@ You can run this web app on your computer or try it out by clicking here (TO DO:
 
 To learn more about the file structure and which file you have to modify so you can make your own Live Stream Event Chat App with your own design please read the Customization section included here.
 
-If you want to bypass our beautiful login screen and access the Live Event selection process directly you can edit the Router.tsx file around line 14 and change false to true in: 
+If you want to bypass our beautiful login screen and access the Live Event selection process directly you can edit the Router.tsx file around line 14 and change false to true in:
+
 ```tsx
 <Wrapper>
       <AppStateProvider>
