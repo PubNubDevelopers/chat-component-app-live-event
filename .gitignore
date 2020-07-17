@@ -2,6 +2,7 @@
 
 #pubnub keys
 /src/config/pubnub-keys.json
+/config/pubnub-keys.json
 # dependencies
 /node_modules
 /.pnp
