@@ -40,7 +40,8 @@ export const appData: AppState = {
   messageBuffer: "", //Future use.
   //users: [] ,temnte //Future use.
   messages: [], //Array of UserMessages, intitalized to empty, Where live event messages are streamed into.
-  events: [] , //Future use
+  //eslint-disable-next-line @typescript-eslint
+  events: [], //Future use
   pubnubConf: pubnubConfig,  //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
   defaultchannel: {
     channels: ['liveeventdemo.row1'], //Only one channel, split in different rows if required and load in props, can be set by load balancer.

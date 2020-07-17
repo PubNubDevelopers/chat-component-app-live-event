@@ -1,11 +1,8 @@
 # ReactJS Live Stream Chat Starter Kit
 
+![Login screen](src/img/LiveEditing.gif)
 
-<!-- ![Login screen](src/img/LiveEditing.gif) -->
-
-
-
-#### Background
+## Background
 React JS is now the most used framework used by Internet companies to develop the web apps they generate most revenue from.
 
 TypeScript is a type safe language built on top of java script and it is now the new standard in the React JS world.
@@ -78,7 +75,7 @@ You can run this web app on your computer or try it out by clicking here (TO DO:
 
 To learn more about the file structure and which file you have to modify so you can make your own Live Stream Event Chat App with your own design please read the Customization section included here.
 
-If you want to bypass our beautiful login screen and access the Live Event selection process directly you can edit the Router.tsx file around line 14 and change true to false in: 
+If you want to bypass our beautiful login screen and access the Live Event selection process directly you can edit the Router.tsx file around line 14 and change false to true in: 
 ```tsx
 <Wrapper>
       <AppStateProvider>
@@ -377,7 +374,7 @@ You don't need to learn it to use the existing components, but it is required if
 
 Create, prototype, collaborate, and bring your ideas to life with the design platform used by over one million people — from freelancers, to the world’s largest teams.
 
-(htpps://sketch.com)
+(https://sketch.com)
 
 ### About Zeplin
 
