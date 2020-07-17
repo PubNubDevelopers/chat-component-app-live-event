@@ -82,7 +82,7 @@ Then you can run:
 nvm install stable
 ```
 
-* Install git if not done already.
+* Run the git command from a terminal and install git if it returns an error.
 
 (<https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>)
 
@@ -93,15 +93,17 @@ nvm install stable
 ```
 
 * Install yarn: `curl -o- -L https://yarnpkg.com/install.sh | bash`
-* Edit the pubnub-keys.json file, in the src/config directory, with the publish and subscribe keys you can find on the pubnub portal (<https://admin.pubnub.com>)
-
-* Launch the terminal and cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" is optional but will send messages to the sample channel the app will be connecting to.):
+* Launch the terminal and cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" will let you set your keys and send messages to the same channel your app is preset to connect to. You must run it at least once.):
 
     `yarn install`
 
     `yarn firehose`
-
+* In another terminal window cd in the same project directory and run:
     `yarn start`
+
+This will let you see messages sent through the "yarn firehose" command on one terminal window while you can see your app console loggin in the other terminal window.
+
+To point your browser to your running app you must use this url (<http://localhost:8080>)
 
 To learn more about the file structure and which file you have to modify so you can make your own Live Stream Event Chat App with your own design please read the Customization section included here.
 

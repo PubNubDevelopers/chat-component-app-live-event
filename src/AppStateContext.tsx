@@ -1,7 +1,7 @@
 import React, { useCallback, createContext, useReducer, useContext, useState, useEffect } from "react"
 import { generateUUID } from 'pubnub';
 import PubNub, { SubscribeParameters } from "pubnub";
-import keyConfiguration from "../config/pubnub-keys.json";
+import keyConfiguration from "./config/pubnub-keys.json";
 import { debug } from "console";
 
 
