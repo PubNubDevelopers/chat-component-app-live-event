@@ -2,7 +2,7 @@
   "name": "typescript-ref-app-stream-chat",
   "version": "0.1.1",
   "engines": {
-    "node": "12.14.0",
+    "node": "14.5.0",
     "yarn": "1.22.4"
   },
   "private": true,
