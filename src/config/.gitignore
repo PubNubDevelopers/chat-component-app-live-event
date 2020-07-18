@@ -1,0 +1,11 @@
+# .gitignore sample
+###################
+
+# Ignore all files in this dir...
+*
+
+# ... except for this one.
+!.gitignore
+
+# ... and all text files.
+!*.txt
