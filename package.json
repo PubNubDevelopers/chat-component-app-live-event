@@ -9,12 +9,13 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.10.1",
     "@n8tb1t/use-scroll-position": "^1.0.43",
+    "@storybook/react": "^5.3.19",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/emoji-mart": "^2.11.0",
     "@types/invariant": "^2.2.31",
-    "@types/jest": "^24.0.0",
+    "@types/jest": "^26.0.5",
     "@types/node": "^12.0.0",
     "@types/pubnub": "^4.27.2",
     "@types/react": "^16.9.0",
@@ -62,7 +63,8 @@
     "start": "webpack-dev-server --mode development --open --hot",
     "dev": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
-    "firehose": "node src/tools/firehose.js start liveeventdemo.row1"
+    "firehose": "node src/tools/firehose.js start liveeventdemo.row1",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -75,15 +77,21 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "@babel/preset-typescript": "7.9.0",
+    "@storybook/addon-info": "^5.3.19",
     "@typescript-eslint/eslint-plugin": "^3.6.0",
     "@typescript-eslint/parser": "^3.6.0",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.1.0",
     "prettier": "^2.0.5",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "source-map-loader": "^0.2.4",
+    "ts-jest": "^26.1.3",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.6"
   },
