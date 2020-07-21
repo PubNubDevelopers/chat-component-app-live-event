@@ -93,7 +93,7 @@ nvm install stable
 ```
 
 * Install yarn: `curl -o- -L https://yarnpkg.com/install.sh | bash`
-* Launch the terminal and cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" will let you set your keys and send messages to the same channel your app is preset to connect to. You must run it at least once.):
+* Launch the terminal and cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" will let you set your keys and send messages to the same channel your app is preset to connect to. You must run it at least once.) (if `yarn install` returns an version mismatch error with node run instead: `yarn install --ignore-engines`):
 
     `yarn install`
 

@@ -22,6 +22,12 @@ const message_sample = new UserMessage(`{
     "addActions": null
 }`);
 storiesOf("Message", module)
-    .add("Live event", () => (
+    .add("Live Event Chat", () => (
         <Message message={message_sample} />
-    ))
+    )
+    
+).add("Team Chat", () => (
+    <Message message={message_sample} />
+)).add("Support Chat", () => (
+    <Message message={message_sample} />
+))
