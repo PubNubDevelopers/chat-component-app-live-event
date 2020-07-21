@@ -33,11 +33,9 @@ export const SendMessageField = () => {
 
         dispatch({
           type: "SEND_MESSAGE",
-          // @ts-expect-error
-          payload: textAreaEl?.current?.value
+          payload: textAreaEl.current.value
         });
-        // @ts-expect-error
-        textAreaEl?.current?.value = "";
+        textAreaEl.current.value = "";
         console.log('do validate');
       }
 
