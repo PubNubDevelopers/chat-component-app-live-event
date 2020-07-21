@@ -18,7 +18,7 @@
     "@types/emoji-mart": "^2.11.0",
     "@types/invariant": "^2.2.31",
     "@types/jest": "^26.0.5",
-    "@types/node": "^12.0.0",
+    "@types/node": "^14.0.24",
     "@types/pubnub": "^4.27.2",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
