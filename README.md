@@ -93,13 +93,17 @@ nvm install stable
 ```
 
 * Install yarn: `curl -o- -L https://yarnpkg.com/install.sh | bash`
-* Launch the terminal and cd in the project directory and type each command below, then press enter, the last command should run the server and launch your web browser and connect to the localhost and the right port automatically ("yarn firehose" will let you set your keys and send messages to the same channel your app is preset to connect to. You must run it at least once.) :
+
+### Launching the app
+
+* Launch the terminal, cd in the project directory and type each command below, then press enter. The last command should run the server, launch your web browser and connect to the localhost and the right port automatically. (`yarn firehose` will let you set your keys and send messages to the same channel your app is preset to connect to. You must run it at least once.) :
 
     `yarn install`
 
     `yarn firehose`
 
 (If `yarn install` returns an version mismatch error with node run instead: `yarn install --ignore-engines`)
+
 * In another terminal window cd in the same project directory and run:
     `yarn start`
 
@@ -253,6 +257,14 @@ TO BE COMPLETED
 TO BE COMPLETED
 
 -->
+
+## Storybook
+
+Storybook provides with a list of components and how they would appear "Live" in your app, among other great features it can offer. To run storybook: Run the terminal and cd from the same directory your project is in, then type the following command: 
+
+`yarn storybook`
+
+This will provide you the URL to point your browser to display the Components in storybook.
 
 ## Using the Sketch file
 
