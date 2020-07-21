@@ -136,7 +136,7 @@ export interface AppState {
   defaultchannel: SubscribeParameters //The default channel associated to the demo, should be associated with an Event.
 }
 
-type Action =
+export type Action =
   | {
     type: "ADD_USER_LIST",
     payload: string
@@ -155,7 +155,7 @@ type Action =
   }
   | {
     type: "ADD_MESSAGE",
-    payload: string
+    payload: UserMessage
   }
   | {
     type: "SEND_MESSAGE",
@@ -192,7 +192,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
         messages: [
           ...state.messages as Array<UserMessage>,
           {
-            ...action.payload as any
+            ...action.payload as UserMessage
           }
         ]
       };
@@ -225,7 +225,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
           "internalKey": msgId,
           "key": msgId,
           "senderId": "bc296603-b349-43de-8574-0a3a9392e30a",
-          "message": action.payload,
+          "message": action.payload.messageContent,
           "UserAvatar": "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1",
           "timetoken": "1592439990",
           "senderName": "Mr. Robot",

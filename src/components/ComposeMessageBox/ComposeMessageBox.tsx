@@ -1,7 +1,7 @@
 import React, {useReducer,useEffect,useRef} from 'react';
 import PropTypes from 'prop-types';
 import { UserImgWrapper } from './ComposeMessageBox.styles';
-import {appData, AppState, AppStateProvider,useAppState, appStateReducer, Message } from "../../AppStateContext"
+import {Action, appData, AppState, AppStateProvider,useAppState, appStateReducer, Message } from "../../AppStateContext"
 
 
 interface ComposeMessageBoxProps {
@@ -23,19 +23,26 @@ interface SendMessageProps {
 
 export const SendMessageField = () => {
 
-  const textAreaEl = useRef(null);
+  const textAreaEl = useRef<HTMLInputElement>(null);
   const [state, dispatch] = useReducer(appStateReducer,appData);
 
   
   const handleKeyDown: React.KeyboardEventHandler  = event => {
     if (event.key === 'Enter') {
+
       if (textAreaEl?.current !== null) {
 
         dispatch({
           type: "SEND_MESSAGE",
-          payload: textAreaEl.current.value
-        });
-        textAreaEl.current.value = "";
+          payload: { messageContent: textAreaEl.current!.value! }
+        } as {
+          type: "SEND_MESSAGE",
+          payload: {
+            messageContent: string
+          }
+          }
+        );
+        textAreaEl.current!.value = "";
         console.log('do validate');
       }
 
