@@ -102,8 +102,6 @@ nvm install stable
 
     `yarn firehose`
 
-(If `yarn install` returns an version mismatch error with node run instead: `yarn install --ignore-engines`)
-
 * In another terminal window cd in the same project directory and run:
     `yarn start`
 
