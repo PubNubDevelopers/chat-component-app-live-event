@@ -26,14 +26,21 @@ export const SendMessageField = () => {
   const textAreaEl = useRef(null);
   const [state, dispatch] = useReducer(appStateReducer,appData);
 
-  const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-          dispatch({
-            type: "SEND_MESSAGE",
-            payload: textAreaEl.current.value
-          });
-          textAreaEl.current.value = "";
-          console.log('do validate')
+  
+  const handleKeyDown: React.KeyboardEventHandler  = event => {
+    if (event.key === 'Enter') {
+      if (textAreaEl?.current !== null) {
+
+        dispatch({
+          type: "SEND_MESSAGE",
+          // @ts-expect-error
+          payload: textAreaEl?.current?.value
+        });
+        // @ts-expect-error
+        textAreaEl?.current?.value = "";
+        console.log('do validate');
+      }
+
         }
     // textAreaEl.current.value =  "";
     // textAreaEl.current.focus();

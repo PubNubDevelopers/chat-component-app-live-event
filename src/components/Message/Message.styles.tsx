@@ -22,7 +22,7 @@ overflow: hidden;
 text-overflow: ellipsis;
 overflow-wrap: true
 white-space: nowrap;
-`
+`;
 
 export const SenderNameWrapper = styled.span`
 top: 5px;
@@ -33,7 +33,8 @@ width: 50px;
 height: 30px;
 width: auto;
 //display: flex;
-position: relative;`
+position: relative;
+`;
 
 export const AvatarWrapper = styled.img`
 top: 20px;
@@ -43,4 +44,5 @@ width: 52px;
 //display: inline;
 height: 30px;
 width: auto;
-position: relative;`
+position: relative;
+`;

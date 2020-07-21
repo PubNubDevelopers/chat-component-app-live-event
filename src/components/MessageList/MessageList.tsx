@@ -12,18 +12,12 @@ export const MessageList: React.SFC<MessageListProps> = (props: MessageListProps
   
   const { state } = useAppState();
   const [stopOnScroll, setStopOnScroll] = useState(false);
-  const messagesEndRef = useRef(null) //This is our reference to the instance of this component in the DOM
+  const messagesEndRef = useRef<null | HTMLDivElement>(null) //This is our reference to the instance of this component in the DOM
   //const listBottomPos = messagesEndRef.current.getBoundingClientRect().bottom;
   //console.log(`listBottomPos: ${listBottomPos}`);
   const scrollToBottom = () => {
-
-    (
-      !stopOnScroll
-      && messagesEndRef
-      && messagesEndRef.current
-    ) ? messagesEndRef.current.scrollIntoView({ behavior: "smooth" }) : {}
-
-  }
+      messagesEndRef?.current?.scrollIntoView({ behavior: "smooth" });
+    }
 
   useScrollPosition(({ prevPos, currPos }) => {
     //const bottom = messagesEndRef.current.scrollHeight - currPos.y;//=== e.target.clientHeight;

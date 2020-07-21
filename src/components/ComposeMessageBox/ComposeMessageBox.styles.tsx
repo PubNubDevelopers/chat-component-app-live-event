@@ -11,12 +11,12 @@ export const ComposeMessageBoxWrapper = styled.div`
  position: absolute;
 `;
 
-export const TextInputWrapper = styled.div.attrs({ 
+export const TextInputWrapper = styled.div.attrs({
    placeholder: "Type your message here...",
-      //value: 'Submit'
+   //value: 'Submit'
 
-})`
- 
+})`;
+
 text-align: center;
 padding-left: 50px;
 margin-right: 50px;
@@ -28,19 +28,20 @@ border-width: 0px;
 border-radius: 230px;
 background-color: rgba(255, 255, 255, 0.1);
 color: white;
-`
+`;
 
 
-export const UserImgWrapper = styled.img `
+export const UserImgWrapper = styled.img`
 margin-top: 9px;
 margin-left: 10px;
 top: 0px;
 height: 40px;
 width: 40px;
 //background-color: crimson;
-position: absolute;`
+position: absolute;
+`;
 
-export const EmojiInputWrapper = styled.img `
+export const EmojiInputWrapper = styled.img`
 margin-top: 14px;
 margin-left: 0px;
 left: 265px;
@@ -49,4 +50,4 @@ height: 35px;
 width: 35px;
 //background-color: #bbbbbb;
 position: absolute;
-`
+`;

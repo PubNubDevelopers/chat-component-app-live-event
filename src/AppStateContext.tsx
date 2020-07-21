@@ -24,6 +24,11 @@ const pubnubConfig = Object.assign(
   keyConfiguration //Our keys extracted from the config directory in  the  pubnub-keys.json file
 );
 
+interface Event {
+  id: string,
+  eventname: string,
+  eventchannel: SubscribeParameters
+}
 //This is where you define the Live Event Properties.
 export const appData: AppState = {
   simulateLogin: true,
@@ -33,7 +38,8 @@ export const appData: AppState = {
   messageListFilter: `language_tone != 'offensive'`, //See README before changing this value.
   //messageListFilter: `language_tone != 'offensive'`,
   eventHostAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
-  eventAvatar:"/images/companyLogo@3x.png",
+  ownerAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
+  eventAvatar: "/images/companyLogo@3x.png",
   messageBuffer: "", //Future use.
   //users: [] ,temnte //Future use.
   messages: [], //Array of UserMessages, intitalized to empty, Where live event messages are streamed into.
@@ -51,11 +57,7 @@ export const appData: AppState = {
 
 }
 
-interface Event {
-  id: string,
-  eventname: string,
-  eventchannel: SubscribeParameters
-}
+
 
 interface EventList {
   id: string,
@@ -126,8 +128,8 @@ export interface AppState {
   ownerAvatar: string,
   eventHostAvatar: string,
   eventAvatar: string,
-  users: UserList, //For login simulation only since Users list is usually not stored here
-  events?: EventList, //For event pickup simulation only since Users list is usually not stored here
+  //users: UserList, //For login simulation only since Users list is usually not stored here
+  events?: Event[], //For event pickup simulation only since Users list is usually not stored here
   messages: UserMessage[], //Where the  Messages from all participants to the event are stored.
   pubnub: PubNub,
   pubnubConf: typeof pubnubConfig, //Our link to PubNub
@@ -165,8 +167,8 @@ type Action =
 
 
 interface AppStateContextProps {
-  state: AppState,
-  
+  state: AppState;
+  dispatch: React.Dispatch<Action>;
 }
 
 export const AppStateContext = createContext<AppStateContextProps>(
@@ -190,7 +192,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
         messages: [
           ...state.messages as Array<UserMessage>,
           {
-            ...action.payload
+            ...action.payload as any
           }
         ]
       };
@@ -238,11 +240,6 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
     }
 
     case "ADD_EVENT": {
-      state.events.events.push({
-        id: generateUUID(),
-        eventname: action.payload.eventname,
-        eventchannel: action.payload.eventchannel
-      });
 
       return { ...state }
     }
