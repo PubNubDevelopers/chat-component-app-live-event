@@ -96,7 +96,7 @@ nvm install stable
 
 ### Launching the app
 
-* Launch the terminal, cd in the project directory and type each command below, then press enter. The last command should run the server, launch your web browser and connect to the localhost and the right port automatically. (`yarn firehose` will let you set your keys and send messages to the same channel your app is preset to connect to. You must run it at least once.) :
+* Launch the terminal, cd in the project directory and type each command below, then press enter. The last command should run the server, launch your web browser and connect to the localhost and the right port automatically. (`yarn firehose` will let you set your keys and send messages to the same channel your app is preset to connect to. You must run it at least once. After it is has run it will creat a pubnub-keys.json file in the src/config directory, it can be manually edited after it has been created automatically and contains the following information: { "publishKey": "YOUR PUBLISH KEY", "subscribeKey": "YOUR SUBSCRIBE KEY" }.) :
 
     `yarn install`
 
