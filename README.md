@@ -89,7 +89,7 @@ nvm install stable
 * Clone this repository in your work directory from the terminal after cd into it:
 
 ```script
-# git clone https://github.com/PubNubDevelopers/typescript-ref-app-stream-chat.git
+# git clone https://github.com/PubNubDevelopers/chat-component-app-live-event
 ```
 
 * Install yarn: `curl -o- -L https://yarnpkg.com/install.sh | bash`

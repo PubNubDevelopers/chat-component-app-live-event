@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { ChatDemoWrapper } from "./ChatDemo.style"
-import { LiveFeedPanel } from "../LiveFeedPanel"
+import { LiveFeedPanel } from "../LiveFeedPanelYouTube"
 import { MessageListPanel } from "../MessageListPanel"
 import { EventDetailsTop } from "../EventDetailsTop"
 import { EventDetailsBottom } from "../EventDetailsBottom"
