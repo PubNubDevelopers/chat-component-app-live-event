@@ -22,9 +22,7 @@ const theme = {
 
 
 interface LiveFeedPanelJitsiProps {
-  opts:any ,
-  onReady: any
-  videoID: any
+
 }
 
 export const LiveFeedPanelJitsi: React.SFC<LiveFeedPanelJitsiProps> = (props: LiveFeedPanelJitsiProps) => {
@@ -53,7 +51,6 @@ export const LiveFeedPanelJitsi: React.SFC<LiveFeedPanelJitsiProps> = (props: Li
 
           <>
 
-               
           </>)
       }
   </LiveFeedPanelWrapper>

@@ -156,7 +156,7 @@ It is located in the src/components/ChatDemo/ChatDemo.tsx file:
 
      <EventDetailsTop/>
 
-     <LiveFeedPanel videoID="jZtxlp664yU"  opts={opts} onReady="(event) => {
+     <LiveFeedPanelYouTube videoID="jZtxlp664yU"  opts={opts} onReady="(event) => {
        event.target.pauseVideo();
      }"/>
 
@@ -171,7 +171,7 @@ It is located in the src/components/ChatDemo/ChatDemo.tsx file:
   </ChatDemoWrapper>
 ````
 
-#### LiveFeedPanel
+#### LiveFeedPanelYouTube
 
 This is the part of the screen where the event itself is to be displayed.
 
@@ -183,25 +183,7 @@ These props are passed from a higher level component in the component tree where
 
 ```tsx
  <LiveFeedPanelWrapper>
-
       <YouTube videoId={props.videoID} opts={props.opts} onReady={props.onReady} />
-
-      <CreateEventWrapper>
-
-                  <EventNameWrapper>
-                      <EventNameInput></EventNameInput>
-                  </EventNameWrapper>
-
-                  <HostNameWrapper>
-                    <HostNameInput></HostNameInput>
-                  </HostNameWrapper>
-
-                  <CreateEventButtonWrapper>
-                  <ButtonCreateEvent>START EVENT</ButtonCreateEvent>
-                  </CreateEventButtonWrapper>
-
-      </CreateEventWrapper>
-
  <LiveFeedPanelWrapper>
 ```
 

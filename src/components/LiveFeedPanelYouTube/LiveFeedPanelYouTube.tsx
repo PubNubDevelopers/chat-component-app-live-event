@@ -35,24 +35,7 @@ export const LiveFeedPanelYouTube: React.SFC<LiveFeedPanelYouTubeProps> = (props
   const [onCall, setOnCall] = useState(false)
   return(
   <LiveFeedPanelWrapper>
- 
     <YouTube videoId={props.videoID} opts={props.opts} onReady={props.onReady} />
-
-                  {/* <CreateEventWrapper>
-
-                  <EventNameWrapper>
-                      <EventNameInput></EventNameInput>
-                  </EventNameWrapper>
-
-                  <HostNameWrapper>
-                    <HostNameInput></HostNameInput>
-                  </HostNameWrapper>
-                  <CreateEventButtonWrapper>
-                  <ButtonCreateEvent>START EVENT</ButtonCreateEvent>
-                  </CreateEventButtonWrapper>
-                  </CreateEventWrapper> */}
-
-
   </LiveFeedPanelWrapper>
 
 )}
