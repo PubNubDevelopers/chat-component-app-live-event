@@ -48,7 +48,7 @@
             ]
         },
         {
-            "path": "src/components/LiveFeedPanel/LiveFeedPanel.tsx",
+            "path": "src/components/LiveFeedPanelYouTube/LiveFeedPanelYouTube.tsx",
             "zeplinNames": [
                 "PubNub live event chat - current event",
                 "emoji splash",

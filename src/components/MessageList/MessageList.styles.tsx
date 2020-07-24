@@ -6,5 +6,5 @@ export const MessageListWrapper = styled.div`
  overflow-y: scroll;
  list-style: none;
  display: flex;
- height: 640px;
+ height: 100%;
 `;

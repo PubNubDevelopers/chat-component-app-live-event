@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import ReactDOM from "react-dom";
-// import Jitsi from 'react-jitsi';
-import YouTube from 'react-youtube';
+import Jitsi from "react-jitsi";
 import { 
-  LiveFeedPanelWrapper, 
-  FormGroup, 
-  Label, 
-  Input, 
-  Message, 
+  LiveFeedPanelWrapper,
+  FormGroup,
+  Label,
+  Input,
+  Message,
   Button,
   ButtonCreateEvent,
   EventNameWrapper,
   CreateEventWrapper,
   HostNameWrapper,
   CreateEventButtonWrapper
-} from './LiveFeedPanel.styles';
+} from './LiveFeedPanelJitsi.styles';
 
 
 const theme = {
@@ -22,13 +21,13 @@ const theme = {
 };
 
 
-interface LiveFeedPanelProps {
+interface LiveFeedPanelJitsiProps {
   opts:any ,
   onReady: any
   videoID: any
 }
 
-export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPanelProps) => {
+export const LiveFeedPanelJitsi: React.SFC<LiveFeedPanelJitsiProps> = (props: LiveFeedPanelJitsiProps) => {
   const [displayName, setDisplayName] = useState('Event-00000-00000')
   const [roomName, setRoomName] = useState('Event-Location-00000-00001')
   const [password, setPassword] = useState('')
@@ -36,43 +35,27 @@ export const LiveFeedPanel: React.SFC<LiveFeedPanelProps> = (props: LiveFeedPane
   const [onCall, setOnCall] = useState(false)
   return(
   <LiveFeedPanelWrapper>
-      {/* {onCall
-                    ? (
-                        <Jitsi
-                            roomName={roomName}
-                            displayName={displayName}
-                            //password={password}
-                            //loadingComponent={loader}
-                            containerStyle={{
-                              width: '100%', 
-                              height: '100%' ,
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                            }}
-                        />)
-                    : ( */}
+      {onCall
+        ? (
+          <Jitsi
+            roomName={roomName}
+            displayName={displayName}
+            //password={password}
+            //loadingComponent={loader}
+            containerStyle={{
+              width: '100%',
+              height: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          />)
+        : (
 
-                      <>
-                            <YouTube videoId={props.videoID} opts={props.opts} onReady={props.onReady} />
+          <>
 
-                  {/* <CreateEventWrapper>
-
-                  <EventNameWrapper>
-                      <EventNameInput></EventNameInput>
-                  </EventNameWrapper>
-
-                  <HostNameWrapper>
-                    <HostNameInput></HostNameInput>
-                  </HostNameWrapper>
-                  <CreateEventButtonWrapper>
-                  <ButtonCreateEvent>START EVENT</ButtonCreateEvent>
-                  </CreateEventButtonWrapper>
-                  
-
-                  </CreateEventWrapper> */}
-                      </>
-    {/* )
-  } */}
+               
+          </>)
+      }
   </LiveFeedPanelWrapper>
 
 )}
