@@ -32,6 +32,7 @@ interface Event {
 //This is where you define the Live Event Properties.
 export const appData: AppState = {
   simulateLogin: true,
+  presence: false,
   eventName: "PubNub Live Event", //Event name as displayed by components.
   maxMessagesInList: 200, //Max number of messages displayed at most in the message list. the more messages the more memory will be consumed by the browser.
   eventId: "PNEVT001", //Event ID as displayed by components.
@@ -130,6 +131,7 @@ export interface AppState {
   eventHostAvatar: string,
   eventAvatar: string,
   channel: string,
+  presence: boolean,
   //users: UserList, //For login simulation only since Users list is usually not stored here
   events?: Event[], //For event pickup simulation only since Users list is usually not stored here
   messages: UserMessage[], //Where the  Messages from all participants to the event are stored.
@@ -292,7 +294,7 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
       state.pubnub.subscribe(
         {
           channels: [state.channel], //Only one channel, split in different rows if required and load in props, can be set by load balancer.
-          withPresence: true
+          withPresence: state.presence
         }
       );
 
