@@ -19,7 +19,7 @@ storiesOf("LiveFeedPanelYouTube", module)
             onReady={
                 (event: { target: { pauseVideo: () => void; }; }) => { event.target.pauseVideo(); }}
         >
-        
+
         </LiveFeedPanelYouTube>
     )
     );
