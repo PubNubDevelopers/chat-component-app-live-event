@@ -59,8 +59,6 @@ export const appData: AppState = {
 
 }
 
-
-
 interface EventList {
   id: string,
   listname: string,
@@ -298,6 +296,23 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
         }
       );
 
+      //Get the history on the default channel.
+      state.pubnub.history(
+          {
+              channel: state.channel,
+              count: 100
+          },
+          (status, response) => {
+            if (typeof response.messages !== "undefined" && response.messages.length > 0) {
+              for (var i = 0; i <= response.messages.length; i++) {
+                dispatch({
+                  type: "ADD_MESSAGE",
+                  payload: response.messages[i].entry
+                });
+              }
+            }
+          }
+      );
 
       //In case our App MessageListFilter propery we filter.
       if (state.messageListFilter.length > 0) {
