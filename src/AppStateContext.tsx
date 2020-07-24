@@ -32,6 +32,7 @@ interface Event {
 //This is where you define the Live Event Properties.
 export const appData: AppState = {
   simulateLogin: true,
+  presence: false,
   eventName: "PubNub Live Event", //Event name as displayed by components.
   maxMessagesInList: 200, //Max number of messages displayed at most in the message list. the more messages the more memory will be consumed by the browser.
   eventId: "PNEVT001", //Event ID as displayed by components.
@@ -40,6 +41,7 @@ export const appData: AppState = {
   eventHostAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
   ownerAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
   eventAvatar: "/images/companyLogo@3x.png",
+  channel:"liveeventdemo.row1",
   messageBuffer: "", //Future use.
   //users: [] ,temnte //Future use.
   messages: [], //Array of UserMessages, intitalized to empty, Where live event messages are streamed into.
@@ -128,6 +130,8 @@ export interface AppState {
   ownerAvatar: string,
   eventHostAvatar: string,
   eventAvatar: string,
+  channel: string,
+  presence: boolean,
   //users: UserList, //For login simulation only since Users list is usually not stored here
   events?: Event[], //For event pickup simulation only since Users list is usually not stored here
   messages: UserMessage[], //Where the  Messages from all participants to the event are stored.
@@ -256,8 +260,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
 
       const msgId: string = generateUUID();
       state.pubnub.publish({
-        //channel: state.defaultchannel.channels[0],
-        channel: 'liveeventdemo.row1',
+        channel: state.channel,
         sendByPost: true,
         message: {
           "internalKey": msgId,
@@ -326,7 +329,12 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
     // });
 
       //Lets' subscribe on the default channel.
-      state.pubnub.subscribe(state.defaultchannel);
+      state.pubnub.subscribe(
+        {
+          channels: [state.channel], //Only one channel, split in different rows if required and load in props, can be set by load balancer.
+          withPresence: state.presence
+        }
+      );
 
 
       //In case our App MessageListFilter propery we filter.
@@ -334,7 +342,6 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
         console.log(`Filtering  message: ${state.messageListFilter}`);
         state.pubnub.setFilterExpression(state.messageListFilter);
       }
-      
 
     } catch (e) {
       console.log(`Subscribe error ${e.message}`);
