@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "ES6",
     "noImplicitAny": true,
-    "noImplicitAnyForClassMembers": false,
     "baseUrl": "src",
     "noEmitOnError": true,
     "removeComments": false,
