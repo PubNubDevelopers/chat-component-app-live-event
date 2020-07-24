@@ -158,6 +158,10 @@ export type Action =
     payload: UserMessage
   }
   | {
+    type: "ADD_HISTORY",
+    payload: UserMessage
+  }
+  | {
     type: "SEND_MESSAGE",
     payload: {
       messageContent: string
@@ -184,6 +188,40 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
     case "ADD_MESSAGE": {
       //If the messagelist is over our cap we discard the oldest message in the list.
       if (state.messages.length > state.maxMessagesInList ){
+        state.messages.shift();
+      }
+
+      const debugMerged: AppState = {
+        ...state,
+        messages: [
+          ...state.messages as Array<UserMessage>,
+          {
+            ...action.payload as UserMessage
+          }
+        ]
+      };
+
+      return debugMerged;
+
+
+      /*
+            internalKey: string,
+            key: string,
+            senderId: string,
+            message: string,
+            UserAvatar: string,
+            timetoken: null,
+            senderName: string,
+            dateFormat: string,
+            reactions: null,
+            addMessageReaction: null,
+            addActions: null
+    */
+    }
+    //ADD_MESSAGE adds an incoming message to our internal MessageList buffer.
+    case "ADD_HISTORY": {
+      //If the messagelist is over our cap we discard the oldest message in the list.
+      if (state.messages.length > state.maxMessagesInList) {
         state.messages.shift();
       }
 
