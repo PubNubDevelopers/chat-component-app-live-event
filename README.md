@@ -15,6 +15,8 @@ By leveraging open source tools and components it is possible to create a world 
 
 A reliable Chat back-end provider offers message deliverability, presence indicators and other related data in a predictable fashion so the React based front end can not only be suited to users taste and current habits but, no puns intended, also react to network messages without which there is no UI that would serve any user.
 
+[Live Demo of Live Event Chat Demo](https://nfodorpubnubcdn.imfast.io/)
+
 ## What to do with this repository?
 
 This is an example of how to integrate open source components, including React chat components, with one notable message and presence service provider: PubNub.
