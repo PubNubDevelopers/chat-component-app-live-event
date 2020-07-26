@@ -7,7 +7,7 @@ export const ComposeMessageBoxWrapper = styled.div`
  height: 90px;
  margin-left: 0px;
  left: 0px;
- top: 658px;
+ top: 500px;
  position: absolute;
 `;
 

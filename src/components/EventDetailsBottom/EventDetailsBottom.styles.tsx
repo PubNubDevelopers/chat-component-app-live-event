@@ -1,4 +1,4 @@
-import styled , { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { ThemedStyledComponentsModule } from "styled-components";
 
 
@@ -7,14 +7,14 @@ export const heartBeat = keyframes`
     75% {transform: scale(0.6);}
  `;
 
- export const hahaFace = keyframes`
+export const hahaFace = keyframes`
     10%, 30%, 50% {transform: translateY(25px);}
     20%, 40% {transform: translateY(15px);}
     60%, 80% {transform: translateY(0);}
     70%, 90% {transform: translateY(-10px);}
  `;
 
- export const hahaMouth = keyframes`
+export const hahaMouth = keyframes`
     10%, 30%, 50% {transform: scale(0.6); top: 45%;}
     20%, 40% {transform: scale(0.8); top: 45%;}
     60%, 80% {transform: scale(1); top: 50%;}
@@ -22,18 +22,18 @@ export const heartBeat = keyframes`
     90% {transform: scale(1.1); top: 50%;}
  `;
 
- export const yay = keyframes`
+export const yay = keyframes`
     25% {transform: rotate(-15deg);}
     75% {transform: rotate(15deg);}
  `;
 
- export const wowFace = keyframes`
+export const wowFace = keyframes`
     15%, 25% {transform: rotate(20deg) translateX(-25px);}
     45%, 65% {transform: rotate(-20deg) translateX(25px);}
     75%, 100% {transform: rotate(0deg) translateX(0);}
  `;
 
- export const wowBrow = keyframes`
+export const wowBrow = keyframes`
 	15%, 65% {top: 25px;}
 	75%, 100%, 0% {top: 15px;}
     `;
@@ -98,13 +98,13 @@ export const angryMouth = keyframes`
 
 
 export const EventIDWrapper = styled.span`
-    width: 330px;
+    width: 190px;
     height: 28px;
     position: absolute;
     left: 70px;
     margin-top: 40px;
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 500;
     font-stretch: normal;
     font-style: normal;
@@ -114,13 +114,13 @@ export const EventIDWrapper = styled.span`
   `
 export const HostNameWrapper = styled.span`
     position: absolute;
-    width: 360px;
+    width: 190px;
     heigth: 18px;
     display: inline;
     left: 70px;
     margin-top: 12px;
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 500;
     font-stretch: normal;
     font-style: normal;
@@ -155,12 +155,12 @@ position: absolute;
 `
 
 export const BottomShareButtonWrapper = styled.div`
-left: 410px;
+left: 250px;
 display: inline;
 position: absolute;
 top: 18px;
 font-family: 'Roboto', sans-serif;
-font-size: 15px;
+font-size: 13px;
 //font-weight: 500;
 //font-stretch: normal;
 //font-style: normal;
@@ -168,24 +168,24 @@ letter-spacing: normal;
 background-color: #001AFF;
 opacity: 1;
 border-radius: 5px;
-width: 90px;
-height: 30px;
+width: 57px;
+height: 21px;
 padding-left: 7px;
 padding-right: 30px;
 padding-top: 5px;`
 
 export const BottomFollowButtonWrapper = styled.div`
-left: 530px;
+left: 360px;
 display: inline;
 position: absolute;
-width: 95px;
-height: 30px;
+width: 57px;
+height: 21px;
 padding-left: 7px;
 padding-right: 30px;
 padding-top: 5px;
 top: 18px;
 font-family: 'Roboto', sans-serif;
-font-size: 15px;
+font-size: 13px;
 letter-spacing: normal;
 opacity: 1;
 border-radius: 5px;
@@ -198,7 +198,7 @@ pointer-events: none;
 export const ReactionsWrapper = styled.div`
 height: 30px;
 width: 100px;
-left: 650px;
+left: 480px;
 top: 7px;
 padding-left: 0px;
 padding-right: 10px;
@@ -220,18 +220,18 @@ export const ReactionButtonWrapper = styled.div.attrs(props => ({
     //reaction: "LOL",
     //srcOverride: ""
     //appearindex: "3"
-  }))`
+}))`
 position: absolute;
-background-image: url(${props => props.srcOverride ? props.srcOverride : `/images/reaction` + props.reaction + `@3x.png` });
+background-image: url(${props => props.srcOverride ? props.srcOverride : `https://nfodorpubnubcdn.imfast.io/images/reaction` + props.reaction + `@3x.png`});
 
 
-//background-image: url(${props => `/images/reaction` + props.reaction + `@3x.png`});
+//background-image: url(${props => `https://nfodorpubnubcdn.imfast.io/images/reaction` + props.reaction + `@3x.png`});
 background-size: contain;
 background-repeat: no-repeat;
 top: 7px;
 height: 35px;
 width: 35px;
-left: ${props => (props.appearindex == "1") ?  0 + `px` : (35 * (parseInt(props.appearindex) -1) ) + `px` } ;
+left: ${props => (props.appearindex == "1") ? 0 + `px` : (35 * (parseInt(props.appearindex) - 1)) + `px`} ;
 padding-right: 30px;
 padding-left: 10px;
 font-family: Roboto;
@@ -251,7 +251,7 @@ height: 30px;
 padding-left: 10px;
 padding-right: 10px;
 font-family: Roboto;
-font-size: 20px;
+font-size: 15px;
 font-weight: 500;
 font-stretch: normal;
 font-style: normal;
@@ -292,10 +292,10 @@ export const EventDetailsTopWrapper = styled.div`
 export const EventDetailsBottomWrapper = styled.div`
  display: flex;
  position: absolute;
- width: 850px;
+ //width: 850px;
  height: 100px;
  left: 0px;
- top: 660px;
+ top: 500px;
  z-index: 150;
  opacity: 1;
  -webkit-background-size: contain;
@@ -323,10 +323,10 @@ export const Emoji = styled.div.attrs(props => ({
     emoji_text_color: "black",
     //appearindex:"1" 
 
-  }))`
+}))`
 width: 25px;
 height: 25px;
-left: ${props => (25 * parseInt(props.appearindex)) + "px"  } ;
+left: ${props => (25 * parseInt(props.appearindex)) + "px"} ;
 
 margin: 7px 15px 10px 18px;
 background: ${props => props.emoji_base_color};
@@ -352,21 +352,21 @@ export const BaseEmoji = styled.div`
         content: '';
     }  
 `;
-export  const EmojiFace = styled(BaseEmoji)`
+export const EmojiFace = styled(BaseEmoji)`
     width: inherit;
     height: inherit;
 `;
-export  const emoji__eyebrows =  styled(BaseEmoji)``;
-export  const emoji__eyes =  styled(BaseEmoji)``;
-export  const emoji__mouth =  styled(BaseEmoji)``;
-export const emoji__tongue =  styled(BaseEmoji)``;
-export const emoji__heart =  styled(BaseEmoji)``;
+export const emoji__eyebrows = styled(BaseEmoji)``;
+export const emoji__eyes = styled(BaseEmoji)``;
+export const emoji__mouth = styled(BaseEmoji)``;
+export const emoji__tongue = styled(BaseEmoji)``;
+export const emoji__heart = styled(BaseEmoji)``;
 export const EmojiHand = styled(BaseEmoji).attrs(props => ({
     emoji_white_color: "white",
     emoji_base_color: "red",
     emoji_text_color: "black"
 
-  }))`
+}))`
         top: 11px;
         left: 7px;
 		bottom: 10px;
@@ -396,12 +396,12 @@ export const EmojiHand = styled(BaseEmoji).attrs(props => ({
 
 
 
-export const EmojiThumb =  styled(BaseEmoji).attrs(props => ({
+export const EmojiThumb = styled(BaseEmoji).attrs(props => ({
     emoji_white_color: "white",
     emoji_base_color: "red",
     emoji_text_color: "black"
 
-  }))`
+}))`
 border-bottom: 1px solid ${props => props.emoji_white_color};
 border-left: 5px solid #fffdfd00;
 top: -4px;
@@ -464,7 +464,7 @@ animation: ${heartBeat} 1s linear infinite alternate;
 export const emojiLove = styled.div.attrs(props => ({
     emoji_love_color: "red"
 
-  }))`
+}))`
 background: ${props => props.emoji_love_color};
   
 &:after {

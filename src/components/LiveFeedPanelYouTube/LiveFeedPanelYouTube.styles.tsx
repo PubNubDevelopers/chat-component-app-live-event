@@ -7,12 +7,12 @@ export const CreateEventWrapper = styled.div`
     //display: block;
     left: 310px;
     width: 40%;
-`;   
+`;
 
 export const EventNameWrapper = styled.div.attrs(props => ({
     // we can define static props
 
-  }))`
+}))`
     border-radius: 9px;
     border-width: 1px;
     color: red;
@@ -24,9 +24,9 @@ export const EventNameWrapper = styled.div.attrs(props => ({
     margin: auto;
     `;
 
-    export const HostNameWrapper = styled.div.attrs(props => ({
-        // we can define static props
-      }))`
+export const HostNameWrapper = styled.div.attrs(props => ({
+    // we can define static props
+}))`
         border-radius: 9px;
         border-width: 1px;
         color: red;
@@ -38,9 +38,9 @@ export const EventNameWrapper = styled.div.attrs(props => ({
         margin: auto;
         `;
 
- export const CreateEventButtonWrapper = styled.div.attrs(props => ({
+export const CreateEventButtonWrapper = styled.div.attrs(props => ({
     // we can define static props
-  }))`
+}))`
     border-radius: 9px;
     border-width: 1px;
     color: red;
@@ -50,8 +50,8 @@ export const EventNameWrapper = styled.div.attrs(props => ({
     padding-left: 15px;
     position: absolute;
     margin: auto;
-    `;       
-export const ButtonCreateEvent = styled.button `
+    `;
+export const ButtonCreateEvent = styled.button`
 border-radius: 20px;
 border-width: 0px;
 color: #262323;
@@ -62,25 +62,26 @@ padding-left: 60px;
 position: absolute;
 margin-left: auto;
 margin-right: auto;
-background-image: url("images/companyLogo.png");
+background-image: url("https://nfodorpubnubcdn.imfast.io/images/companyLogo.png");
 background-repeat: no-repeat;
 background-position-x: 10px;
 background-position-y: 6px;`;
 
-export const LiveFeedPanelWrapper = styled.div`
+export const LiveFeedPanelYouTubeWrapper = styled.div`
     display: flex;
+    flex-direction: column;
     left                : 0px;
-    position            : absolute;
+    //position            : absolute;
     top                 : 0px;
     width : 850px;
-    height: 80%;
+    height: 490px;
     z-index: 50;
     opacity: 1;
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size: contain;
-    object-fit: contain;
+    //object-fit: contain;
     //background: url("images/stream.png") no-repeat;
     background-color: rgba(55, 50, 50, 0.7);
     background-blend-mode: hard-light;

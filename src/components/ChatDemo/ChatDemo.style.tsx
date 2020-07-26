@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const Box = styled.div`
-  width: 1280px;
+  width: 100%;
   height: 800px;
   object-fit: contain;
 `;
@@ -46,6 +46,8 @@ export const Advert = styled.div`
 `
 // Create a Wrapper component that'll render a <section> tag with some styles
 export const ChatDemoWrapper = styled.div`
+display: flex;
+flex-direction: row;
 @font-face {
   font-family: 'Roboto', sans-serif;
   src: local('Roboto'), url(fonts/Roboto.woff) format('woff');
@@ -55,18 +57,19 @@ opacity: 1;
 -moz-background-size: contain;
 -o-background-size: contain;
 //background: url("images/wallpaper.png") repeat;
-background: black;
+//background: red;
 z-index: 1;
-display: grid;
 margin: none;
-height: 800px;
-width: 800px;
-object-fit: contain;
-left                : 0px;
-position            : relative;
-top                 : 0px;
-transform           : rotate(0deg);
+height: 100%;
+width: 100%;
+//object-fit: contain;
+//left                : 0px;
+//position            : relative;
+//top                 : 0px;
+//transform           : rotate(0deg);
 `;
+
+
 export const Block1 = styled.div`
 z-index: 3;
 display: grid;
@@ -76,6 +79,8 @@ background-color: red;
 //position: absolute;
 margin: auto; 
 `;
+
+
 export const CenterLoginBox = styled.div`
 width: 694px;
 height: 560px;

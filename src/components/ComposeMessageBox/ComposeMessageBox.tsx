@@ -64,7 +64,7 @@ export const SendMessageField = () => {
       left: "45px",
       borderWidth: "0px",
       borderRadius: "230px",
-      backgroundColor: "white",
+      //backgroundColor: "white",
       color:"white",
       }}>
       {/* <div>

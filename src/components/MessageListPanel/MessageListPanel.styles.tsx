@@ -2,10 +2,13 @@ import styled from 'styled-components';
 
 export const MessageListPanelWrapper = styled.div`
  display: flex;
- position: absolute;
+ flex-direction: column;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+ position: relative;
  width: 320px;
- height: 80%;
- left: 850px;
+height: 480px;
+ //left: 850px;
  top: 0px;
  z-index: 50;
  opacity: .7;
@@ -14,7 +17,7 @@ export const MessageListPanelWrapper = styled.div`
  -o-background-size: contain;
  background-size: contain;
  object-fit: contain;
- //background: url("images/scaffolding2.png") center repeat;
+ //background: url("https://nfodorpubnubcdn.imfast.io/images/scaffolding2.png") center repeat;
  //background-color: rgba(0, 255, 0, 1);
  background-blend-mode: hard-light;
  

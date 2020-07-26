@@ -16,7 +16,7 @@ export const MessageList: React.SFC<MessageListProps> = (props: MessageListProps
   //const listBottomPos = messagesEndRef.current.getBoundingClientRect().bottom;
   //console.log(`listBottomPos: ${listBottomPos}`);
   const scrollToBottom = () => {
-    messagesEndRef?.current?.scrollIntoView({ block: "end", inline: "nearest", behavior: "smooth" });
+   messagesEndRef?.current?.scrollIntoView({ block: "end", inline: "nearest", behavior: "smooth" });
     }
 
   useScrollPosition(({ prevPos, currPos }) => {

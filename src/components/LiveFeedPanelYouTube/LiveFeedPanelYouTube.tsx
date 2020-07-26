@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from "react-dom";
 import YouTube from 'react-youtube';
 import { 
-  LiveFeedPanelWrapper, 
+  LiveFeedPanelYouTubeWrapper, 
   FormGroup, 
   Label, 
   Input, 
@@ -34,9 +34,9 @@ export const LiveFeedPanelYouTube: React.SFC<LiveFeedPanelYouTubeProps> = (props
   const [loader, setLoader] = useState({})
   const [onCall, setOnCall] = useState(false)
   return(
-  <LiveFeedPanelWrapper>
+    <LiveFeedPanelYouTubeWrapper>
     <YouTube videoId={props.videoID} opts={props.opts} onReady={props.onReady} />
-  </LiveFeedPanelWrapper>
+    </LiveFeedPanelYouTubeWrapper>
 
 )}
 

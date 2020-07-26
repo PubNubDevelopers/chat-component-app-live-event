@@ -15,7 +15,7 @@ opacity: 1;
 -o-background-size: contain;
 background-size: contain;
 object-fit: contain;
-background: url("images/promotionAd.png") no-repeat;
+background: url("https://nfodorpubnubcdn.imfast.io/images/promotionAd.png") no-repeat;
 background-color: rgba(255, 255, 255, 0.7);
 background-blend-mode: hard-light;
 `;

@@ -145,7 +145,7 @@ export const appData: AppState = {
   messageListFilter: `language_tone != 'offensive'`, //See README before changing this value.
   //messageListFilter: `language_tone != 'offensive'`,
   eventHostAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
-  eventAvatar:"/images/companyLogo@3x.png",
+  eventAvatar:"https://nfodorpubnubcdn.imfast.io/images/companyLogo@3x.png",
 ```
 
 #### ChatDemo
@@ -225,9 +225,9 @@ This is where the chat user composes messages to be sent to the event chat chann
 
 ````tsx
       <ComposeMessageBoxWrapper>
-        <UserImgWrapper src="/images/hostImage@3x.png" />
+        <UserImgWrapper src="https://nfodorpubnubcdn.imfast.io/images/hostImage@3x.png" />
         <TextInputWrapper></TextInputWrapper>
-        <EmojiInputWrapper src="/images/emojiInput@3x.png" />
+        <EmojiInputWrapper src="https://nfodorpubnubcdn.imfast.io/images/emojiInput@3x.png" />
       </ComposeMessageBoxWrapper>
 ````
 

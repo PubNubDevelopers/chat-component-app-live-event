@@ -18,14 +18,16 @@ export const MessageListPanel: React.SFC<MessageListPanelProps> = (props: Messag
     <div>
       
       <AppStateProvider>
+        <MessageListPanelWrapper>
         <MessageList/>
         <ComposeMessageBoxWrapper>
           <UserImgWrapper src={state.eventHostAvatar} />
           <TextInputWrapper>
             <SendMessageField />
           </TextInputWrapper>
-          <EmojiInputWrapper src="/images/emojiInput@3x.png" />
-        </ComposeMessageBoxWrapper>
+          <EmojiInputWrapper src="https://nfodorpubnubcdn.imfast.io/images/emojiInput@3x.png" />
+          </ComposeMessageBoxWrapper>
+        </MessageListPanelWrapper>
       </AppStateProvider>
       
 

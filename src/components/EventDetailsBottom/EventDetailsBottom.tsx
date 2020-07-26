@@ -35,14 +35,14 @@ export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = (props: Ev
                       <BottomShareButtonWrapper> 
 
                         <div>
-                        <BottomButtonImgWrapper src="/images/iconShare@3x.png" />
+          <BottomButtonImgWrapper src="https://nfodorpubnubcdn.imfast.io/images/iconShare@3x.png" />
                         <BottomButtonTextWrapper>Share</BottomButtonTextWrapper>
                         </div>
                       </BottomShareButtonWrapper>
 
                       <BottomFollowButtonWrapper> 
                         <div>
-                        <BottomButtonImgWrapper src="/images/iconFollow@3x.png"/>
+          <BottomButtonImgWrapper src="https://nfodorpubnubcdn.imfast.io/images/iconFollow@3x.png"/>
                         <BottomButtonTextWrapper>Follow</BottomButtonTextWrapper>
                         </div>
                       </BottomFollowButtonWrapper>

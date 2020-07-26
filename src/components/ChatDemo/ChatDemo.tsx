@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { ChatDemoWrapper } from "./ChatDemo.style"
 import { LiveFeedPanelYouTube } from "../LiveFeedPanelYouTube"
+import { LiveFeedPanelYouTubeWrapper } from "../LiveFeedPanelYouTube/LiveFeedPanelYouTube.styles"
 import { MessageListPanel } from "../MessageListPanel"
 import { EventDetailsTop } from "../EventDetailsTop"
 import { EventDetailsBottom } from "../EventDetailsBottom"
@@ -28,10 +29,13 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
   return (
 
     <ChatDemoWrapper >
+      
+      <LiveFeedPanelYouTubeWrapper>
+        {/* <LiveFeedPanelYouTube videoID="jZtxlp664yU" opts={opts} onReady={(event: { target: { pauseVideo: () => void; }; }) => { event.target.pauseVideo(); }} /> */}
 
-      <LiveFeedPanelYouTube videoID="jZtxlp664yU" opts={opts} onReady={(event: { target: { pauseVideo: () => void; }; }) => {event.target.pauseVideo();}} />
+        <EventDetailsBottom />
+      </LiveFeedPanelYouTubeWrapper>
 
-      <EventDetailsBottom />
       <MessageListPanelWrapper>
 
         <MessageListPanel />

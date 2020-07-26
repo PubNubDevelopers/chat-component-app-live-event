@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const MessageListWrapper = styled.div`
- color: white;
+ display: flex;
  flex-direction: column;
+ color: white;
  overflow-y: scroll;
  list-style: none;
- display: flex;
- height: 100%;
+ height: 500px;
 `;
