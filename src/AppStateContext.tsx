@@ -33,6 +33,8 @@ interface Event {
 export const appData: AppState = {
   simulateLogin: true,
   presence: false,
+  history: true, // Enable or disable history.
+  historyMax: 10, // How many messages to load from history (max 100).
   eventName: "PubNub Live Event", //Event name as displayed by components.
   maxMessagesInList: 200, //Max number of messages displayed at most in the message list. the more messages the more memory will be consumed by the browser.
   eventId: "PNEVT001", //Event ID as displayed by components.
@@ -41,14 +43,14 @@ export const appData: AppState = {
   eventHostAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
   ownerAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
   eventAvatar: "/images/companyLogo@3x.png",
-  channel:"liveeventdemo.row1",
+  channel:"liveeventdemo.row1", // Channel to use for messages.
   messageBuffer: "", //Future use.
   //users: [] ,temnte //Future use.
   messages: [], //Array of UserMessages, intitalized to empty, Where live event messages are streamed into.
   events: [], //Future use
   pubnubConf: pubnubConfig,  //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
   defaultchannel: {
-    channels: ['liveeventdemo.row1'], //Only one channel, split in different rows if required and load in props, can be set by load balancer.
+    channels: ['liveeventdemo.row'], //Only one channel, split in different rows if required and load in props, can be set by load balancer.
     withPresence: true //Presence can be set to false here.
   },
   pubnub: new PubNub({
@@ -58,8 +60,6 @@ export const appData: AppState = {
   message: "",
 
 }
-
-
 
 interface EventList {
   id: string,
@@ -162,13 +162,15 @@ export type Action =
     payload: UserMessage
   }
   | {
+    type: "ADD_HISTORY",
+    payload: UserMessage[]
+  }
+  | {
     type: "SEND_MESSAGE",
     payload: {
       messageContent: string
     }
   }
-
-
 
 interface AppStateContextProps {
   state: AppState;
@@ -202,6 +204,38 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
       };
 
       return debugMerged;
+
+
+      /*
+            internalKey: string,
+            key: string,
+            senderId: string,
+            message: string,
+            UserAvatar: string,
+            timetoken: null,
+            senderName: string,
+            dateFormat: string,
+            reactions: null,
+            addMessageReaction: null,
+            addActions: null
+    */
+    }
+     //ADD_HISTORY adds array of messages to our internal MessageList buffer.
+    case "ADD_HISTORY": {
+       const historyMerged: AppState = {
+        ...state,
+        messages: [
+          ...action.payload as Array<UserMessage>,
+          ...state.messages as Array<UserMessage>
+        ]
+      };
+
+      //If the messagelist is over our cap we discard the oldest messages in the list.
+      if (state.messages.length > state.maxMessagesInList) {
+        state.messages.slice(state.messages.length-state.maxMessagesInList, state.messages.length);
+      }
+
+      return historyMerged;
 
 
       /*
@@ -255,8 +289,6 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
   }
 }
 
-
-
 export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   const [state, dispatch] = useReducer(appStateReducer, appData)
@@ -289,15 +321,37 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
     //         var uuid = p.uuid; // UUIDs of users who are connected with the channel
     //     }
     // });
+      if (state.history) {
+        //Get the history on the default channel.
+        state.pubnub.history(
+            {
+                channel: state.channel,
+                count: state.historyMax
+            },
+            (status, response) => { 
+              if (typeof response.messages !== "undefined" && response.messages.length > 0) {
+                var historyMessages = [];
+                for (var i = 0; i <= response.messages.length; i++) {
+                  if (typeof response.messages[i] !== "undefined") {
+                    historyMessages.push(response.messages[i].entry)
+                  }
+                }
+                dispatch({
+                  type: "ADD_HISTORY",
+                  payload: historyMessages
+                });
+              }
+            }
+        );
+      }
 
-      //Lets' subscribe on the default channel.
+      // Subscribe on the default channel.
       state.pubnub.subscribe(
         {
           channels: [state.channel], //Only one channel, split in different rows if required and load in props, can be set by load balancer.
           withPresence: state.presence
         }
       );
-
 
       //In case our App MessageListFilter propery we filter.
       if (state.messageListFilter.length > 0) {
