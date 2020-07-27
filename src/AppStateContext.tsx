@@ -43,7 +43,7 @@ export const appData: AppState = {
   eventHostAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
   ownerAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
   eventAvatar: "/images/companyLogo@3x.png",
-  channel:"liveeventdemo.row1",
+  channel:"liveeventdemo.row1", // Channel to use for messages.
   messageBuffer: "", //Future use.
   //users: [] ,temnte //Future use.
   messages: [], //Array of UserMessages, intitalized to empty, Where live event messages are streamed into.
