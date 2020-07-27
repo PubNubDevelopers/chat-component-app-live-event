@@ -33,7 +33,7 @@ interface Event {
 export const appData: AppState = {
   simulateLogin: true,
   presence: false,
-  history: true, // Enable to disable history.
+  history: true, // Enable or disable history.
   historyMax: 10, // How many messages to load from history (max 100).
   eventName: "PubNub Live Event", //Event name as displayed by components.
   maxMessagesInList: 200, //Max number of messages displayed at most in the message list. the more messages the more memory will be consumed by the browser.
