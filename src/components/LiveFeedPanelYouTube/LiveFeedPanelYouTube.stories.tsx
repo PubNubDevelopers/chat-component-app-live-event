@@ -4,7 +4,7 @@ import { useAppState, AppStateProvider, AppStateContext } from "../../AppStateCo
 import { LiveFeedPanelYouTube } from './LiveFeedPanelYouTube';
 
 const opts = {
-    height: "100%",
+    height: "500px",
     width: "850px",
     playerVars: {
         // https://developers.google.com/youtube/player_parameters

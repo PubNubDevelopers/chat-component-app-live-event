@@ -68,18 +68,18 @@ background-position-x: 10px;
 background-position-y: 6px;`;
 
 export const LiveFeedPanelYouTubeWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
+    //display: flex;
+    //flex-direction: column;
     left                : 0px;
     //position            : absolute;
     top                 : 0px;
-    width : 850px;
-    height: 490px;
+    width : 100%;
+    height: 100%;
     z-index: 50;
     opacity: 1;
     -webkit-background-size: contain;
     -moz-background-size: contain;
-    -o-background-size: contain;
+    //-o-background-size: contain;
     background-size: contain;
     //object-fit: contain;
     //background: url("images/stream.png") no-repeat;

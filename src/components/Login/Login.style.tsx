@@ -2,23 +2,23 @@ import styled from 'styled-components';
 
 
 
-export const Filter = styled.div `
-  background-color    : rgba(0,0,0,1.0);
-  border-radius       : 10.0px;
-  height              : 560px;
-  position            : absolute;
-  transform           : rotate(0deg);
-  width               : 694px;
-`
+export const Filter = styled.div`
+  background-color: rgba(0,0,0,1.0);
+  border-radius: 10.0px;
+  height: 560px;
+  position: absolute;
+  transform: rotate(0deg);
+  width: 694px;
+`;
 
-export const Box = styled.div `
+export const Box = styled.div`
   width: 1280px;
   height: 800px;
   object-fit: contain;
 `;
 
 
-export const Wallpaper = styled.div `
+export const Wallpaper = styled.div`
   opacity: 10;
   mix-blend-mode: soft-light;
   border-radius: 10px;
@@ -26,21 +26,21 @@ export const Wallpaper = styled.div `
   height: auto;
   text-align: center;
   display: grid;
-`
+`;
 
 // Create a Title component that'll render an <h1> tag with some styles
-export const Title = styled.h1 `
+export const Title = styled.h1`
   font-size: 1.5em;
   text-align: center;
   //color: palevioletred;
 `;
 
-export const Advert = styled.div `
+export const Advert = styled.div`
 
 
-`
+`;
 // Create a Wrapper component that'll render a <section> tag with some styles
-export const LoginWrapper = styled.div `
+export const LoginWrapper = styled.div`
   opacity: 1;
   -webkit-background-size: contain;
   -moz-background-size: contain;
@@ -58,7 +58,7 @@ export const LoginWrapper = styled.div `
   transform           : rotate(0deg);
 `;
 
-export const ButtonLoginFacebook = styled.button `
+export const ButtonLoginFacebook = styled.button`
     border-radius: 20px;
     border-width: 0px;
     color: #FFFFFF;
@@ -70,7 +70,7 @@ export const ButtonLoginFacebook = styled.button `
     background-color: white;
 `;
 
-export const ButtonLoginGoogle = styled.button `
+export const ButtonLoginGoogle = styled.button`
     border-radius: 20px;
     border-width: 0px;
     background: #5183F7;
@@ -82,7 +82,7 @@ export const ButtonLoginGoogle = styled.button `
     background: url("https://nfodorpubnubcdn.imfast.io/images/loginGoogleButton.png")  no-repeat;
 `;
 
-export const ButtonLogin = styled.button `
+export const ButtonLogin = styled.button`
     border-radius: 20px;
     border-width: 0px;
     background-color: #001aff;
@@ -203,7 +203,7 @@ export const LoginFormModeratorID = styled.input.attrs({
 
 
 
-export const LoginFormDividerOr = styled.div `
+export const LoginFormDividerOr = styled.div`
     font-family: Helvetica;
     background: #5183F7;
     font-size: 12px;
@@ -216,7 +216,7 @@ export const LoginFormDividerOr = styled.div `
 `;
 
 
-export const LoginForm = styled.div `
+export const LoginForm = styled.div`
 display: grid;
 height: 80%;
 opacity : 1.0;
@@ -229,7 +229,7 @@ margin-top: 55px;
 `;
 
 
-export const CenterLoginBox = styled.div `
+export const CenterLoginBox = styled.div`
 width: 694px;
 height: 560px;
 border-radius: 10px;
@@ -243,12 +243,12 @@ position            : relative;
 transform           : rotate(0deg);
 `;
 
-export const Grid = styled.div `
+export const Grid = styled.div`
 display: grid;
 margin: 0;
 `;
 
-export const Row = styled.div `
+export const Row = styled.div`
     display: grid;
     color: #000000;
     heigth: 80vh;
@@ -256,7 +256,7 @@ export const Row = styled.div `
 
 `;
 
-export const Col = styled.div `
+export const Col = styled.div`
     color: #000000;
     display: grid;
     //width: 500px;
@@ -267,9 +267,9 @@ export const Col = styled.div `
 
 // const Content = styled.div`
 //     background-image: url(${props => props.img});
-// `;
+//`;
 // const PropsBox = styled.div`
 //     background: ${(props) => (props.background ? props.background : "")};
 //     height: '50px';
 //     width: '50px';
-//   `
+//`

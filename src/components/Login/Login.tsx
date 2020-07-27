@@ -1,31 +1,26 @@
 import React, { useCallback, FunctionComponent, useEffect, useState } from 'react';
-//import { createPubNubListener } from 'pubnub-redux';
-//import { createAppStore } from "../../store";
-import ReactDOM from 'react-dom';
-import styled from 'styled-components';
-import {StyledCheckBox} from "../StyledCheckBox/StyledCheckBox";
-import {
-  LoginFormCheckIsModerator, 
-  LoginFormModeratorID, 
-  ButtonLogin, 
-  LoginFormInputUserName, 
-  LoginFormInputPassword,
-  LoginFormInputEmail, 
-  LoginFormDividerOr, 
-  ButtonLoginGoogle, 
-  ButtonLoginFacebook, 
-  LoginForm, 
-  LoginWrapper, 
-  CenterLoginBox
-} from "./Login.style"
+
+
+import { StyledCheckBox } from "../StyledCheckBox/StyledCheckBox";
 
 import { PromotionAd } from "../PromotionAd/PromotionAd";
 
-
+import {
+  ButtonLogin,
+  LoginFormModeratorID,
+  LoginFormInputUserName,
+  LoginFormInputPassword,
+  LoginFormInputEmail,
+  LoginFormDividerOr,
+  ButtonLoginGoogle,
+  ButtonLoginFacebook,
+  LoginForm,
+  LoginWrapper,
+  CenterLoginBox
+} from "./Login.style";
 interface LoginInitProps {
 
 }
-
 
 export const Login: React.SFC<LoginInitProps> = (props: LoginInitProps) => {
 

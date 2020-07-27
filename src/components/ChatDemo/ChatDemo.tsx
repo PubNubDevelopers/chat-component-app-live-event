@@ -18,8 +18,8 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
 
 
   const opts = {
-    height: "100%",
-    width: "850px",
+    //height: "100%",
+    width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
@@ -31,7 +31,7 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
     <ChatDemoWrapper >
       
       <LiveFeedPanelYouTubeWrapper>
-        {/* <LiveFeedPanelYouTube videoID="jZtxlp664yU" opts={opts} onReady={(event: { target: { pauseVideo: () => void; }; }) => { event.target.pauseVideo(); }} /> */}
+        <LiveFeedPanelYouTube videoID="jZtxlp664yU" opts={opts} onReady={(event: { target: { pauseVideo: () => void; }; }) => { event.target.pauseVideo(); }} />
 
         <EventDetailsBottom />
       </LiveFeedPanelYouTubeWrapper>

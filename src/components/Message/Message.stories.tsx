@@ -3,9 +3,6 @@ import * as React from 'react';
 import { UserMessage, useAppState, AppStateProvider, AppStateContext } from "../../AppStateContext"
 
 import { Message } from '../Message/Message';
-import {MessageList} from '../MessageList/MessageList';
-import {MessageListWrapper} from '../MessageList/MessageList.styles';
-
 
 const message_sample = new UserMessage(`{
     "id": 1,
