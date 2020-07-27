@@ -19,7 +19,7 @@ import {
   CenterLoginBox
 } from "./Login.style"
 
-import PromotionAd from "../PromotionAd";
+import { PromotionAd } from "../PromotionAd/PromotionAd";
 
 
 interface LoginInitProps {
@@ -27,7 +27,7 @@ interface LoginInitProps {
 }
 
 
-const Login: React.SFC<LoginInitProps> = (props: LoginInitProps) => {
+export const Login: React.SFC<LoginInitProps> = (props: LoginInitProps) => {
 
 return(
 
@@ -35,9 +35,7 @@ return(
 
   <CenterLoginBox>
 
-        <PromotionAd>
-
-        </PromotionAd>
+        <PromotionAd/>
 
       <LoginForm>
 
@@ -75,5 +73,4 @@ return(
 
 }
 
-export { Login };
 
