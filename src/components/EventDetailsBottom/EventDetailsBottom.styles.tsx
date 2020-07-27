@@ -196,6 +196,8 @@ export const EventDetailWrapper = styled.div`
 pointer-events: none;
 `
 export const ReactionsWrapper = styled.div`
+display: flex;
+flex-direction: row;
 height: 30px;
 width: 100px;
 left: 480px;
@@ -216,24 +218,15 @@ background-color: #000000;
 `
 
 
-export const ReactionButtonWrapper = styled.div.attrs(props => ({
-    //reaction: "LOL",
-    //srcOverride: ""
-    //appearindex: "3"
-}))`
-position: absolute;
-background-image: url(${props => props.srcOverride ? props.srcOverride : `https://nfodorpubnubcdn.imfast.io/images/reaction` + props.reaction + `@3x.png`});
-
-
-//background-image: url(${props => `https://nfodorpubnubcdn.imfast.io/images/reaction` + props.reaction + `@3x.png`});
+export const ReactionButtonWrapper = styled.img`
+position: flex;
 background-size: contain;
 background-repeat: no-repeat;
-top: 7px;
-height: 35px;
-width: 35px;
-left: ${props => (props.appearindex == "1") ? 0 + `px` : (35 * (parseInt(props.appearindex) - 1)) + `px`} ;
-padding-right: 30px;
-padding-left: 10px;
+top: 0px;
+height: 40px;
+//width: 35px;
+padding-right: 3px;
+padding-left: 3px;
 font-family: Roboto;
 font-size: 20px;
 font-weight: 500;
@@ -242,7 +235,8 @@ font-style: normal;
 line-height: normal;
 letter-spacing: normal;
 margin-left: 5px;
-border-radius: 7px;
+margin-top: 5px;
+//border-radius: 7px;
 background-color: #000000;
 `
 

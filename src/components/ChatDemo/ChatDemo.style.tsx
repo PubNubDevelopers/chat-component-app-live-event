@@ -115,7 +115,6 @@ export const Col = styled.div`
     display: grid;
     //width: 500px;
     //dislay: inline-block:
-    flex: ${(props)=> props.size}
     //  margin: auto;
     margin: 0;
     `;

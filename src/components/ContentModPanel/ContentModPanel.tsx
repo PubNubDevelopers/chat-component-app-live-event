@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ContentModPanelWrapper } from './ContentModPanel.styles';
 
 interface ContentModPanelProps {
 
 }
 
-export const ContentModPanel: React.SFC<ContentModPanelProps> = (props: ChatInitProps) => {
+export const ContentModPanel: React.SFC<ContentModPanelProps> = (props: ContentModPanelProps) => {
 return(
   <ContentModPanelWrapper>
     

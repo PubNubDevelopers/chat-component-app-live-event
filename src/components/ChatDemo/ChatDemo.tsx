@@ -5,7 +5,7 @@ import { LiveFeedPanelYouTubeWrapper } from "../LiveFeedPanelYouTube/LiveFeedPan
 import { MessageListPanel } from "../MessageListPanel"
 import { EventDetailsTop } from "../EventDetailsTop"
 import { EventDetailsBottom } from "../EventDetailsBottom"
-import PromotionAd from "../PromotionAd";
+import {PromotionAd} from "../PromotionAd";
 import { MessageListPanelWrapper } from '../MessageListPanel/MessageListPanel.styles';
 import { useAppState, AppStateProvider, AppStateContext } from "../../AppStateContext"
 

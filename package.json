@@ -12,6 +12,7 @@
     "@storybook/addon-essentials": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^5.3.19",
+    "@storybook/storybook-deployer": "^2.8.6",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -68,7 +69,9 @@
     "dev": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "firehose": "node src/tools/firehose.js start liveeventdemo.row1",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build-storybook": "build-storybook -c .storybook -o .out",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "jshintConfig": {
     "esversion": 9
