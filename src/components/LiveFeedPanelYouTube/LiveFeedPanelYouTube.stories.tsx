@@ -5,7 +5,7 @@ import { LiveFeedPanelYouTube } from './LiveFeedPanelYouTube';
 
 const opts = {
     height: "500px",
-    width: "850px",
+    width: "100%",
     playerVars: {
         // https://developers.google.com/youtube/player_parameters
         autoplay: 1,
@@ -14,7 +14,7 @@ const opts = {
 storiesOf("LiveFeedPanelYouTube", module)
     .add("Live Event Chat", () => (
         <LiveFeedPanelYouTube
-            videoID="jZtxlp664yU"
+            videoID="FIqwRr2cU4c"
             opts={opts}
             onReady={
                 (event: { target: { pauseVideo: () => void; }; }) => { event.target.pauseVideo(); }}

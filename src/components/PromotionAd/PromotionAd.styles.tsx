@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PromotionAdWrapper = styled.div`
 display: flex;
 left                : 0px;
-position            : absolute;
+position            : relative;
 top                 : 0px;
 transform           : rotate(0deg);
 width : 273px;

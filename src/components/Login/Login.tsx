@@ -21,51 +21,71 @@ import {
 interface LoginInitProps {
 
 }
-
 export const Login: React.SFC<LoginInitProps> = (props: LoginInitProps) => {
 
-return(
-
-  <LoginWrapper >
-
-  <CenterLoginBox>
-
-        <PromotionAd/>
-
-      <LoginForm>
-
+  return (
+   
+      <LoginWrapper >
+          <PromotionAd />
+          <LoginForm >
             <ButtonLoginFacebook></ButtonLoginFacebook>
-          
             <ButtonLoginGoogle></ButtonLoginGoogle>
-         
-        <LoginFormDividerOr></LoginFormDividerOr>
-          
+              <LoginFormDividerOr></LoginFormDividerOr>
             <LoginFormInputUserName></LoginFormInputUserName>
-            
             <LoginFormInputEmail></LoginFormInputEmail>
-            
             <LoginFormInputPassword></LoginFormInputPassword>
-            
-            <StyledCheckBox text="I am a Moderator" setChange="(event)=>{console.log('aaa')}"></StyledCheckBox>
-            
+              <StyledCheckBox text="I am a Moderator" setChange="(event)=>{console.log('aaa')}"></StyledCheckBox>
             <LoginFormModeratorID></LoginFormModeratorID>
+              <ButtonLogin>Sign In</ButtonLogin>
+            </LoginForm>
+      </LoginWrapper>
+     
+
+    
+  );
+};
+// export const Loginww: React.SFC<LoginInitProps> = (props: LoginInitProps) => {
+
+// return(
+
+//   <LoginWrapper >
+
+//   {/* <CenterLoginBox>
+
+//         <PromotionAd/>
+
+//       <LoginForm>
+
+//             <ButtonLoginFacebook></ButtonLoginFacebook>
+//             <ButtonLoginGoogle></ButtonLoginGoogle>
+//         <LoginFormDividerOr></LoginFormDividerOr>
+          
+//             <LoginFormInputUserName></LoginFormInputUserName>
             
-            <ButtonLogin>Sign In</ButtonLogin>
+//             <LoginFormInputEmail></LoginFormInputEmail>
+            
+//             <LoginFormInputPassword></LoginFormInputPassword>
+            
+//             <StyledCheckBox text="I am a Moderator" setChange="(event)=>{console.log('aaa')}"></StyledCheckBox>
+            
+//             <LoginFormModeratorID></LoginFormModeratorID>
+            
+//             <ButtonLogin>Sign In</ButtonLogin>
 
-      </LoginForm>
+//       </LoginForm>
 
-    </CenterLoginBox>
+//     </CenterLoginBox> */}
 
-  </LoginWrapper>
+//   </LoginWrapper>
 
-);
+// );
 
 
 
-  const [input, setInput] = useState('');
+//   const [input, setInput] = useState('');
 
-  const [error, setError] = useState<string | null>(null);
+//   const [error, setError] = useState<string | null>(null);
 
-}
+// }
 
 
