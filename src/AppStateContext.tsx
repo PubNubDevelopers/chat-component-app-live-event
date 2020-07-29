@@ -31,6 +31,7 @@ interface Event {
 }
 //This is where you define the Live Event Properties.
 export const appData: AppState = {
+  alert: "green",
   simulateLogin: true,
   presence: false,
   eventName: "PubNub Live Event", //Event name as displayed by components.
@@ -120,7 +121,8 @@ export class UserMessage implements Message {
 //This is the default settings for your Live Event Chat App.
 //Change these settings to your liking.
 export interface AppState {
-  simulateLogin: true,
+  alert: string,
+  simulateLogin: boolean,
   eventName: string,
   eventId: string,
   maxMessagesInList: number,
@@ -142,7 +144,7 @@ export interface AppState {
 
 export type Action =
   | {
-    type: "ADD_USER_LIST",
+    type: "ADD_ALERT",
     payload: string
   }
   | {
@@ -170,6 +172,10 @@ export type Action =
     payload: {
       messageContent: string
     }
+  | {
+      type: "ADD_ALERT",
+      payload: string
+    }
   }
 
 
@@ -188,7 +194,34 @@ export const AppStateContext = createContext<AppStateContextProps>(
 export const appStateReducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
 
-    //ADD_MESSAGE adds an incoming message to our internal MessageList buffer.
+    case "ADD_ALERT": {
+
+      const debugMerged: AppState = {
+        ...state,
+        alert: "sent"
+        
+      };
+  
+        state.alert = 'ha';
+   
+      
+      return debugMerged;
+
+
+      /*
+            internalKey: string,
+            key: string,
+            senderId: string,
+            message: string,
+            UserAvatar: string,
+            timetoken: null,
+            senderName: string,
+            dateFormat: string,
+            reactions: null,
+            addMessageReaction: null,
+            addActions: null
+    */
+    }
     case "ADD_MESSAGE": {
       //If the messagelist is over our cap we discard the oldest message in the list.
       if (state.messages.length > state.maxMessagesInList ){
@@ -276,7 +309,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
           "addActions": null
       },
       });
-
+      state.alert = "Message sent...";
       return { ...state }
     }
 

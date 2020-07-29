@@ -8,7 +8,7 @@ import { ChatDemoWrapper } from './ChatDemo.style';
 storiesOf("ChatDemo", module)
     .add("Live Event Chat", () => (
         <AppStateProvider>
-                <ChatDemo />
+            <ChatDemo />
         </AppStateProvider>
     )
     );

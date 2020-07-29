@@ -11,7 +11,7 @@ export const ComposeMessageBox: React.SFC<ComposeMessageBoxProps> = (props: Comp
 
 return(
   <>
-      <SendMessageField></SendMessageField>
+    <SendMessageField></SendMessageField>
 
   </>
 

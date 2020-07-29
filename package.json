@@ -9,7 +9,9 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.10.1",
     "@n8tb1t/use-scroll-position": "^1.0.43",
+    "@storybook/addon-docs": "^5.3.19",
     "@storybook/addon-essentials": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^5.3.19",
     "@storybook/storybook-deployer": "^2.8.6",
