@@ -196,31 +196,12 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
 
     case "ADD_ALERT": {
 
-      const debugMerged: AppState = {
+      const merged: AppState = {
         ...state,
         alert: "sent"
-        
       };
-  
-        state.alert = 'ha';
-   
-      
-      return debugMerged;
+      return merged;
 
-
-      /*
-            internalKey: string,
-            key: string,
-            senderId: string,
-            message: string,
-            UserAvatar: string,
-            timetoken: null,
-            senderName: string,
-            dateFormat: string,
-            reactions: null,
-            addMessageReaction: null,
-            addActions: null
-    */
     }
     case "ADD_MESSAGE": {
       //If the messagelist is over our cap we discard the oldest message in the list.
@@ -228,7 +209,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
         state.messages.shift();
       }
 
-      const debugMerged: AppState = {
+      const merged: AppState = {
         ...state,
         messages: [
           ...state.messages as Array<UserMessage>,
@@ -238,22 +219,8 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
         ]
       };
 
-      return debugMerged;
+      return merged;
 
-
-      /*
-            internalKey: string,
-            key: string,
-            senderId: string,
-            message: string,
-            UserAvatar: string,
-            timetoken: null,
-            senderName: string,
-            dateFormat: string,
-            reactions: null,
-            addMessageReaction: null,
-            addActions: null
-    */
     }
     //ADD_MESSAGE adds an incoming message to our internal MessageList buffer.
     case "ADD_HISTORY": {
@@ -262,7 +229,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
         state.messages.shift();
       }
 
-      const debugMerged: AppState = {
+      const merged: AppState = {
         ...state,
         messages: [
           ...state.messages as Array<UserMessage>,
@@ -272,22 +239,8 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
         ]
       };
 
-      return debugMerged;
+      return merged;
 
-
-      /*
-            internalKey: string,
-            key: string,
-            senderId: string,
-            message: string,
-            UserAvatar: string,
-            timetoken: null,
-            senderName: string,
-            dateFormat: string,
-            reactions: null,
-            addMessageReaction: null,
-            addActions: null
-    */
     }
     case "SEND_MESSAGE": {
 
@@ -346,20 +299,6 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
       });
 
-    //   state.pubnub.addListener({
-    //     presence: function(p) {
-    //       console.log(JSON.stringify(p));
-    //         // handle presence
-    //         var action = p.action; // Can be join, leave, state-change or timeout
-    //         var channelName = p.channel; // The channel for which the message belongs
-    //         var occupancy = p.occupancy; // No. of users connected with the channel
-    //         var state = p.state; // User State
-    //         var channelGroup = p.subscription; //  The channel group or wildcard subscription match (if exists)
-    //         var publishTime = p.timestamp; // Publish timetoken
-    //         var timetoken = p.timetoken;  // Current timetoken
-    //         var uuid = p.uuid; // UUIDs of users who are connected with the channel
-    //     }
-    // });
 
       //Lets' subscribe on the default channel.
       state.pubnub.subscribe(

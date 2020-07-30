@@ -18,7 +18,6 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
 
 
   const opts = {
-    //height: "100%",
     width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters

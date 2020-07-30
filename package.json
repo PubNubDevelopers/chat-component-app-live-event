@@ -1,10 +1,6 @@
 {
   "name": "typescript-ref-app-stream-chat",
   "version": "0.1.1",
-  "engines": {
-    "node": "14.5.0",
-    "yarn": "1.22.4"
-  },
   "private": true,
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.10.1",
