@@ -1,0 +1,4 @@
+tasks:
+  - init: yarn && yarn install
+  - command: yarn firehose
+  - command: echo `once you have entered your key type "yarn start" and enter.`
