@@ -74,7 +74,7 @@ You can run this web app on your computer or run it out from your web browser on
 
 ## Edit the code and run the app in your browser
 
- [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#snapshot/cc4f5c23-bc0b-4c15-910b-51995dd04f13)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#snapshot/632b4edd-7187-4a7e-af4d-064b6b82c4a7)
 
 ## Run the app on your local machine
 
