@@ -17,6 +17,8 @@ A reliable Chat back-end provider offers message deliverability, presence indica
 
 [Live Demo of Live Event Chat Demo](https://nfodorpubnubcdn.imfast.io/)
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#snapshot/cc4f5c23-bc0b-4c15-910b-51995dd04f13)
+
 ## What to do with this repository?
 
 This is an example of how to integrate open source components, including React chat components, with one notable message and presence service provider: PubNub.
