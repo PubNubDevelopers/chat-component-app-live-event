@@ -246,7 +246,7 @@ Storybook provides with a list of components and how they would appear "Live" in
 
 `yarn storybook`
 
-This will provide you the URL to point your browser to display the Components in storybook.
+The Storybook will launch and provide you the URL to point your browser to, the page displays the Components Gallery, for each component you can copy and paste its code and view it isolated in its context.
 
 ## Using the Sketch file
 
