@@ -14,7 +14,7 @@ const opts = {
 storiesOf("LiveFeedPanelYouTube", module)
     .add("Live Event Chat", () => (
         <LiveFeedPanelYouTube
-            videoID="FIqwRr2cU4c"
+            videoID="oqYbG8Zhoag"
             opts={opts}
             onReady={
                 (event: { target: { pauseVideo: () => void; }; }) => { event.target.pauseVideo(); }}

@@ -30,7 +30,7 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
     <ChatDemoWrapper >
       
       <LiveFeedPanelYouTubeWrapper>
-        <LiveFeedPanelYouTube videoID="FIqwRr2cU4c" opts={opts} onReady={(event: { target: { pauseVideo: () => void; }; }) => { event.target.pauseVideo(); }} />
+        <LiveFeedPanelYouTube videoID="oqYbG8Zhoag" opts={opts} onReady={(event: { target: { pauseVideo: () => void; }; }) => { event.target.pauseVideo(); }} />
 
         <EventDetailsBottom />
       </LiveFeedPanelYouTubeWrapper>

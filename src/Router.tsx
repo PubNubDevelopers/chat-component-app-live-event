@@ -11,7 +11,7 @@ export const ApplicationRouter = (props: ApplicationRouterInitProps) => {
   return (
     <Wrapper>
       <AppStateProvider>
-      {true  ? <ChatDemo /> : <Login  />}
+      {true  ? <ChatDemo /> : <Login/>}
       </AppStateProvider>
     </Wrapper>
   );

@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { ThemedStyledComponentsModule } from "styled-components";
+import { motion, transform } from "framer-motion";
 
 
 export const heartBeat = keyframes`
@@ -218,7 +219,9 @@ background-color: #000000;
 `
 
 
-export const ReactionButtonWrapper = styled.img`
+export const ReactionButtonWrapper = styled(motion.img).attrs(props => ({
+    trowEmojii: Boolean
+}))`
 position: flex;
 background-size: contain;
 background-repeat: no-repeat;
@@ -237,7 +240,7 @@ letter-spacing: normal;
 margin-left: 5px;
 margin-top: 5px;
 //border-radius: 7px;
-background-color: #000000;
+//background-color: #000000;
 `
 
 export const TitleWrapper = styled.div`

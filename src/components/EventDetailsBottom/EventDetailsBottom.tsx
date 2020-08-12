@@ -1,20 +1,22 @@
-import React from 'react';
-import { ReactionButtonWrapper, 
-  ReactionsWrapper, 
-  EventIDWrapper, 
-  HostNameWrapper, 
-  HostImageWrapper, 
+import React, { useRef, useState } from 'react';
+import { motion, transform } from "framer-motion";
+import {
+  ReactionButtonWrapper,
+  ReactionsWrapper,
+  EventIDWrapper,
+  HostNameWrapper,
+  HostImageWrapper,
   BottomButtonTextWrapper,
-  BottomButtonImgWrapper, 
-  BottomFollowButtonWrapper, 
-  BottomShareButtonWrapper, 
+  BottomButtonImgWrapper,
+  BottomFollowButtonWrapper,
+  BottomShareButtonWrapper,
   EventDetailsBottomWrapper,
-  BaseEmoji,EmojiHand,EmojiThumb,Emoji,EmojiHaha,EmojiFace,EmojiEyes,EmojiMouth,EmojiTongue,
-  TitleWrapper 
+  BaseEmoji, EmojiHand, EmojiThumb, Emoji, EmojiHaha, EmojiFace, EmojiEyes, EmojiMouth, EmojiTongue,
+  TitleWrapper
 } from './EventDetailsBottom.styles';
-import { AppStateProvider,useAppState, Message } from "../../AppStateContext"
+import { AppStateProvider, useAppState, Message } from "../../AppStateContext"
 
-import type {} from "styled-components/cssprop";
+import type { } from "styled-components/cssprop";
 
 interface EventDetailsBottomProps {
 
@@ -22,45 +24,72 @@ interface EventDetailsBottomProps {
 
 export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = (props: EventDetailsBottomProps) => {
 
-  const {state} = useAppState(); 
+  const { state } = useAppState();
 
-  return( 
+  const [laugh, setLaugh] = useState(0);
+  const [thumbUp, setThumbUp] = useState(0);
+  const [love, setLove] = useState(0);
+  const [mad, setMad] = useState(0);
+  const [sad, setSad] = useState(0);
 
-      <EventDetailsBottomWrapper>
-      <HostImageWrapper src={state.eventAvatar}/>
+  const between = (min, max) => Math.floor(
+      Math.random() * (max - min) + min
+    )
 
-            <HostNameWrapper>{state.eventName}</HostNameWrapper>
-            <EventIDWrapper>Event  ID: {state.eventId}</EventIDWrapper>
+  const ref = React.createRef();
+  return (
 
-                      <BottomShareButtonWrapper> 
+    <EventDetailsBottomWrapper>
+      <HostImageWrapper src={state.eventAvatar} />
 
-                        <div>
+      <HostNameWrapper>{state.eventName}</HostNameWrapper>
+      <EventIDWrapper>Event  ID: {state.eventId}</EventIDWrapper>
+
+      <BottomShareButtonWrapper>
+        <div>
           <BottomButtonImgWrapper src="https://nfodorpubnubcdn.imfast.io/images/iconShare@3x.png" />
-                        <BottomButtonTextWrapper>Share</BottomButtonTextWrapper>
-                        </div>
-                      </BottomShareButtonWrapper>
+          <BottomButtonTextWrapper>Share</BottomButtonTextWrapper>
+        </div>
+      </BottomShareButtonWrapper>
 
-                      <BottomFollowButtonWrapper> 
-                        <div>
-          <BottomButtonImgWrapper src="https://nfodorpubnubcdn.imfast.io/images/iconFollow@3x.png"/>
-                        <BottomButtonTextWrapper>Follow</BottomButtonTextWrapper>
-                        </div>
-                      </BottomFollowButtonWrapper>
+      <BottomFollowButtonWrapper>
+        <div>
+          <BottomButtonImgWrapper src="https://nfodorpubnubcdn.imfast.io/images/iconFollow@3x.png" />
+          <BottomButtonTextWrapper>Follow</BottomButtonTextWrapper>
+        </div>
+      </BottomFollowButtonWrapper>
 
-                      <ReactionsWrapper> 
-                        <ReactionButtonWrapper src="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2298_E0Jyd9BW8ML0PDLn60wlVeuEhVRHSyGw.gif"/>
-                        <ReactionButtonWrapper src="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2304_b7hKIS35rjCAPVbD8EnPSfYTJJC1b0o5.gif" />
-                        <ReactionButtonWrapper src="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2402_X1lpqTxi33xSwSTLOSPTfMo1KyYWyUTe.gif" />
-                        {/* <Emoji appearindex="3" emoji_white_color={emoji_white_color}>
-                            <EmojiHand>
-                              <EmojiThumb ></EmojiThumb>
-                            </EmojiHand>
-                            </Emoji> */}
-                        <ReactionButtonWrapper src="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2322_ps7ltjKbJF1Mvz2MsxJj08EIo3Lyip7f.gif" / >
-                        <ReactionButtonWrapper src="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2318_tJL75iT2zYJkH995p8NgDeTuHTc3WZVV.gif" />
-                      </ReactionsWrapper>
+      <ReactionsWrapper>
 
-        </EventDetailsBottomWrapper>
+
+        <ReactionButtonWrapper animate={{ y: [laugh, 0] }} onClick={() => {
+          const wayUp = between(-280, -260);
+          setLaugh(wayUp);
+        }} src="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2298_E0Jyd9BW8ML0PDLn60wlVeuEhVRHSyGw.gif" />
+
+        <ReactionButtonWrapper animate={{ y: [love, 0] }} onClick={() => {
+          const wayUp = between(-280, -260);
+          setLove(wayUp);
+        }} src="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2304_b7hKIS35rjCAPVbD8EnPSfYTJJC1b0o5.gif" />
+
+        <ReactionButtonWrapper animate={{ y: [thumbUp, 0] }} onClick={() => {
+          const wayUp = between(-280, -260);
+          setThumbUp(wayUp);
+        }} src="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2402_X1lpqTxi33xSwSTLOSPTfMo1KyYWyUTe.gif" />
+
+        <ReactionButtonWrapper animate={{ y: [mad, 0] }} onClick={() => {
+          const wayUp = between(-280, -260);
+          setMad(wayUp);
+        }} src="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2322_ps7ltjKbJF1Mvz2MsxJj08EIo3Lyip7f.gif" />
+
+        <ReactionButtonWrapper animate={{ y: [sad, 0] }} onClick={() => {
+          const wayUp = between(-280, -260);
+          setSad(wayUp)
+        }} src="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2318_tJL75iT2zYJkH995p8NgDeTuHTc3WZVV.gif" />
+
+      </ReactionsWrapper>
+
+    </EventDetailsBottomWrapper>
 
 
   );

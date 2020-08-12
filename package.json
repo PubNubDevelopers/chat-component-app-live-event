@@ -34,6 +34,7 @@
     "eslint-plugin-react": "^7.20.3",
     "file-loader": "^6.0.0",
     "file-system": "^2.2.2",
+    "framer-motion": "^2.3.0",
     "html-webpack-plugin": "^4.3.0",
     "import-fresh": "3.2.1",
     "jshint": "^2.11.1",

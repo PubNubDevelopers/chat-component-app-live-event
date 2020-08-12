@@ -1,8 +1,6 @@
-import React, { useCallback, createContext, useReducer, useContext, useState, useEffect } from "react"
-import { generateUUID } from 'pubnub';
-import PubNub, { SubscribeParameters } from "pubnub";
+import PubNub, { generateUUID, SubscribeParameters } from "pubnub";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import keyConfiguration from "./config/pubnub-keys.json";
-import { debug } from "console";
 
 
 //These are shared UUIDs that we can use when needed for messages, users and  internally.
