@@ -11,6 +11,7 @@ export const MessageListWrapper = styled.div`
  width: 100%;
  height: 100px;
    @media (max-width: 768px) {
-    width: 100vh;
+    width: 100%;
+    flex: 1 1 auto;
   }
 `;

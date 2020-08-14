@@ -10,8 +10,8 @@ flex-direction: column;
  //justify-content: flex-end;
  //justify-content: start;
  //position: relative;
- 
- width: 100vh;
+ width: 100%;
+ width: 100px;
     @media (max-width: 768px) {
     width: 100%;
     height: auto;

@@ -10,13 +10,13 @@ export const MessageWrapper = styled.div`
 export const MessageMessageWrapper = styled.span`
 top: 20px;
 left: 50px;
-//width: 90px;
+width: 90px;
 //height: 50px;
 font-family: 'Roboto', sans-serif;
-//width: 250px;
+width: 100%;
 position: relative;
-display: -webkit-box;
-display: -webkit-flex;
+// display: -webkit-box;
+// display: -webkit-flex;
 display: -ms-flexbox;
 display: flex;
 overflow: hidden;
