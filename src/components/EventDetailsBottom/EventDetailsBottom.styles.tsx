@@ -100,66 +100,89 @@ export const angryMouth = keyframes`
 
 export const EventIDWrapper = styled.span`
     width: 190px;
-    height: 28px;
-    position: absolute;
-    left: 70px;
-    margin-top: 40px;
+    height: 18px;
+    margin-left: 7px;
+    display: flex;
+    //position: absolute;
+    //left: 70px;
+    margin-top: 10px;
     font-family: 'Roboto', sans-serif;
-    font-size: 15px;
+    font-size: inherit;
     font-weight: 500;
     font-stretch: normal;
-    font-style: normal;
     line-height: normal;
     letter-spacing: normal;
     color: #ffffff;
   `
 export const HostNameWrapper = styled.span`
-    position: absolute;
     width: 190px;
-    heigth: 18px;
-    display: inline;
-    left: 70px;
+    height: 18px;
+    display: flex;
+    margin-left: 7px;
     margin-top: 12px;
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
     font-weight: 500;
     font-stretch: normal;
-    font-style: normal;
+    font-style: inherit;
     line-height: normal;
     letter-spacing: normal;
     color: #ffffff;
   `
 
 export const HostImageWrapper = styled.img`
-
 top: 10px;
 margin-left: 7px;
 left: 0px;
 width: 50px;
 //display: inline;
-heigth: 50px;
-position: absolute;`
+height: 50px;
+position: relative;
+`
+export const ShareButtonsWrapper = styled.div`
+display: flex;
+flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 50px;
+    height: -webkit-fit-content;
+  }
+padding: 7px;
+padding-top: 20px;
+  @media (max-width: 768px) {
+    padding-top: 7px;
+  }
+height: 24px;
+`
+export const EventInfoWrapper = styled.div`
+direction: flex;
+flex-direction: column;
+width: 145px;
+`
 
 export const BottomButtonImgWrapper = styled.img`
 width: 15px;
 height: auto;
-margin-top: 7px;
+//margin-top: 7px;
 margin-left: 7px;
 top: 0px;
-position: absolute;`
+position: relative;
+`
 
 export const BottomButtonTextWrapper = styled.span`
-margin-top: 7px;
-margin-left: 35px;
-top: 0px;
-position: absolute;
+//margin-top: 7px;
+margin-left: 10px;
+display: flex;
+//top: 0px;
+//position: absolute;
 `
 
 export const BottomShareButtonWrapper = styled.div`
-left: 250px;
-display: inline;
-position: absolute;
-top: 18px;
+//left: 250px;
+display: flex;
+flex-direction: row;
+//position: absolute;
+//top: 18px;
 font-family: 'Roboto', sans-serif;
 font-size: 13px;
 //font-weight: 500;
@@ -170,37 +193,47 @@ background-color: #001AFF;
 opacity: 1;
 border-radius: 5px;
 width: 57px;
-height: 21px;
+//height: 21px;
 padding-left: 7px;
-padding-right: 30px;
-padding-top: 5px;`
+padding-right: 24px;
+padding-top: 5px;
+margin-right: 10px;
+`
 
 export const BottomFollowButtonWrapper = styled.div`
 left: 360px;
-display: inline;
-position: absolute;
+display: flex;
+flex-direction: row;
+//position: absolute;
 width: 57px;
-height: 21px;
+//height: 21px;
 padding-left: 7px;
-padding-right: 30px;
+padding-right: 24px;
 padding-top: 5px;
-top: 18px;
+//top: 18px;
 font-family: 'Roboto', sans-serif;
 font-size: 13px;
 letter-spacing: normal;
 opacity: 1;
 border-radius: 5px;
 background-color: #001AFF;
+  @media (max-width: 768px) {
+    margin-top: 7px;
+  }
 `
 
 export const EventDetailWrapper = styled.div`
 pointer-events: none;
 `
+
+export const EventButtonsWrapper = styled.div`
+display: flex;
+flex-direction: column;
+`
 export const ReactionsWrapper = styled.div`
 display: flex;
 flex-direction: row;
 height: 30px;
-width: 100px;
 left: 480px;
 top: 7px;
 padding-left: 0px;
@@ -212,24 +245,20 @@ font-stretch: normal;
 font-style: normal;
 line-height: normal;
 letter-spacing: normal;
-position: absolute;
-opacity: 0.7;
 border-radius: 7px;
-background-color: #000000;
 `
 
 
 export const ReactionButtonWrapper = styled(motion.img).attrs(props => ({
-    trowEmojii: Boolean
 }))`
 position: flex;
 background-size: contain;
 background-repeat: no-repeat;
 top: 0px;
-height: 40px;
+height: 30px;
 //width: 35px;
-padding-right: 3px;
-padding-left: 3px;
+//padding-right: 3px;
+//padding-left: 3px;
 font-family: Roboto;
 font-size: 20px;
 font-weight: 500;
@@ -238,6 +267,9 @@ font-style: normal;
 line-height: normal;
 letter-spacing: normal;
 margin-left: 5px;
+  @media (max-width: 768px) {
+    margin-left: 0px;
+  }
 margin-top: 5px;
 //border-radius: 7px;
 //background-color: #000000;
@@ -288,7 +320,8 @@ export const EventDetailsTopWrapper = styled.div`
 
 export const EventDetailsBottomWrapper = styled.div`
  display: flex;
- position: absolute;
+ flex-direction: row;
+ //position: absolute;
  //width: 850px;
  height: 100px;
  left: 0px;

@@ -19,27 +19,25 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
 
   const opts = {
     width: "100%",
+    
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
+      modestbranding: 1,
     },
   };
 
   return (
 
-    <ChatDemoWrapper >
-      
+    <ChatDemoWrapper >   
       <LiveFeedPanelYouTubeWrapper>
         <LiveFeedPanelYouTube videoID="oqYbG8Zhoag" opts={opts} onReady={(event: { target: { pauseVideo: () => void; }; }) => { event.target.pauseVideo(); }} />
-
         <EventDetailsBottom />
       </LiveFeedPanelYouTubeWrapper>
 
-      <MessageListPanelWrapper>
 
         <MessageListPanel />
 
-      </MessageListPanelWrapper>
     </ChatDemoWrapper>
 
   );

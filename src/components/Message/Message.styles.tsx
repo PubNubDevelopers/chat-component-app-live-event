@@ -10,9 +10,10 @@ export const MessageWrapper = styled.div`
 export const MessageMessageWrapper = styled.span`
 top: 20px;
 left: 50px;
-width: 90px;
-height: 50px;
-width: 250px;
+//width: 90px;
+//height: 50px;
+font-family: 'Roboto', sans-serif;
+//width: 250px;
 position: relative;
 display: -webkit-box;
 display: -webkit-flex;
@@ -26,6 +27,7 @@ white-space: nowrap;
 
 export const SenderNameWrapper = styled.span`
 top: 5px;
+font-family: 'Roboto', sans-serif;
 //margin-left: 7px;
 left: 20px;
 width: 50px;

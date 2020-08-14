@@ -66,7 +66,20 @@ export const SendMessageField = () => {
       }}>
       
 
-      <input onKeyPress={handleKeyDown} style={{ position: "absolute", fontSize:"larger", width: "170px", borderWidth: "0px", borderRadius: "100px", backgroundColor: "white", top: "8px", height: "30px", left: "15px"}} ref={textAreaEl} id="messageContent" />
+      <input autoComplete="off"
+        onKeyPress={handleKeyDown}
+        style={{
+          fontSize: "larger",
+          borderWidth: "0px",
+          borderRadius: "100px",
+          backgroundColor: "white",
+          top: "8px",
+          height: "30px",
+          left: "5px"
+        }}
+        ref={textAreaEl}
+        id="messageContent"
+      />
     </section>
   );
 };

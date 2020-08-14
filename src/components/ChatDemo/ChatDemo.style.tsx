@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 
 
-export const Box = styled.div`
-  width: 100%;
-  height: 800px;
-  object-fit: contain;
-`;
+
 // const Content = styled.div`
 //     background-image: url(${props => props.img});
 // `;
@@ -20,7 +16,7 @@ export const Wallpaper = styled.div`
   mix-blend-mode: soft-light;
   border-radius: 10px;
   width: auto;
-  height: auto;
+  height: 100%;
   text-align: center;
   display: grid;
 `
@@ -34,7 +30,7 @@ export const Wallpaper = styled.div`
 // `; 
 
 // Create a Title component that'll render an <h1> tag with some styles
-export  const Title = styled.h1`
+export const Title = styled.h1`
   font-size: 1.5em;
   text-align: center;
   //color: palevioletred;
@@ -48,6 +44,10 @@ export const Advert = styled.div`
 export const ChatDemoWrapper = styled.div`
 display: flex;
 flex-direction: row;
+@media (max-width: 768px) {
+    flex-direction: column;
+    height: 100vh;
+  }
 @font-face {
   font-family: 'Roboto', sans-serif;
   src: local('Roboto'), url(fonts/Roboto.woff) format('woff');
@@ -62,7 +62,7 @@ z-index: 1;
 margin: none;
 height: 100%;
 width: 100%;
-//object-fit: contain;
+object-fit: contain;
 //left                : 0px;
 //position            : relative;
 //top                 : 0px;
@@ -97,7 +97,7 @@ margin-bottom: auto;
 margin-top: 100px;
 `;
 
-export const Grid =styled.div`
+export const Grid = styled.div`
 display: grid;
 margin: 0;
 `;

@@ -9,7 +9,6 @@ storiesOf("EventDetailsBottom", module)
 
         <AppStateProvider>
         <EventDetailsBottom >
-
             </EventDetailsBottom>
         </AppStateProvider>
     )
