@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { ChatDemoWrapper } from "./ChatDemo.style"
-import { LiveFeedPanelYouTube } from "../LiveFeedPanelYouTube"
-import { LiveFeedPanelYouTubeWrapper } from "../LiveFeedPanelYouTube/LiveFeedPanelYouTube.styles"
+import { LiveFeedPanelReactPlayer } from "../LiveFeedPanelReactPlayer"
+import { LiveFeedPanelReactPlayerWrapper } from "../LiveFeedPanelReactPlayer/LiveFeedPanelReactPlayer.styles"
 import { MessageListPanel } from "../MessageListPanel"
 import { EventDetailsTop } from "../EventDetailsTop"
 import { EventDetailsBottom } from "../EventDetailsBottom"
@@ -30,11 +30,18 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
   return (
 
     <ChatDemoWrapper >   
-      <LiveFeedPanelYouTubeWrapper>
-        <LiveFeedPanelYouTube videoID="oqYbG8Zhoag" opts={opts} onReady={(event: { target: { pauseVideo: () => void; }; }) => { event.target.pauseVideo(); }} />
-        <EventDetailsBottom />
-      </LiveFeedPanelYouTubeWrapper>
 
+       <LiveFeedPanelReactPlayerWrapper>
+
+        <LiveFeedPanelReactPlayer
+          url="https://www.youtube.com/watch?v=oqYbG8Zhoag"
+          width="100%"
+          height="250px"
+        />
+
+        <EventDetailsBottom />
+
+      </LiveFeedPanelReactPlayerWrapper >
 
         <MessageListPanel />
 

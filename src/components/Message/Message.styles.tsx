@@ -42,7 +42,7 @@ export const AvatarWrapper = styled.img`
 top: 20px;
 //margin-left: 14px;
 left: 7px;
-width: 52px;
+width: 42px;
 //display: inline;
 height: 30px;
 width: auto;

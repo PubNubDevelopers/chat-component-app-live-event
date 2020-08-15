@@ -46,6 +46,7 @@
     "react-dom": "16.13.1",
     "react-form": "^4.0.1",
     "react-jitsi": "^1.0.4",
+    "react-player": "^2.6.0",
     "react-scripts": "3.4.1",
     "react-youtube": "^7.11.2",
     "reselect": "^4.0.0",
