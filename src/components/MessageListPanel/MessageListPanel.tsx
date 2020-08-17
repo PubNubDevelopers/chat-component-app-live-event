@@ -31,6 +31,7 @@ export const MessageListPanel: React.SFC<MessageListPanelProps> = (props: Messag
         }
         );
         textAreaEl.current!.value = "";
+        textAreaEl.current.blur();
         console.log('do validate');
       }
 
@@ -47,7 +48,8 @@ export const MessageListPanel: React.SFC<MessageListPanelProps> = (props: Messag
               autoComplete="off"
               onKeyPress={handleKeyDown}
               ref={textAreaEl}
-              id="messageContent"
+            id="messageContent"
+            // onSubmitEditing={Keyboard.dismiss}
             />
             {/* <EmojiInputWrapper src="https://nfodorpubnubcdn.imfast.io/images/emojiInput@3x.png" /> */}
           </ComposeMessageBoxWrapper>
