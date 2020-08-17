@@ -1,23 +1,15 @@
-import React, { useRef, useState } from 'react';
-import { motion, transform } from "framer-motion";
+import React, { useState } from 'react';
 import {
   ReactionButtonWrapper,
   ReactionsWrapper,
   EventIDWrapper,
   HostNameWrapper,
   HostImageWrapper,
-  BottomButtonTextWrapper,
-  BottomButtonImgWrapper,
-  BottomFollowButtonWrapper,
-  BottomShareButtonWrapper,
+
   EventDetailsBottomWrapper,
-  ShareButtonsWrapper,
   EventInfoWrapper,
-  EventButtonsWrapper,
-  BaseEmoji, EmojiHand, EmojiThumb, Emoji, EmojiHaha, EmojiFace, EmojiEyes, EmojiMouth, EmojiTongue,
-  TitleWrapper
-} from './EventDetailsBottom.styles';
-import { AppStateProvider, useAppState, Message } from "../../AppStateContext"
+  EventButtonsWrapper} from './EventDetailsBottom.styles';
+import { useAppState } from "../../AppStateContext"
 
 import type { } from "styled-components/cssprop";
 
@@ -25,7 +17,7 @@ interface EventDetailsBottomProps {
 
 }
 
-export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = (props: EventDetailsBottomProps) => {
+export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = () => {
 
   const { state } = useAppState();
 
@@ -39,7 +31,6 @@ export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = (props: Ev
       Math.random() * (max - min) + min
     )
 
-  const ref = React.createRef();
   return (
 
     <EventDetailsBottomWrapper>
@@ -81,29 +72,6 @@ export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = (props: Ev
 
         </ReactionsWrapper>
 
-      <ShareButtonsWrapper>
-          
-            <BottomShareButtonWrapper>
-              <div>
-                <BottomButtonImgWrapper src="https://nfodorpubnubcdn.imfast.io/images/iconShare@3x.png" />
-              </div>
-              <div>
-                <BottomButtonTextWrapper>Share</BottomButtonTextWrapper>
-              </div>
-            </BottomShareButtonWrapper>
-
-  
-            <BottomFollowButtonWrapper>
-              <div>
-                <BottomButtonImgWrapper src="https://nfodorpubnubcdn.imfast.io/images/iconFollow@3x.png" />
-              </div>
-              <div>
-                <BottomButtonTextWrapper>Follow</BottomButtonTextWrapper>
-              </div>
-          </BottomFollowButtonWrapper>
-          
-        </ShareButtonsWrapper>
-        
 
 
       </EventButtonsWrapper>

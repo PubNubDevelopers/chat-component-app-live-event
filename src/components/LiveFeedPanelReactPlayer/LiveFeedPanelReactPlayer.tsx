@@ -25,8 +25,6 @@ interface LiveFeedPanelReactPlayerProps {
   // opts:any ,
   // onReady: any
   url: string,
-  height: string,
-  width: string,
 }
 
 export const LiveFeedPanelReactPlayer: React.SFC<LiveFeedPanelReactPlayerProps> = (props: LiveFeedPanelReactPlayerProps) => {
@@ -39,9 +37,20 @@ export const LiveFeedPanelReactPlayer: React.SFC<LiveFeedPanelReactPlayerProps> 
     <LiveFeedPanelReactPlayerWrapper>
       <ReactPlayer
         url={props.url}
-        width={props.width}
+        width="100%"
+        display="flex"
+        align-items= "center"
+        justify-content= "center"
+        flex-direction="row"
+        //height="0px"
         // height={props.height}
-      
+        controls
+        config={{
+          youtube: {
+            playerVars: { showinfo: 1 }
+          },
+
+        }}
       />
     </LiveFeedPanelReactPlayerWrapper>
 

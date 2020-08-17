@@ -131,26 +131,31 @@ export const HostNameWrapper = styled.span`
   `
 
 export const HostImageWrapper = styled.img`
-top: 10px;
+align-self: center;
+justify-content: flex-center;
 margin-left: 7px;
 left: 0px;
 width: 50px;
-//display: inline;
+display: flex;
 height: 50px;
 position: relative;
 `
 export const ShareButtonsWrapper = styled.div`
 display: flex;
+justify-content: flex-top;
+align-self: start;
+color: white;
 flex-direction: row;
-  @media (max-width: 768px) {
+  @media (max-width: 100px) {
     flex-direction: column;
     width: 50px;
     height: -webkit-fit-content;
   }
 padding: 7px;
-padding-top: 20px;
+//padding-top: 20px;
   @media (max-width: 768px) {
     padding-top: 7px;
+    padding-bottom: 17px;
   }
 height: 24px;
 `
@@ -185,6 +190,7 @@ flex-direction: row;
 //top: 18px;
 font-family: 'Roboto', sans-serif;
 font-size: 13px;
+font-color: white;
 //font-weight: 500;
 //font-stretch: normal;
 //font-style: normal;
@@ -193,11 +199,15 @@ background-color: #001AFF;
 opacity: 1;
 border-radius: 5px;
 width: 57px;
-//height: 21px;
 padding-left: 7px;
 padding-right: 24px;
 padding-top: 5px;
+height: 19px;
 margin-right: 10px;
+  @media (max-width: 768px) {
+    margin-top: 7px;
+    
+  }
 `
 
 export const BottomFollowButtonWrapper = styled.div`
@@ -210,10 +220,11 @@ width: 57px;
 padding-left: 7px;
 padding-right: 24px;
 padding-top: 5px;
-//top: 18px;
+top: 18px;
 font-family: 'Roboto', sans-serif;
 font-size: 13px;
 letter-spacing: normal;
+height: 19px;
 opacity: 1;
 border-radius: 5px;
 background-color: #001AFF;
@@ -228,7 +239,12 @@ pointer-events: none;
 
 export const EventButtonsWrapper = styled.div`
 display: flex;
-flex-direction: column;
+align-self: center;
+justify-content: flex-end;
+flex-direction: row;
+@media (max-width: 768px) {
+  flex-direction: column;
+}
 `
 export const ReactionsWrapper = styled.div`
 display: flex;
@@ -321,11 +337,7 @@ export const EventDetailsTopWrapper = styled.div`
 export const EventDetailsBottomWrapper = styled.div`
  display: flex;
  flex-direction: row;
- //position: absolute;
- //width: 850px;
- height: 100px;
  left: 0px;
- top: 500px;
  z-index: 150;
  opacity: 1;
  -webkit-background-size: contain;
