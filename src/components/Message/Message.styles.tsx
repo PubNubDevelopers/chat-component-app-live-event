@@ -27,6 +27,7 @@ white-space: nowrap;
 
 export const SenderNameWrapper = styled.span`
 top: 5px;
+color: aqua;
 font-family: 'Roboto', sans-serif;
 //margin-left: 7px;
 left: 20px;

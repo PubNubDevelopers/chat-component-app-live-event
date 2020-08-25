@@ -3,9 +3,8 @@ import {
   ReactionButtonWrapper,
   ReactionsWrapper,
   EventIDWrapper,
-  HostNameWrapper,
+  EventNameWrapper,
   HostImageWrapper,
-
   EventDetailsBottomWrapper,
   EventInfoWrapper,
   EventButtonsWrapper} from './EventDetailsBottom.styles';
@@ -35,16 +34,12 @@ export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = () => {
 
     <EventDetailsBottomWrapper>
       <HostImageWrapper src={state.eventAvatar} />
-
       <EventInfoWrapper>
-        <HostNameWrapper>{state.eventName}</HostNameWrapper>
+        <EventNameWrapper>{state.eventName}</EventNameWrapper>
         <EventIDWrapper>Event  ID: {state.eventId}</EventIDWrapper>
       </EventInfoWrapper>
-
       <EventButtonsWrapper>
         <ReactionsWrapper>
-
-
           <ReactionButtonWrapper animate={{ y: [laugh, 0] }} onClick={() => {
             const wayUp = between(-280, -260);
             setLaugh(wayUp);
@@ -71,8 +66,6 @@ export const EventDetailsBottom: React.SFC<EventDetailsBottomProps> = () => {
           }} src="https://d1j8pt39hxlh3d.cloudfront.net/products/previews/RES3POBSZ353HFVPZOKR/2318_tJL75iT2zYJkH995p8NgDeTuHTc3WZVV.gif" />
 
         </ReactionsWrapper>
-
-
 
       </EventButtonsWrapper>
     </EventDetailsBottomWrapper>

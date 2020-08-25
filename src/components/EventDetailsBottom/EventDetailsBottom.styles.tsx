@@ -114,6 +114,26 @@ export const EventIDWrapper = styled.span`
     letter-spacing: normal;
     color: #ffffff;
   `
+
+export const EventNameWrapper = styled.span`
+    width: 190px;
+    height: 18px;
+    display: flex;
+    margin-left: 7px;
+    margin-top: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+   @media (max-width: 320px) {
+    font-size: 12px;
+    width: 122px;
+  }   
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: inherit;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+  `  
 export const HostNameWrapper = styled.span`
     width: 190px;
     height: 18px;
@@ -122,6 +142,9 @@ export const HostNameWrapper = styled.span`
     margin-top: 12px;
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
+   @media (max-width: 100px) {
+    font-size: 12px;
+  }   
     font-weight: 500;
     font-stretch: normal;
     font-style: inherit;

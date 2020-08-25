@@ -1,14 +1,34 @@
 import PubNub, { generateUUID, SubscribeParameters } from "pubnub";
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 import keyConfiguration from "./config/pubnub-keys.json";
+import CRC from "crc-32";
+
+
 
 
 //These are shared UUIDs that we can use when needed for messages, users and  internally.
 const UUIDstamped001 = generateUUID();
 
+// We can assign a unique group tag containing a group to group messages so users can see only one group of messages.
+// This allows to reduce message scroll speed if a large number of users attend the same room and or such a large
+// amount of messages are exchanged over the channel that it becomes hard to read them quick enough.
+// A group number is randomly assigned to a tag that will be attached to all messages sent by a user.
+// and in equal quantity for each tag without any external process.
+// The value chosen for the tag is defined by the client without knowledge of how many users are already
+// assigned to each tag by the system group so it could find the most empty group to join.
+// by using a randomly defined value for the tag among a range(For example: 0 to 9 to create 9 groups/tag values). 
 
-//This is the configuration for our PubNub connection.
-//We merge the keys from KeyConfiguration with basic configuration options for PubNub
+//How many groups must be taged.
+const grpQty = 5;
+
+const UUIDstamped001crc = Math.abs(CRC.str(UUIDstamped001));
+const groupTag = (UUIDstamped001crc % grpQty) + 1;
+
+console.log(`Affinity group tag for this terminal is: ${groupTag}`);
+
+
+// This is the configuration for our PubNub connection.
+// We merge the keys from KeyConfiguration with basic configuration options for PubNub
 const pubnubConfig = Object.assign(
   {},
   {
@@ -31,6 +51,8 @@ interface Event {
 export const appData: AppState = {
   alert: "green",
   simulateLogin: true,
+  useAffinityGroupTag: true,
+  affinityGroup: groupTag,
   presence: false,
   eventName: "PubNub Live Event", //Event name as displayed by components.
   maxMessagesInList: 200, //Max number of messages displayed at most in the message list. the more messages the more memory will be consumed by the browser.
@@ -120,6 +142,8 @@ export class UserMessage implements Message {
 //Change these settings to your liking.
 export interface AppState {
   alert: string,
+  useAffinityGroupTag: boolean;
+  affinityGroup: number,
   simulateLogin: boolean,
   eventName: string,
   eventId: string,
@@ -242,10 +266,22 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
     }
     case "SEND_MESSAGE": {
 
+
+      var assignedAffinityGroupTag = {};
+
+      if (!state.useAffinityGroupTag) {
+        assignedAffinityGroupTag = {
+        };
+      } else {
+        assignedAffinityGroupTag = {
+          "affinityGroupTag": state.affinityGroup
+        };
+      }
       const msgId: string = generateUUID();
       state.pubnub.publish({
         channel: state.channel,
         sendByPost: true,
+        meta: assignedAffinityGroupTag, 
         message: {
           "internalKey": msgId,
           "key": msgId,
@@ -306,12 +342,27 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
         }
       );
 
+      let compoundedFilterExpresions = "{}";
 
-      //In case our App MessageListFilter propery we filter.
-      if (state.messageListFilter.length > 0) {
-        console.log(`Filtering  message: ${state.messageListFilter}`);
-        state.pubnub.setFilterExpression(state.messageListFilter);
+      let assignedAffinityGroupTag = {};
+
+      if (!state.useAffinityGroupTag) {
+        assignedAffinityGroupTag = {
+        };
+      } else {
+        assignedAffinityGroupTag = {
+          "affinityGroupTag": state.affinityGroup
+        };
       }
+
+      //In case our App sets MessageListFilter property: we filter.
+      const filterExp = `${state.messageListFilter} ${(state.messageListFilter && state.messageListFilter.length>0) ? " && " :""} ${state.useAffinityGroupTag ? ("affinityGroupTag = " + state.affinityGroup) : ""}`;
+      if (state.messageListFilter.length > 0) {
+        console.log(`Filtering  message: ${filterExp}`);
+        //compoundedFilterExpresions = { ...state.messageListFilter };
+      }
+      state.pubnub.setFilterExpression(filterExp);
+
 
     } catch (e) {
       console.log(`Subscribe error ${e.message}`);
