@@ -88,7 +88,7 @@ module.exports = {
     }),
     new WebpackShellPlugin({
       onBuildStart: ['echo "Starting Live Event Demo Server..."'],
-      //onBuildEnd: [`ngrok-qr http -host-header=localhost 8080`]
+      onBuildEnd: [`ngrok-qr http -host-header=localhost 8080`]
     })
   ]
 };
