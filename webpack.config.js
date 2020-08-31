@@ -2,6 +2,7 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var WriteFilePlugin = require('write-file-webpack-plugin');
+var WebpackShellPlugin = require('webpack-shell-plugin');
 module.exports = {
   // webpack will take the files from ./src/index
   entry: './src/index',
@@ -84,6 +85,10 @@ module.exports = {
         from: 'src/img',
         to: 'images'
       }],
+    }),
+    new WebpackShellPlugin({
+      onBuildStart: ['echo "Starting Live Event Demo Server..."'],
+      //onBuildEnd: [`ngrok-qr http -host-header=localhost 8080`]
     })
   ]
 };
