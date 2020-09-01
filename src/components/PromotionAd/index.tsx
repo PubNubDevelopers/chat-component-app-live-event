@@ -1,1 +1,0 @@
-export { PromotionAd } from './PromotionAd';
