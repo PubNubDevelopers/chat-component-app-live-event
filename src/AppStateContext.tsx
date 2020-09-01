@@ -48,10 +48,6 @@ interface Event {
   eventchannel: SubscribeParameters
 }
 
-const UUIDstamped001 = generateUUID();
-
-
-
 //This is where you define the Live Event Properties.
 export const appData: AppState = {
   alert: "green",
@@ -283,7 +279,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
         };
       }
       const msgId: string = generateUUID();
-
+      
       state.pubnub.publish({
         channel: state.channel,
         sendByPost: true,
