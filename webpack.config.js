@@ -88,7 +88,7 @@ module.exports = {
     }),
     new WebpackShellPlugin({
       onBuildStart: ['echo "Starting Live Event Demo Server..."'],
-      onBuildEnd: [`node src/tools/ngrok.js 8080`]
+      //onBuildEnd: [`node src/tools/ngrok.js 8080`]
     })
   ]
 };
