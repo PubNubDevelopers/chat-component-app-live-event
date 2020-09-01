@@ -47,12 +47,17 @@ interface Event {
   eventname: string,
   eventchannel: SubscribeParameters
 }
+
+const UUIDstamped001 = generateUUID();
+
+
+
 //This is where you define the Live Event Properties.
 export const appData: AppState = {
   alert: "green",
   simulateLogin: true,
   useAffinityGroupTag: true,
-  affinityGroup: groupTag,
+  affinityGroup: (Math.abs(CRC.str(generateUUID())) % grpQty) + 1,
   presence: false,
   eventName: "PubNub Live Event", //Event name as displayed by components.
   maxMessagesInList: 200, //Max number of messages displayed at most in the message list. the more messages the more memory will be consumed by the browser.
@@ -278,6 +283,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
         };
       }
       const msgId: string = generateUUID();
+
       state.pubnub.publish({
         channel: state.channel,
         sendByPost: true,
