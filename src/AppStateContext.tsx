@@ -22,7 +22,7 @@ const UUIDstamped001 = generateUUID();
 const grpQty = 5;
 
 const UUIDstamped001crc = Math.abs(CRC.str(UUIDstamped001));
-const groupTag = (UUIDstamped001crc % grpQty) + 1;
+const groupTag = (UUIDstamped001crc % grpQty);
 
 console.log(`Affinity group tag for this terminal is: ${groupTag}`);
 
@@ -53,7 +53,7 @@ export const appData: AppState = {
   alert: "green",
   simulateLogin: true,
   useAffinityGroupTag: true,
-  affinityGroup: (Math.abs(CRC.str(generateUUID())) % grpQty) + 1,
+  affinityGroup: (Math.abs(CRC.str(generateUUID())) % grpQty),
   presence: false,
   eventName: "PubNub Live Event", //Event name as displayed by components.
   maxMessagesInList: 200, //Max number of messages displayed at most in the message list. the more messages the more memory will be consumed by the browser.
@@ -65,7 +65,7 @@ export const appData: AppState = {
   eventAvatar: "https://nfodorpubnubcdn.imfast.io/images/companyLogo@3x.png",
   channel:"liveeventdemo.row1",
   messageBuffer: "", //Future use.
-  //users: [] ,temnte //Future use.
+  //users: [] , //Future use.
   messages: [], //Array of UserMessages, intitalized to empty, Where live event messages are streamed into.
   events: [], //Future use
   pubnubConf: pubnubConfig,  //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
