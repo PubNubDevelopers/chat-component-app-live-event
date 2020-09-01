@@ -7,21 +7,16 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var WriteFilePlugin = require('write-file-webpack-plugin');
 var WebpackShellPlugin = require('webpack-shell-plugin');
 
-const productionConfig = merge([{
 
-  output: {
-      publicPath: "/chat-component-app-live-event/",
-
-      },
-}]);
 module.exports = {
   // webpack will take the files from ./src/index
   entry: './src/index',
   // and output it into /dist as bundle.js
+
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: "https://pubnubdevelopers.github.io/chat-component-app-live-event/",
   },
   devServer: {
     inline: true,
