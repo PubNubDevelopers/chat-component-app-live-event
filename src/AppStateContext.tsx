@@ -48,11 +48,14 @@ export const appData: AppState = {
   pubnubConf: pubnubConfig,  //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
   defaultchannel: {
     channels: ['liveeventdemo.row1'], //Only one channel, split in different rows if required and load in props, can be set by load balancer.
-    withPresence: true //Presence can be set to false here.
+    withPresence: true, //Presence can be set to false here.
   },
   pubnub: new PubNub({
     publishKey: pubnubConfig.publishKey,
-    subscribeKey: pubnubConfig.subscribeKey
+    subscribeKey: pubnubConfig.subscribeKey,
+    restore: true,
+    ssl: true,
+    autoNetworkDetection: true
   }),
   message: "",
 
@@ -302,7 +305,8 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
       state.pubnub.subscribe(
         {
           channels: [state.channel], //Only one channel, split in different rows if required and load in props, can be set by load balancer.
-          withPresence: state.presence
+          withPresence: state.presence,
+
         }
       );
 
