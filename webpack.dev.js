@@ -10,7 +10,7 @@ var WebpackShellPlugin = require('webpack-shell-plugin');
 const productionConfig = merge([{
 
   output: {
-      publicPath: "/chat-component-app-live-event/",
+      publicPath: "/",
 
       },
 }]);
