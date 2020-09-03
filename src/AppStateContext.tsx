@@ -1,23 +1,35 @@
 import PubNub, { generateUUID, SubscribeParameters } from "pubnub";
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 import keyConfiguration from "./config/pubnub-keys.json";
+import CRC from "crc-32";
+
+
 
 
 //These are shared UUIDs that we can use when needed for messages, users and  internally.
 const UUIDstamped001 = generateUUID();
 
+// We can assign a unique group tag containing a group to group messages so users can see only one group of messages.
+// This allows to reduce message scroll speed if a large number of users attend the same room and or such a large
+// amount of messages are exchanged over the channel that it becomes hard to read them quick enough.
+// A group number is randomly assigned to a tag that will be attached to all messages sent by a user.
+// and in equal quantity for each tag without any external process.
+// The value chosen for the tag is defined by the client without knowledge of how many users are already
+// assigned to each tag by the system group so it could find the most empty group to join.
+// by using a randomly defined value for the tag among a range(For example: 0 to 9 to create 9 groups/tag values). 
 
-//This is the configuration for our PubNub connection.
-//We merge the keys from KeyConfiguration with basic configuration options for PubNub
+
+// This is the configuration for our PubNub connection.
+// We merge the keys from KeyConfiguration with basic configuration options for PubNub
 const pubnubConfig = Object.assign(
   {},
   {
-      restore: true,       // Ensure that subscriptions will be retained if the network connection is lost
-      uuid: UUIDstamped001, // Our connection unique identifier, very important to avoid being charged for the same user in MAU mode.
-      ssl: true, //Encrypted end to end from  browser to PubNub network.
-      presenceTimeout: 130, // 
-      logVerbosity: false, //Show more in the browser console when enabled.
-      heartbeatInterval: 0 //
+    restore: true,       // Ensure that subscriptions will be retained if the network connection is lost
+    uuid: UUIDstamped001, // Our connection unique identifier, very important to avoid being charged for the same user in MAU mode.
+    ssl: true, //Encrypted end to end from  browser to PubNub network.
+    presenceTimeout: 130, // 
+    logVerbosity: false, //Show more in the browser console when enabled.
+    heartbeatInterval: 0 //
   },
   keyConfiguration //Our keys extracted from the config directory in  the  pubnub-keys.json file
 );
@@ -27,10 +39,16 @@ interface Event {
   eventname: string,
   eventchannel: SubscribeParameters
 }
+
 //This is where you define the Live Event Properties.
 export const appData: AppState = {
   alert: "green",
   simulateLogin: true,
+  useAffinityGroupTag: true, // Set to true to filter spam if too many messages to be read.
+  affinityGroupCap: 100, // % of messages a user can read is defined by: 
+         // Percentage of Displayed Messages = affinityGroupCap / grpQty
+  //How many groups must be taged.
+  grpQty: 100,//Keep it to 100, 1000, 10000 .... depending on how many users.
   presence: false,
   eventName: "PubNub Live Event", //Event name as displayed by components.
   maxMessagesInList: 200, //Max number of messages displayed at most in the message list. the more messages the more memory will be consumed by the browser.
@@ -40,22 +58,19 @@ export const appData: AppState = {
   eventHostAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
   ownerAvatar: "https://robohash.org/ipsaquodeserunt.jpg?size=50x50&set=set1", //The URL for the host avatar graphic file
   eventAvatar: "https://nfodorpubnubcdn.imfast.io/images/companyLogo@3x.png",
-  channel:"liveeventdemo.row1",
+  channel: "liveeventdemo.row1",
   messageBuffer: "", //Future use.
-  //users: [] ,temnte //Future use.
+  //users: [] , //Future use.
   messages: [], //Array of UserMessages, intitalized to empty, Where live event messages are streamed into.
   events: [], //Future use
   pubnubConf: pubnubConfig,  //This is our configuration for the Live Event Channel used for exchanging messages among event participants.  
   defaultchannel: {
     channels: ['liveeventdemo.row1'], //Only one channel, split in different rows if required and load in props, can be set by load balancer.
-    withPresence: true, //Presence can be set to false here.
+    withPresence: true //Presence can be set to false here.
   },
   pubnub: new PubNub({
     publishKey: pubnubConfig.publishKey,
-    subscribeKey: pubnubConfig.subscribeKey,
-    restore: true,
-    ssl: true,
-    autoNetworkDetection: true
+    subscribeKey: pubnubConfig.subscribeKey
   }),
   message: "",
 
@@ -79,7 +94,7 @@ interface UserList {
   users: User[],
 }
 export interface Message {
-  internalKey: string ;
+  internalKey: string;
 
 }
 
@@ -102,20 +117,20 @@ export class UserMessage implements Message {
     const tmpKey = generateUUID();
     this.internalKey = tmpKey;
     var data = JSON.parse(payload);
-    if (!data.key ) {
+    if (!data.key) {
       throw new Error('Invalid message payload received: ' + payload);
     }
-    this.id=data.id;
+    this.id = data.id;
     this.message = data.message;
-    this.key= data.key;
-    this.UserAvatar= data.UserAvatar;
-    this.timetoken= data.timetoken;
-    this.senderId= data.senderId;
-    this.senderName= data.senderName;
-    this.dateFormat= data.dateFormat;
-    this.reactions= data.reactions;
-    this.addMessageReaction= data.addMessageReaction;
-    this.addActions= data.addActions;
+    this.key = data.key;
+    this.UserAvatar = data.UserAvatar;
+    this.timetoken = data.timetoken;
+    this.senderId = data.senderId;
+    this.senderName = data.senderName;
+    this.dateFormat = data.dateFormat;
+    this.reactions = data.reactions;
+    this.addMessageReaction = data.addMessageReaction;
+    this.addActions = data.addActions;
   }
 }
 
@@ -123,6 +138,9 @@ export class UserMessage implements Message {
 //Change these settings to your liking.
 export interface AppState {
   alert: string,
+  useAffinityGroupTag: boolean;
+  affinityGroupCap: number,
+  grpQty: number,
   simulateLogin: boolean,
   eventName: string,
   eventId: string,
@@ -173,7 +191,7 @@ export type Action =
     payload: {
       messageContent: string
     }
-  | {
+    | {
       type: "ADD_ALERT",
       payload: string
     }
@@ -206,7 +224,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
     }
     case "ADD_MESSAGE": {
       //If the messagelist is over our cap we discard the oldest message in the list.
-      if (state.messages.length > state.maxMessagesInList ){
+      if (state.messages.length > state.maxMessagesInList) {
         state.messages.shift();
       }
 
@@ -245,10 +263,27 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
     }
     case "SEND_MESSAGE": {
 
+
+      var assignedAffinityGroupTag = {};
+
+      if (!state.useAffinityGroupTag) {
+        assignedAffinityGroupTag = {
+        };
+      } else {
+        const UUIDstamped001crc = Math.abs(CRC.str(generateUUID()));
+        const groupTag = (UUIDstamped001crc % state.grpQty);
+        console.log(`Affinity group tag for this terminal is: ${groupTag}`);
+
+        assignedAffinityGroupTag = {
+          "affinityGroupTag": groupTag
+        };
+      }
       const msgId: string = generateUUID();
+
       state.pubnub.publish({
         channel: state.channel,
         sendByPost: true,
+        meta: assignedAffinityGroupTag,
         message: {
           "internalKey": msgId,
           "key": msgId,
@@ -261,7 +296,7 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
           "reactions": null,
           "addMessageReaction": null,
           "addActions": null
-      },
+        },
       });
       state.alert = "Message sent...";
       return { ...state }
@@ -287,7 +322,7 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [state, dispatch] = useReducer(appStateReducer, appData)
   useEffect(() => {
     try {
- 
+
       //This where PubNub receives messages subscribed by the channel.
       state.pubnub.addListener({
         message: (messageEvent) => {
@@ -305,17 +340,35 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
       state.pubnub.subscribe(
         {
           channels: [state.channel], //Only one channel, split in different rows if required and load in props, can be set by load balancer.
-          withPresence: state.presence,
-
+          withPresence: state.presence
         }
       );
 
+      let compoundedFilterExpresions = "{}";
 
-      //In case our App MessageListFilter propery we filter.
-      if (state.messageListFilter.length > 0) {
-        console.log(`Filtering  message: ${state.messageListFilter}`);
-        state.pubnub.setFilterExpression(state.messageListFilter);
+      let assignedAffinityGroupTag = {};
+
+      if (!state.useAffinityGroupTag) {
+        assignedAffinityGroupTag = {
+        };
+      } else {
+        assignedAffinityGroupTag = {
+          "affinityGroupTag": state.affinityGroup
+        };
       }
+
+      //In case our App sets MessageListFilter property: we filter.
+      const filterExp = `${state.messageListFilter} ${(state.messageListFilter && state.messageListFilter.length > 0) ? " && " : ""} ${state.useAffinityGroupTag ? ("affinityGroupTag > 0 "  + " && " + "affinityGroupTag < " + state.affinityGroupCap ) : ""}`;
+      if (
+        (state.messageListFilter.length > 0)
+        ||
+        (state.useAffinityGroupTag)
+      ) {
+        console.log(`Filtering  message: ${filterExp}`);
+        state.pubnub.setFilterExpression(filterExp);
+      }
+      
+
 
     } catch (e) {
       console.log(`Subscribe error ${e.message}`);
