@@ -21,7 +21,7 @@ export const LoginFormDividerOr = styled.div`
     width: 217px;
     position: relative;
     margin: auto;
-    background: url("https://nfodorpubnubcdn.imfast.io/images/loginDivider.png")   no-repeat;
+    background: url("/images/loginDivider.png")   no-repeat;
 `;
 
 export const LoginFormInputUserName = styled.input.attrs({
@@ -29,7 +29,7 @@ export const LoginFormInputUserName = styled.input.attrs({
 })
   `
 
-    background: url("https://nfodorpubnubcdn.imfast.io/images/iconUsername.png") no-repeat;
+    background: url("/images/iconUsername.png") no-repeat;
     background-color: rgba(34, 34, 34, 0.8);
     font-family: Helvetica;
     color: white;
@@ -53,7 +53,7 @@ export const LoginFormInputEmail = styled.input.attrs({
   placeholder: "  User email"
 })
   `
-    background: url("https://nfodorpubnubcdn.imfast.io/images/iconEmail.png") no-repeat;
+    background: url("/images/iconEmail.png") no-repeat;
     background-color: rgba(34, 34, 34, 0.8);
     font-family: Helvetica;
     color: white;
@@ -74,7 +74,7 @@ export const LoginFormInputPassword = styled.input.attrs({
   placeholder: "  User password"
 })
   `
-    background: url("https://nfodorpubnubcdn.imfast.io/images/iconPassword.png") no-repeat;
+    background: url("/images/iconPassword.png") no-repeat;
     background-color: rgba(34, 34, 34, 0.8);
     font-family: Helvetica;
     color: white;
@@ -101,7 +101,7 @@ export const ButtonLogin = styled.button`
     position: relative;
     margin: auto;
     margin-top: 40px;
-    //background: url("https://nfodorpubnubcdn.imfast.io/images/loginGoogleButton.png")  no-repeat;
+    //background: url("/images/loginGoogleButton.png")  no-repeat;
 `;
 
 
@@ -109,7 +109,7 @@ export const LoginFormModeratorID = styled.input.attrs({
   placeholder: "Please provide Moderator ID"
 })
   `
-    //background: url("https://nfodorpubnubcdn.imfast.io/images/iconModerator.png") no-repeat;
+    //background: url("/images/iconModerator.png") no-repeat;
     background-color: rgba(34, 34, 34, 0.8);
     font-family: Helvetica;
     color: white;
@@ -134,7 +134,7 @@ export const ButtonLoginFacebook = styled.button`
     width: 217px;
     position: relative;
     margin: auto;
-    background-image: url("https://nfodorpubnubcdn.imfast.io/images/loginFBButton.png");
+    background-image: url("/images/loginFBButton.png");
 `;
 
 export const ButtonLoginGoogle = styled.button`
@@ -146,7 +146,7 @@ export const ButtonLoginGoogle = styled.button`
     width: 217px;
     position: relative;
     margin: auto;
-    background: url("https://nfodorpubnubcdn.imfast.io/images/loginGoogleButton.png")  no-repeat;
+    background: url("/images/loginGoogleButton.png")  no-repeat;
 `;
 
 export const LoginWrapper = styled.div`
@@ -154,7 +154,7 @@ export const LoginWrapper = styled.div`
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
-  background: url("https://nfodorpubnubcdn.imfast.io/images/wallpaper.png") repeat;
+  background: url("/images/wallpaper.png") repeat;
   z-index: 1;
   display: flex;
   flex-direction: row;

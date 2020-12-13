@@ -56,7 +56,7 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
 
           <BottomShareButtonWrapper>
             <div>
-              <BottomButtonImgWrapper src="https://nfodorpubnubcdn.imfast.io/images/iconShare@3x.png" />
+              <BottomButtonImgWrapper src="/images/iconShare@3x.png" />
             </div>
             <div>
               <BottomButtonTextWrapper>Share</BottomButtonTextWrapper>
@@ -66,7 +66,7 @@ export const ChatDemo: React.SFC<ChatInitProps> = (props: ChatInitProps) => {
 
           <BottomFollowButtonWrapper>
             <div>
-              <BottomButtonImgWrapper src="https://nfodorpubnubcdn.imfast.io/images/iconFollow@3x.png" />
+              <BottomButtonImgWrapper src="/images/iconFollow@3x.png" />
             </div>
             <div>
               <BottomButtonTextWrapper>Follow</BottomButtonTextWrapper>

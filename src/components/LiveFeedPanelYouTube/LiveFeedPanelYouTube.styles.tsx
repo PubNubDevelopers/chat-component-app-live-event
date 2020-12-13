@@ -64,7 +64,7 @@ padding-left: 60px;
 position: absolute;
 margin-left: auto;
 margin-right: auto;
-background-image: url("https://nfodorpubnubcdn.imfast.io/images/companyLogo.png");
+background-image: url("/images/companyLogo.png");
 background-repeat: no-repeat;
 background-position-x: 10px;
 background-position-y: 6px;`;

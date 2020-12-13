@@ -11,7 +11,7 @@ export const EventDetailsTop: React.SFC<EventDetailsTopProps> = (props: EventDet
   return( 
 
         <EventDetailsTopWrapper>
-      <div><img src="https://nfodorpubnubcdn.imfast.io/images/statusBar.png"></img></div>
+      <div><img src="/images/statusBar.png"></img></div>
             <TitleWrapper><span>eSport: Las Vegas Tournament 2020</span></TitleWrapper>
         </EventDetailsTopWrapper>
 

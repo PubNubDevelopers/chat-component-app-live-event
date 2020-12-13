@@ -51,7 +51,7 @@ export const MessageListPanel: React.SFC<MessageListPanelProps> = (props: Messag
             id="messageContent"
             // onSubmitEditing={Keyboard.dismiss}
             />
-            {/* <EmojiInputWrapper src="https://nfodorpubnubcdn.imfast.io/images/emojiInput@3x.png" /> */}
+            {/* <EmojiInputWrapper src="/images/emojiInput@3x.png" /> */}
           </ComposeMessageBoxWrapper>
         </MessageListPanelWrapper>
       {/* </AppStateProvider> */}

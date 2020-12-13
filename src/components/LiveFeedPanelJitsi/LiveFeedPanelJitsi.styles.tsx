@@ -62,7 +62,7 @@ padding-left: 60px;
 position: absolute;
 margin-left: auto;
 margin-right: auto;
-background-image: url("https://nfodorpubnubcdn.imfast.io/images/companyLogo.png");
+background-image: url("/images/companyLogo.png");
 background-repeat: no-repeat;
 background-position-x: 10px;
 background-position-y: 6px;`;
@@ -81,7 +81,7 @@ export const LiveFeedPanelJitsiWrapper = styled.div`
     -o-background-size: contain;
     background-size: contain;
     object-fit: contain;
-    //background: url("https://nfodorpubnubcdn.imfast.io/images/stream.png") no-repeat;
+    //background: url("/images/stream.png") no-repeat;
     background-color: rgba(55, 50, 50, 0.7);
     background-blend-mode: hard-light;
 `;
